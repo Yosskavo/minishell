@@ -6,21 +6,21 @@ SRC = minishell.c
 
 OBJ = $(SRC:.c=.o)
 
+CFLAGS = -Wall -Wextra -Werror 
+
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
-CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CFLAGS) -lreadline $(OBJ) -o $(NAME)
 
 clean : 
 	@rm -fv $(OBJ)
 
 fclean : clean
-	@em -fv $(NAME)
+	@rm -fv $(NAME)
 
 re : fclean all
 
