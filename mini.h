@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/06/28 12:51:03 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/06/29 11:25:07 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@
 #  define DQOT_ERROR "minishell : string isn't close by \"\n"
 # endif
 
-int	ft_qots_handle(t_parce **lst, char *str);
-int ft_puterror(int flag, char c);
-void	ft_putdebug_fd(char *str);
-size_t	ft_strlen(char *str);
-void	ft_putstr_fd(char *str, int fd);
-int ft_edge_qot_case(char *str);
+int ft_parcing(char *str);
+
+int ft_spliting(char *str, t_parce *parce);
+
 
 #endif

@@ -2,7 +2,7 @@ NAME = minishell
 
 CC = cc
 
-SRC = minishell.c ft_putdebug_fd.c ft_strlen.c ft_error.c ft_putstr_fd.c ft_qotes.c list/ft_newlist.c list/ft_clear_list.c  list/ft_list_add_back.c
+SRC =  ft_parce.c  ft_spliting.c  minishell.c list/ft_newlist.c list/ft_clear_list.c  list/ft_list_add_back.c
 
 OBJ = $(SRC:.c=.o)
 
