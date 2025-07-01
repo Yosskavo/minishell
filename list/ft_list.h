@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/06/29 10:29:31 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/01 13:30:23 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_LIST_H
 
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef enum 
 {

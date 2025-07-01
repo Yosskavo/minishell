@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/06/29 11:26:06 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:45:31 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ int ft_parcing(char *str)
 	t_parce *parce;
 
 	parce = NULL;
-	ft_spliting(str, parce);
-	// ft_tockinig(parce);
+	if (ft_spliting(str, &parce) == -1)
+		return (-1);
+	// ft_print_it(parce);
+	// ft_clear_list(&parce);
+	ft_tokenisation(&parce);
 	// ft_expanding(parce);
 	return (0);
 }

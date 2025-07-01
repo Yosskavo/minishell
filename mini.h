@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/06/30 10:31:27 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/01 14:13:04 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,14 @@
 int ft_parcing(char *str);
 int ft_qots(t_parce **parce, char *str, int *i);
 
-int ft_spliting(char *str, t_parce *parce);
+int ft_spliting(char *str, t_parce **parce);
 int ft_word(t_parce **parce, char *s, int *pos);
 
 void ft_puterror(int flag);
 void ft_putstr_fd(char *str, int fd);
 int	ft_strlen(char *str);
+
+
+void ft_print_it(t_parce *parce);
 
 #endif

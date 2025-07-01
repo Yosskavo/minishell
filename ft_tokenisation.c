@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_newlist.c                                       :+:      :+:    :+:   */
+/*   ft_tockinig.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/26 15:23:19 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/01 13:47:42 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/07/01 14:18:01 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/01 14:45:16 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "mini.h"
 
-t_parce *ft_newlist(char *str)
+void ft_tokenisation(t_parce *parce)
 {
-	t_parce *new;
 	
-	if (!str)
-		return (NULL);
-	new = malloc(sizeof(t_parce));
-	if (!new)
-		return (NULL);
-	new->str = str;
-	new->next = NULL;
-	return (new);
 }
