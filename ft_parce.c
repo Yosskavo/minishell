@@ -21,7 +21,7 @@ int ft_parcing(char *str)
 		return (-1);
 	// ft_print_it(parce);
 	// ft_clear_list(&parce);
-	ft_tokenisation(&parce);
+	ft_tokenisation(parce);
 	// ft_expanding(parce);
 	return (0);
 }

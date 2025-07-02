@@ -16,14 +16,17 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+// append = >> , rediraction = < , heredoc = << , overwrite = >
+
 typedef enum 
 {
+  APPEND,
+	REDIRACTION,
+  OVERWRITE,
+  HEREDOC,
 	PIPE,
-	SINGL_QOTS,
-	DOUBLE_QOTS,
 	DOLLAR_SIGN,
 	WORD,
-	REDIRACTION,
 }	e_tocken;
 
 typedef struct s_parce {
