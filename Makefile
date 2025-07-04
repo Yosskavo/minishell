@@ -2,7 +2,8 @@ NAME = minishell
 
 CC = cc
 
-SRC =  ft_parce.c ft_print_it.c ft_tokenisation.c ft_puterror.c  ft_putstr_fd.c    ft_spliting.c  ft_strlen.c  ft_word.c  minishell.c list/ft_newlist.c list/ft_clear_list.c  list/ft_list_add_back.c
+SRC =  ft_parce.c ft_print_it.c ft_tokenisation.c ft_puterror.c         libft/ft_putstr_fd.c    libft/ft_strlen.c ft_spliting.c  \
+			 ft_word.c  minishell.c   list/ft_newlist.c list/ft_clear_list.c  list/ft_list_add_back.c  libft/ft_strstr.c 
 
 OBJ = $(SRC:.c=.o)
 

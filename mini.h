@@ -19,6 +19,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "list/ft_list.h"
+# include "libft/libft.h"
 
 # ifndef PACK_ERROR
 #  define SQOT_ERROR "minishell : string isn't close by \'\n"
@@ -35,12 +36,9 @@ int ft_qots(t_parce **parce, char *str, int *i);
 
 int ft_spliting(char *str, t_parce **parce);
 int ft_word(t_parce **parce, char *s, int *pos);
-void ft_tokenisation(t_parce *parce);
+void ft_tokenization(t_parce *parce);
 
 void ft_puterror(int flag);
-void ft_putstr_fd(char *str, int fd);
-int	ft_strlen(char *str);
-
 
 void ft_print_it(t_parce *parce);
 

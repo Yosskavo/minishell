@@ -16,7 +16,31 @@ void ft_print_it(t_parce *parce)
 {
 	while (parce)
 	{
-		printf("%s\n", parce->str);
-		parce = parce->next;
+		printf("str : %s --- tocken : ", parce->str);
+	  switch (parce->tocken) 
+    {
+      case PIPE :
+        printf ("pipe\n");
+        break ;
+      case HEREDOC :
+        printf("heredoc\n");
+        break ;
+      case OVERWRITE :
+        printf("overwrite\n");
+        break ;
+      case DOLLAR_SIGN :
+        printf("doolar sign\n");
+        break ;
+      case WORD :
+        printf("word\n");
+        break ;
+      case REDIRACTION :
+        printf ("rediraction\n");
+        break ;
+      case APPEND :
+        printf ("append\n");
+        break ;
+	  }
+    parce = parce->next;
 	}
 }

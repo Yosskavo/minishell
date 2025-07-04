@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parce.c                                         :+:      :+:    :+:   */
+/*   ft_split_tocken.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/04 17:40:55 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/07/04 17:39:51 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/04 17:43:24 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-int ft_parcing(char *str)
+void ft_split_tocken(t_parce *parce)
 {
-	t_parce *parce;
 
-	parce = NULL;
-	if (ft_spliting(str, &parce) == -1)
-		return (-1);
-	// ft_print_it(parce);
-	// ft_clear_list(&parce);
-	ft_tokenization(parce);
-  ft_print_it(parce);
-	// ft_expanding(parce);
-	return (0);
 }

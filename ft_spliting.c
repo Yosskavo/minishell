@@ -12,8 +12,6 @@
 
 #include "mini.h"
 
-
-
 int ft_spliting(char *str, t_parce **parce)
 {
 	int	i;
@@ -23,7 +21,7 @@ int ft_spliting(char *str, t_parce **parce)
 	{
 		while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 			i++;
-		if (ft_word(parce, str, &i) == -1)
+		if (str[i] && ft_word(parce, str, &i) == -1)
 			return (ft_clear_list(parce), -1);
 	}
 	return (0);

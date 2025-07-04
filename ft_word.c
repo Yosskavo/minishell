@@ -118,3 +118,4 @@ int ft_word(t_parce **parce, char *s, int *pos)
 		return (ft_puterror(0), -1);
 	return (0);
 }
+
