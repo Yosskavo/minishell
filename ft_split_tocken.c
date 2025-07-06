@@ -6,13 +6,13 @@
 /*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 17:39:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/04 17:43:24 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/05 22:17:53 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-void ft_split_tocken(t_parce *parce)
-{
-
-}
+// void ft_split_tocken(t_parce *parce)
+// {
+//
+// }

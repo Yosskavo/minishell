@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/01 13:30:23 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/06 13:11:16 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef enum
 	PIPE,
 	DOLLAR_SIGN,
 	WORD,
+  FILENAME,
+  ERROR_TOCKEN,
 }	e_tocken;
 
 typedef struct s_parce {

@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parce.c                                         :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/06 13:00:17 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/07/05 20:39:40 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/05 20:40:32 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "libft.h"
 
-int ft_parcing(char *str)
+int	ft_isdigit(int c)
 {
-	t_parce *parce;
-
-	parce = NULL;
-	if (ft_spliting(str, &parce) == -1)
-		return (-1);
-	// ft_print_it(parce);
-	// ft_clear_list(&parce);
-	ft_tokenization(parce);
-  ft_print_it(parce);
-	// ft_expanding(parce);
+	if (48 <= c && 57 >= c)
+		return (1);
 	return (0);
 }
+
