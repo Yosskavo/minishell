@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_freetable.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 20:36:59 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/07 12:55:13 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/07/07 12:50:16 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/07 12:53:35 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+void  ft_freetable(char **table)
+{
+  int i;
 
-void ft_putstr_fd(char *str, int fd);
-size_t	ft_strlen(char *str);
-char *ft_strstr(char *big_str, char *small_str);
-int	ft_isalnum(int c);
-int	ft_isdigit(int c);
-int	ft_isalpha(int c);
-size_t ft_lengh_of_table(char **table);
-char *ft_strdup(char *str);
-void  ft_freetable(char **table);
-#endif
+  i = 0;
+  while (table[i])
+  {
+    free(table[i]);
+    table[i] = NULL;
+    i++;
+  }
+  free(table);
+}
+

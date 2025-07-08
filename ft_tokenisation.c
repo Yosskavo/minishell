@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:18:01 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/06 14:01:41 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:46:04 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,23 @@ static e_tocken  ft_tocken(char *str)
   return (ERROR_TOCKEN);
 }
 
-void ft_tokenization(t_parce *parce)
+static void ft_check_tocken(t_parce *parce)
+{
+  while (parce)
+  {
+    if ((parce->tocken == OVERWRITE || parce->tocken == APPEND || parce->tocken == REDIRACTION))
+    {
+      parce = parce->next;
+      if (parce && parce->tocken == WORD)
+        parce->tocken = FILENAME;
+      else
+        parce->tocken = ERROR_TOCKEN;
+    }
+    parce = parce->next;
+  }
+}
+
+stati void ft_operation_tocken(t_parce *parce)
 {
   while (parce)
   {
@@ -37,5 +53,13 @@ void ft_tokenization(t_parce *parce)
       parce->tocken = WORD;
     parce = parce->next;
   }
+}
+
+
+
+void ft_tokenization(t_parce *parce)
+{
+  ft_operation_tocken(parce);
+  ft_check_tocken(parce);
 }
 

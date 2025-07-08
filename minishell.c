@@ -6,29 +6,77 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/06/29 11:29:35 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:56:52 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-int	ft_start(void)
+void ft_handle_sig(int sig)
+{
+  if (SIGINT == sig)
+  {
+    rl_on_new_line();
+    rl_replace_line("\n", 1);
+    rl_redisplay();
+  }
+}
+
+static int	ft_start(t_mini mini)
 {
 	char *str;
 
+  signal(SIGINT, &ft_handle_sig);
 	while (1)
 	{
 		str = readline("mini-->");
 		if (!str)
-			return (-1);
+			return (ft_putstr_fd("minishell : readline faild", 2), -1);
 		if (*str)
-			ft_parcing(str);
-		free(str);
+    {
+      add_history(str);
+			ft_parcing(str, &mini);
+    }
+    free(str);
 	}
 	return (0);
 }
 
-int main ()
+static char **ft_envcpy(int ac, char **av, char **env)
 {
-	ft_start();
+  char **dest_table;
+  int   i;
+
+  (void)ac;
+  (void)av;
+  dest_table = malloc(sizeof(char *) * (ft_lengh_of_table(env) + 1));
+  if (!dest_table)
+  {
+    ft_puterror(0);
+    return (NULL);
+  }
+  i = 0;
+  while (env[i])
+  {
+    dest_table[i] = ft_strdup(env[i]);
+    if (!dest_table[i])
+    {
+      ft_puterror(0);
+      ft_freetable(dest_table);
+      return (NULL);
+    }
+    i++;
+  }
+  dest_table[i] = NULL;
+  return (dest_table);
+}
+
+int main (int ac, char **av, char **env)
+{
+  t_mini  mini;
+
+  mini.env = ft_envcpy(ac, av, env);
+  if (!(mini.env))
+    return (1);
+	ft_start(mini);
 }

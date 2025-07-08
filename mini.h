@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/06 13:21:24 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/07 14:52:57 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "list/ft_list.h"
@@ -38,10 +39,20 @@
 #  define S_PIPE "|"
 # endif
 
+// this struct will be the main struct 
+// it will link with every struct we have here
+
+typedef struct s_mini 
+{
+  t_parce *start;
+  char **env;
+} t_mini;
+
+
 // if a return of function is -1 or NULL thats mean error and should puterror printf the error
 // happend by using a flag gaven atherwise perror print alot of error base on her data base
 
-int ft_parcing(char *str);
+int ft_parcing(char *str, t_mini *mini);
 int ft_qots(t_parce **parce, char *str, int *i);
 
 int ft_spliting(char *str, t_parce **parce);
@@ -50,6 +61,6 @@ void ft_tokenization(t_parce *parce);
 int ft_split_operator(t_parce **parce, char *str, int *i);
 void ft_puterror(int flag);
 
-void ft_print_it(t_parce *parce);
+void ft_print_it(t_mini *parce);
 
 #endif
