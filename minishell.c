@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/07 14:56:52 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:59:42 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void ft_handle_sig(int sig)
 {
   if (SIGINT == sig)
   {
+	write(1, "\n", 1);
     rl_on_new_line();
-    rl_replace_line("\n", 1);
+    rl_replace_line("", 0);
     rl_redisplay();
   }
 }
@@ -31,7 +32,7 @@ static int	ft_start(t_mini mini)
 	{
 		str = readline("mini-->");
 		if (!str)
-			return (ft_putstr_fd("minishell : readline faild", 2), -1);
+			return (-1);
 		if (*str)
     {
       add_history(str);
@@ -79,4 +80,5 @@ int main (int ac, char **av, char **env)
   if (!(mini.env))
     return (1);
 	ft_start(mini);
+	ft_freetable(mini.env);
 }

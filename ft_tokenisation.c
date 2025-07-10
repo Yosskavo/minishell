@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:18:01 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/07 15:46:04 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:57:38 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void ft_check_tocken(t_parce *parce)
   }
 }
 
-stati void ft_operation_tocken(t_parce *parce)
+static void ft_operation_tocken(t_parce *parce)
 {
   while (parce)
   {
