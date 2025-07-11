@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_tokenisation.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 14:18:01 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/10 16:57:38 by yel-mota         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "mini.h"
 
 static e_tocken  ft_tocken(char *str)
@@ -33,17 +21,21 @@ static void ft_check_tocken(t_parce *parce)
   {
     if ((parce->tocken == OVERWRITE || parce->tocken == APPEND || parce->tocken == REDIRACTION))
     {
-      parce = parce->next;
-      if (parce && parce->tocken == WORD)
-        parce->tocken = FILENAME;
+      if (parce->next && parce->next->tocken == WORD)
+        parce->next->tocken = FILENAME;
       else
-        parce->tocken = ERROR_TOCKEN;
+        return (parce);
     }
-    parce = parce->next;
+    else if (parce->tocken == PIPE && !(parce->next))
+      return (parce);
+    else if (parce->tocken == HEREDOC)
+    {
+      if (parce->next && parce->tocken)
+    }
   }
 }
 
-static void ft_operation_tocken(t_parce *parce)
+static  ft_operation_tocken(t_parce *parce)
 {
   while (parce)
   {
@@ -51,15 +43,22 @@ static void ft_operation_tocken(t_parce *parce)
       parce->tocken = ft_tocken(parce->str);
     else
       parce->tocken = WORD;
+    if (parce->tocken == ERROR_TOCKEN)
+        return (parce);
     parce = parce->next;
   }
+  return (NULL);
 }
-
-
 
 void ft_tokenization(t_parce *parce)
 {
-  ft_operation_tocken(parce);
-  ft_check_tocken(parce);
+  t_parce *tmp;
+
+  tmp = ft_operation_tocken(parce);
+  if (tmp)
+    return (ft_puterror(tmp));
+  tmp = ft_check_tocken(parce);
+  if (tmp)
+    return (ft_puterror(tmp));
 }
 
