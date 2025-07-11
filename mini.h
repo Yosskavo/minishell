@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/07 14:52:57 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/11 15:48:09 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include "libft/libft.h"
 
 # ifndef PACK_ERROR
+#  define ERROR_TOCKEN "minishell : syntax error near unexpacted tocken "
+#  define ERROR_OPPERATION "minishell : syntax error near unexpacted opperation "
 #  define SQOT_ERROR "minishell : string isn't close by \'\n"
 #  define DQOT_ERROR "minishell : string isn't close by \"\n"
 # endif
@@ -54,7 +56,7 @@ typedef struct s_mini
 
 int ft_parcing(char *str, t_mini *mini);
 int ft_qots(t_parce **parce, char *str, int *i);
-
+void ft_tocken_error(t_parce *parce);
 int ft_spliting(char *str, t_parce **parce);
 int ft_word(t_parce **parce, char *s, int *pos);
 void ft_tokenization(t_parce *parce);

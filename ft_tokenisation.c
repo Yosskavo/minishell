@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tokenisation.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/07/11 13:59:57 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/11 14:15:38 by yel-mota         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "mini.h"
 
 static e_tocken  ft_tocken(char *str)
@@ -15,8 +27,10 @@ static e_tocken  ft_tocken(char *str)
   return (ERROR_TOCKEN);
 }
 
-static void ft_check_tocken(t_parce *parce)
+static t_parce *ft_check_tocken(t_parce *parce)
 {
+	if (parce->tocken == PIPE)
+		return (parce);
   while (parce)
   {
     if ((parce->tocken == OVERWRITE || parce->tocken == APPEND || parce->tocken == REDIRACTION))
@@ -30,12 +44,16 @@ static void ft_check_tocken(t_parce *parce)
       return (parce);
     else if (parce->tocken == HEREDOC)
     {
-      if (parce->next && parce->tocken)
+      if (parce->next && parce->tocken == WORD)
+			parce->tocken = DELEMITER;
+		else
+			return (parce);
     }
   }
+	return (NULL);
 }
 
-static  ft_operation_tocken(t_parce *parce)
+static  t_parce *ft_operation_tocken(t_parce *parce)
 {
   while (parce)
   {
