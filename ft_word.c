@@ -12,15 +12,15 @@
 
 #include "mini.h"
 
-static int ft_qots_end(char *str, int *i)
+static int	ft_qots_end(char *str, int *i)
 {
-	char c;
-	int	flag;
-	
+	char	c;
+	int		flag;
+
 	c = str[*i];
 	if (c == '\"')
 		flag = 2;
-	else 
+	else
 		flag = 1;
 	(*i)++;
 	while (str[*i] != c)
@@ -33,11 +33,11 @@ static int ft_qots_end(char *str, int *i)
 	return (0);
 }
 
-static void ft_cpy_str_word(char *dest, char *s, int *pos, int *i)
+static void	ft_cpy_str_word(char *dest, char *s, int *pos, int *i)
 {
-	int size;
+	int	size;
 	int	count;
-	
+
 	size = 0;
 	ft_qots_end(s + *(pos), &size);
 	count = 0;
@@ -50,9 +50,9 @@ static void ft_cpy_str_word(char *dest, char *s, int *pos, int *i)
 	}
 }
 
-static int ft_check_any_string(char *str)
+static int	ft_check_any_string(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] && !(str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
@@ -60,7 +60,7 @@ static int ft_check_any_string(char *str)
 		if (str[i] == '\'' || str[i] == '\"')
 		{
 			if (ft_qots_end(str, &i) == -1)
-				return (-1);	
+				return (-1);
 		}
 		else
 			i++;
@@ -68,7 +68,7 @@ static int ft_check_any_string(char *str)
 	return (0);
 }
 
-static int ft_tell_space(char *str)
+static int	ft_tell_space(char *str)
 {
 	int		i;
 	char	c;
@@ -90,9 +90,9 @@ static int ft_tell_space(char *str)
 	return (i);
 }
 
-int ft_word(t_parce **parce, char *s, int *pos)
+int	ft_word(t_parce **parce, char *s, int *pos)
 {
-	char *dest;
+	char	*dest;
 	int		i;
 
 	if (ft_check_any_string(s + *(pos)) == -1)
@@ -101,8 +101,8 @@ int ft_word(t_parce **parce, char *s, int *pos)
 	if (!dest)
 		return (ft_puterror(0), -1);
 	i = 0;
-
-	while (s[*pos] && s[*pos] != ' ' && (s[*pos] < 9 || s[*pos] > 13) && s[*pos] != '<' && s[*pos] != '>' && s[*pos] != '|') 
+	while (s[*pos] && s[*pos] != ' ' && (s[*pos] < 9 || s[*pos] > 13)
+		&& s[*pos] != '<' && s[*pos] != '>' && s[*pos] != '|')
 	{
 		if (s[*pos] == '\"' || s[*pos] == '\'')
 			ft_cpy_str_word(dest, s, pos, &i);

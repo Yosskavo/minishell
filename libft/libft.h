@@ -10,19 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  LIBFT_H
+#ifndef LIBFT_H
 # define LIBFT_H
 
-# include <unistd.h>
 # include <stdlib.h>
+# include <unistd.h>
 
-void ft_putstr_fd(char *str, int fd);
+void	ft_putstr_fd(char *str, int fd);
 size_t	ft_strlen(char *str);
-char *ft_strstr(char *big_str, char *small_str);
-int	ft_isalnum(int c);
-int	ft_isdigit(int c);
-int	ft_isalpha(int c);
-size_t ft_lengh_of_table(char **table);
-char *ft_strdup(char *str);
-void  ft_freetable(char **table);
+char	*ft_strstr(char *big_str, char *small_str);
+int		ft_isalnum(int c);
+int		ft_isdigit(int c);
+int		ft_isalpha(int c);
+size_t	ft_lengh_of_table(char **table);
+char	*ft_strdup(char *str);
+void	ft_freetable(char **table);
 #endif

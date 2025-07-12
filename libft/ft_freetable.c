@@ -12,17 +12,16 @@
 
 #include "libft.h"
 
-void  ft_freetable(char **table)
+void	ft_freetable(char **table)
 {
-  int i;
+	int	i;
 
-  i = 0;
-  while (table[i])
-  {
-    free(table[i]);
-    table[i] = NULL;
-    i++;
-  }
-  free(table);
+	i = 0;
+	while (table[i])
+	{
+		free(table[i]);
+		table[i] = NULL;
+		i++;
+	}
+	free(table);
 }
-

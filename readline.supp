@@ -1,0 +1,72 @@
+{
+   readline_prompt_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   ...
+   fun:rl_expand_prompt
+   ...
+}
+{
+   readline_funmap_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   ...
+   fun:rl_initialize_funmap
+   ...
+}
+{
+   readline_definite_leak
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   ...
+   obj:*/libreadline.so*
+   ...
+}
+{
+   libtinfo_leak
+   Memcheck:Leak
+   ...
+   obj:*/libtinfo.so*
+   ...
+}
+{
+   readline_definite_leak
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   ...
+   fun:readline
+   ...
+}
+{
+   readline_history_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   ...
+   fun:add_history
+   ...
+}
+
+{
+   readline_general_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   ...
+   obj:*/libreadline.so*
+   ...
+}
+
+{
+   readline_history_entry_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   ...
+   obj:*/libhistory.so*
+   ...
+}

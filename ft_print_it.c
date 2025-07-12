@@ -12,41 +12,41 @@
 
 #include "mini.h"
 
-void ft_print_it(t_mini *mini)
+void	ft_print_it(t_mini *mini)
 {
-  t_parce *parce = mini->start;
+	t_parce	*parce;
 
+	parce = mini->start;
 	while (parce)
 	{
-    if (*(parce->str) == '\0')
-      printf("str : empty string \n"); // if (parce->tocken == WORD)
-    else
-      printf("str : %s --- tocken :", parce->str);
-    if (parce->tocken == WORD)
-      printf ("word \n");
-    else if (parce->tocken == PIPE)
-      printf ("pipe \n");
-    else if (parce->tocken == APPEND)
-      printf ("append \n");
-    else if (parce->tocken == HEREDOC)
-      printf ("heredoc \n");
-    else if (parce->tocken == REDIRACTION)
-      printf ("rediraction \n");
-    else if (parce->tocken == OVERWRITE)
-      printf ("overwrite \n");
-    else if (parce->tocken == ERROR_TOCKEN)
-      printf ("error\n");
-    else if (parce->tocken == FILENAME)
-      printf ("filename\n");
-    else if (parce->tocken == DELEMITER)
-      printf ("delemiter\n");
-    parce = parce->next;
+		if (*(parce->str) == '\0')
+			printf("str : empty string \n"); // if (parce->tocken == WORD)
+		else
+			printf("str : %s --- tocken :", parce->str);
+		if (parce->tocken == WORD)
+			printf("word \n");
+		else if (parce->tocken == PIPE)
+			printf("pipe \n");
+		else if (parce->tocken == APPEND)
+			printf("append \n");
+		else if (parce->tocken == HEREDOC)
+			printf("heredoc \n");
+		else if (parce->tocken == REDIRACTION)
+			printf("rediraction \n");
+		else if (parce->tocken == OVERWRITE)
+			printf("overwrite \n");
+		else if (parce->tocken == ERROR_TOCKEN)
+			printf("error\n");
+		else if (parce->tocken == FILENAME)
+			printf("filename\n");
+		else if (parce->tocken == DELEMITER)
+			printf("delemiter\n");
+		parce = parce->next;
 	}
-
-  // int i = 0;
-  // while (mini->env[i])
-  // {
-  //   printf("%s\n", mini->env[i]);
-  //   i++;
-  // }
+	// int i = 0;
+	// while (mini->env[i])
+	// {
+	//   printf("%s\n", mini->env[i]);
+	//   i++;
+	// }
 }

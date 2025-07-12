@@ -12,13 +12,12 @@
 
 #include "libft.h"
 
-size_t ft_lengh_of_table(char **table)
+size_t	ft_lengh_of_table(char **table)
 {
-  size_t  i;
+	size_t	i;
 
-  i = 0;
-  while (table[i])
-    i++;
-  return (i);
+	i = 0;
+	while (table[i])
+		i++;
+	return (i);
 }
-
