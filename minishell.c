@@ -6,29 +6,14 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/12 10:01:08 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/14 08:56:54 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static void	ft_handle_sig(int sig)
-{
-	if (SIGINT == sig)
-	{
-		write(1, "\n", 1);
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-	}
-}
 
 
-static void ft_signal(void)
-{
-	signal(SIGINT, &ft_handle_sig);
-	signal(SIGQUIT, SIG_IGN);
-}
 
 static int	ft_start(t_mini *mini)
 {

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/11 23:33:52 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/13 14:53:07 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_parce
 {
 	char			*str;
 	e_tocken		tocken;
+	int				fd_in;
+	int				fd_out;
 	struct s_parce	*next;
 	struct s_parce	*previous;
 }					t_parce;

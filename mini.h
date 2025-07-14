@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/12 08:33:56 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/14 08:57:52 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <signal.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
 # include <unistd.h>
 
 # ifndef PACK_ERROR
@@ -62,7 +63,7 @@ int			ft_word(t_parce **parce, char *s, int *pos);
 int			ft_tokenization(t_parce *parce);
 int			ft_split_operator(t_parce **parce, char *str, int *i);
 void		ft_puterror(int flag);
-
+void		ft_signal(void);
 void		ft_print_it(t_mini *parce);
 
 #endif
