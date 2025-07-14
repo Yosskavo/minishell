@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:47:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/14 08:55:01 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/14 22:28:47 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void ft_read_herdoc(t_parce *tmp)
 		else 
 			ft_join_herdoc_file(ft_strjoin(str, "\n"));
 	}
+	return ;
 }
 
 
