@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_newlist.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yel-mota <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/26 15:23:19 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 16:19:24 by yel-mota         ###   ########.fr       */
+/*   Created: 2024/10/22 17:39:02 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/15 16:11:45 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-t_parce	*ft_newlist(char *str)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	t_parce	*new;
+	size_t			i;
+	unsigned char	*p;
 
-	if (!str)
-		return (NULL);
-	new = malloc(sizeof(t_parce));
-	if (!new)
-		return (NULL);
-	ft_memset(new, 0, sizeof(t_parce));
-	new->str = str;
-	new->fd_in = -1;
-	new->fd_out = -1;
-	return (new);
+	p = (unsigned char *)s;
+	i = 0;
+	while (i < n)
+		p[i++] = c;
+	return ((void *)p);
 }
-

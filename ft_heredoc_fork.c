@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:25:58 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 14:55:39 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 16:24:10 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ static void ft_signal_heredoc()
 		return (perror("minishell"), exit(0));
 }
 
-static void	ft_put_heredoc_error(char *str)
-{
-	ft_putstr_fd(, 2);
-}
+// static void	ft_put_heredoc_error(char *str)
+// {
+// 	ft_putstr_fd(HEREDOC_ERROR, 2);
+// }
 
 static void ft_read_herdoc(t_parce *tmp)
 {
@@ -39,7 +39,6 @@ static void ft_read_herdoc(t_parce *tmp)
 	while (1)
 	{
 		str = readline("->");
-		printf("test\n");
 		if (!str)
 			return ((void)ft_putstr_fd(HEREDOC_ERROR, 2));
 		if (!ft_strcmp(str, tmp->str))
@@ -47,12 +46,12 @@ static void ft_read_herdoc(t_parce *tmp)
 		if (!*str)
 		{
 			if (ft_putstr_fd("\n", tmp->fd_in) < 0)
-				return (free(str), (void)perror("minishell"));
+				return (free(str), perror("minishell"));
 		}
 		else
 		{
 			if (ft_putstr_fd(ft_strjoin(str, "\n"), tmp->fd_in) < 0)
-				return (free(str), (void)perror("minishell"));
+				return (free(str), perror("minishell"));
 		}
 		free(str);
 	}

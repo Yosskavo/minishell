@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 08:17:05 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 10:38:54 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:59:12 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	ft_puterror_tocken(char *str, int flag)
 	{
 		ft_putstr_fd(TOCKEN_ERROR, 2);
 		ft_putstr_fd("\'", 2);
-		ft_putstr_fd(str, 2);
+		ft_putstr_fd(str, 2); 
 		ft_putstr_fd("\'\n", 2);
 	}
 }
@@ -73,10 +73,12 @@ void	ft_tocken_error(t_parce *parce)
 
 void	ft_puterror(int flag)
 {
-	if (flag == 0)
-		perror("minishell");
-	else if (flag == 1)
-		ft_putstr_fd(SQOT_ERROR, 2);
+	if (flag == 1)
+	{
+		ft_putstr_fd(SQOT_ERROR, 2); 
+	}
 	else if (flag == 2)
+	{
 		ft_putstr_fd(DQOT_ERROR, 2);
+	}
 }

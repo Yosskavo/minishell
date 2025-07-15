@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 10:45:58 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 16:07:41 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	ft_start(t_mini *mini)
 	char	*str;
 
 	ft_signal();
+	if (write(2, NULL, 0) < 0)
+		return (-1);
 	while (1)
 	{
 		str = readline("mini-->");
@@ -65,6 +67,7 @@ int	main(int ac, char **av, char **env)
 {
 	t_mini	mini;
 
+	ft_memset(&mini, 0, sizeof(t_mini));
 	mini.env = ft_envcpy(ac, av, env);
 	if (!(mini.env))
 		return (1);

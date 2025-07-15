@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 10:31:05 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/12 08:26:14 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 15:44:20 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_split_operator(t_parce **parce, char *str, int *i)
 	{
 		dest = malloc(ft_operator_size(str + (*i)) + 1);
 		if (!dest)
-			return (ft_puterror(0), -1);
+			return (perror("minishell"), -1);
 		j = 0;
 		c = str[*i];
 		while (c == str[*i])
