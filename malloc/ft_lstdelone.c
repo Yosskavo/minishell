@@ -6,15 +6,15 @@
 /*   By: yel-mota <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 04:53:30 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 22:36:15 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 22:53:42 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_malloc.h"
 
 void	ft_lstdelone(t_list *lst)
 {
-	if (lst == NULL || del == NULL)
+	if (lst == NULL)
 		return ;
 	free(lst->ptr);
 	free(lst);

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:24:37 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 16:49:09 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 22:52:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ t_list	*ft_save_linkde(t_list *new, int i)
 
 void ft_clean_up(void)
 {
-	ft_lstclear(ft_sace_linkde(NULL, 0));
-	ft_sace_linkde(NULL, 1);
+	t_list *head;
+
+	head = ft_save_linkde(NULL, 1);
+	ft_lstclear(&head);
+	ft_save_linkde(NULL, 1);
 }
 
 void	*ft_malloc(size_t size)
@@ -37,9 +40,9 @@ void	*ft_malloc(size_t size)
 	dest = malloc(size);
 	if (dest)
 	{
-		head = ft_sace_linkde(NULL, 0);
+		head = ft_save_linkde(NULL, 0);
 		ft_lstadd_back(&head, ft_lstnew(dest));
-		ft_sace_linkde(head, 1);
+		ft_save_linkde(head, 1);
 	}
 	else 
 	{
@@ -55,7 +58,7 @@ void ft_free(void *ptr)
 	t_list *head;
 	t_list *tmp;
 
-	head = ft_sace_linkde(NULL, 0);
+	head = ft_save_linkde(NULL, 0);
 	if (!head || !ptr)
 		return ;
 	while (head->next->ptr != ptr)
