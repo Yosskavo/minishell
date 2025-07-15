@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 08:55:37 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/14 09:01:56 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:01:16 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ static void	ft_handle_sig(int sig)
 	}
 }
 
-void	*ft_signal(void)
+void	ft_signal(void)
 {
 	if (signal(SIGINT, &ft_handle_sig) == SIG_ERR)
-		return (perror("minishell"));
-	if (signal(SIGQUIT, SIG_IGN))
-		return (perror("minishell"));
+		return ((void)perror("minishell"));
+	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
+		return ((void)perror("minishell"));
 }
 

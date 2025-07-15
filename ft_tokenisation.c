@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 13:59:57 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/12 08:13:44 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:22:06 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static t_parce	*ft_check_tocken(t_parce *parce)
 			return (parce);
 		else if (parce->tocken == HEREDOC)
 		{
-			if (parce->next && parce->tocken == WORD)
-				parce->tocken = DELEMITER;
+			if (parce->next && parce->next->tocken == WORD)
+				parce->next->tocken = DELEMITER;
 			else
 				return (parce);
 		}

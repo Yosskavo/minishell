@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/30 09:31:04 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 11:01:59 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/07/15 10:47:44 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/15 10:49:57 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int	ft_strcmp(char *s2, char *s1)
 {
-	size_t	i;
+	int	i;
 
-	if (!str)
-		return (0);
 	i = 0;
-	while (str[i])
+	while (s1[i] || s2[i])
+	{
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
-	return (i);
+	}
+	return (0);
 }
+

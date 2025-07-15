@@ -3,39 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_heredoc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
+/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:47:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/14 22:28:47 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 11:27:20 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-
-static void ft_read_herdoc(t_parce *tmp)
-{
-	char *str;
-
-	while (1)
-	{
-		str = readline("->");
-		if (!str)
-			return (0);
-		if (ft_strcmp(str, tmp->str))
-			return (0);
-		if (!*str)
-			ft_join_herdoc_file("\n");
-		else 
-			ft_join_herdoc_file(ft_strjoin(str, "\n"));
-	}
-	return ;
-}
-
-
 static char	*ft_random_file(void)
 {
-	int byte;
+	int fd;
 	char	*c;
 
 	fd = open("/dev/random", O_RDONLY);
@@ -50,7 +29,7 @@ static char	*ft_random_file(void)
 	c[4] = '\0';
 	fd = c[0] + c[1] + c[2] + c[3];
 	free(c);
-	c = ft_itoa(byte);
+	c = ft_itoa(fd);
 	return (c);
 }
 
@@ -61,45 +40,35 @@ static void *ft_start_heredoc(t_parce *tmp)
 	filename = ft_strjoin("/tmp/", ft_random_file());
 	if (!filename)
 		return (NULL);
-	tmp->fd_out = open(file, O_CREAT | O_RDONLY);
-	tmp->fd_in = open(file, O_WRONLY);
-	if (tmp->fd_out < 0 || tmp->fd_in < 0)
+	tmp->fd_out = open(filename, O_CREAT, 0777);
+	printf ("here\n");
+	if (tmp->fd_out < 0)
+		return (free(filename), NULL);
+	tmp->fd_out = open(filename, O_RDONLY);
+	printf ("here\n");
+	if (tmp->fd_out < 0)
+		return (free(filename), NULL);
+	tmp->fd_in = open(filename, O_WRONLY);
+	printf ("here\n");
+	if (tmp->fd_out < 0)
 		return (free(filename), NULL);
 	unlink(filename);
+	printf ("here\n");
 	free(filename);
 	return ((void *)tmp);
-}
-
-static void *ft_fork_heredoc(t_parce *tmp)
-{
-	int	child;
-	int status;
-
-	child = fork();
-	if (child < 0)
-		return (perror("minishell"), NULL);
-	if (child == 0)
-	{
-		ft_read_herdoc(tmp->next);
-	}
-	else
-	{
-		wait(&status);
-		WEXITSTATUS(status);
-	}
 }
 
 static void ft_handle_heredoc(t_parce *tmp)
 {
 	if (!ft_start_heredoc(tmp))
-		return (perror("minishell"));
+		return (printf("%s here ?\n", tmp->str), perror("minishell"));
 	ft_fork_heredoc(tmp->previous);
+	printf ("%s here\n", tmp->str);
 }
-
 
 int	ft_heredoc(t_parce *parce)
 {
-	t_pacre *tmp;
+	t_parce *tmp;
 
 	tmp = parce;
 	while (tmp)
@@ -110,3 +79,4 @@ int	ft_heredoc(t_parce *parce)
 	}
 	return (0);
 }
+

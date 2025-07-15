@@ -6,13 +6,15 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 08:39:32 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/06/30 10:34:23 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 08:36:14 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *str, int fd)
+int	ft_putstr_fd(char *str, int fd)
 {
-	write(fd, str, ft_strlen(str));
+	if (!str)
+		return (-1);
+	return (write(fd, str, ft_strlen(str)));
 }

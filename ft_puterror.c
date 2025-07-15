@@ -6,11 +6,32 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 08:17:05 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/11 23:42:33 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:38:54 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
+
+int ft_put_malloced_error(char *s1, char *s2)
+{
+	char *dest;
+	char *str;
+
+	dest = ft_strjoin(s1, "\'");
+	if (!dest)
+		return (perror("minishell"), -1);
+	str = ft_strjoin(dest, s2);
+	free(dest);
+	if (!str)
+		return (perror("minishell"), -1);
+	dest = ft_strjoin(str, "\'\n");
+	free(str);
+	if (!dest)
+		return (perror("minishell"), -1);
+	if (ft_putstr_fd(dest, 2) < 0)
+		return (free(dest), perror("minishell"), -1);
+	return (free(dest), 0);
+}
 
 static void	ft_puterror_tocken(char *str, int flag)
 {

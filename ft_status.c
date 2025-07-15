@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_status.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/30 09:31:04 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 11:01:59 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/07/15 10:03:36 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/15 10:45:49 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mini.h"
 
-size_t	ft_strlen(const char *str)
+int ft_status(int exit_status)
 {
-	size_t	i;
+	static int status;
 
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	status = exit_status;
+	return (status);
 }
+

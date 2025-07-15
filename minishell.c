@@ -6,14 +6,11 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/14 08:56:54 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:45:58 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
-
-
-
 
 static int	ft_start(t_mini *mini)
 {
