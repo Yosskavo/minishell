@@ -6,11 +6,24 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:12:43 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/07 13:00:29 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:25:28 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
+
+
+void ft_write(int fd)
+{
+	char *str;
+
+	while ((str = get_next_line(fd)) != NULL)
+	{
+		printf ("%s", str);
+		free(str);
+	}
+}
+
 
 void	ft_print_it(t_mini *mini)
 {
@@ -40,7 +53,11 @@ void	ft_print_it(t_mini *mini)
 		else if (parce->tocken == FILENAME)
 			printf("filename\n");
 		else if (parce->tocken == DELEMITER)
-			printf("delemiter\n");
+			printf("delemiter \n");
+		if (parce->tocken == DELEMITER)
+		{
+			ft_write(parce->fd_out);
+		}
 		parce = parce->next;
 	}
 	// int i = 0;

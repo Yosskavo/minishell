@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 10:46:55 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:23:17 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <sys/wait.h>
+# include "gnl/get_next_line.h"
 # include <signal.h>
 # include <stdio.h>
 # include <stdlib.h>

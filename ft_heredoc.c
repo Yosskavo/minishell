@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:47:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 11:27:20 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/15 13:10:14 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,15 @@ static void *ft_start_heredoc(t_parce *tmp)
 	if (!filename)
 		return (NULL);
 	tmp->fd_out = open(filename, O_CREAT, 0777);
-	printf ("here\n");
 	if (tmp->fd_out < 0)
 		return (free(filename), NULL);
 	tmp->fd_out = open(filename, O_RDONLY);
-	printf ("here\n");
 	if (tmp->fd_out < 0)
 		return (free(filename), NULL);
 	tmp->fd_in = open(filename, O_WRONLY);
-	printf ("here\n");
 	if (tmp->fd_out < 0)
 		return (free(filename), NULL);
 	unlink(filename);
-	printf ("here\n");
 	free(filename);
 	return ((void *)tmp);
 }
@@ -61,9 +57,8 @@ static void *ft_start_heredoc(t_parce *tmp)
 static void ft_handle_heredoc(t_parce *tmp)
 {
 	if (!ft_start_heredoc(tmp))
-		return (printf("%s here ?\n", tmp->str), perror("minishell"));
+		return (perror("minishell"));
 	ft_fork_heredoc(tmp->previous);
-	printf ("%s here\n", tmp->str);
 }
 
 int	ft_heredoc(t_parce *parce)
