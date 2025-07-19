@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 18:35:03 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/17 00:20:10 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_parcing(char *str, t_mini *mini)
 	if (ft_heredoc(mini->start))
 	return (ft_clear_list(&(mini->start)), -1);	
 	ft_print_it(mini);
+	// ft_list_to_tree(mini);
 	// ft_expanding(parce);
 	// ft_excuting(mini);
 	ft_clear_list(&(mini->start));

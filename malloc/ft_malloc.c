@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 16:24:37 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 22:52:44 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/16 21:29:55 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,19 @@
 t_list	*ft_save_linkde(t_list *new, int i)
 {
 	static t_list *head;
+	static t_list *head_env;
 
-	if (i)
+	if (!i)
 	{
 		head = new;
 	}
-	return (head);
+	else if (i == 1)
+	{
+		head_env = new;
+	}
+	if (!i || i == 2)
+		return (head);
+	return (head_env);
 }
 
 void ft_clean_up(void)
@@ -32,7 +39,7 @@ void ft_clean_up(void)
 	ft_save_linkde(NULL, 1);
 }
 
-void	*ft_malloc(size_t size)
+void	*ft_malloc(size_t size, int flag)
 {	
 	void	*dest;
 	t_list	*head;
@@ -40,7 +47,7 @@ void	*ft_malloc(size_t size)
 	dest = malloc(size);
 	if (dest)
 	{
-		head = ft_save_linkde(NULL, 0);
+		head = ft_save_linkde(NULL, flag);
 		ft_lstadd_back(&head, ft_lstnew(dest));
 		ft_save_linkde(head, 1);
 	}
