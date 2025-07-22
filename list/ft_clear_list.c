@@ -19,6 +19,10 @@ void	ft_clear_list(t_parce **lst)
 	while (*lst)
 	{
 		tmp = (*lst)->next;
+		if ((*lst)->fd_in > -1)
+			close ((*lst)->fd_in);
+		if ((*lst)->fd_out > -1)
+			close((*lst)->fd_out);
 		free((*lst)->str);
 		(*lst)->str = NULL;
 		(*lst)->previous = NULL;

@@ -14,22 +14,20 @@
 
 static int	ft_start(t_mini *mini)
 {
-	char	*str;
-
 	ft_signal();
 	if (write(2, NULL, 0) < 0)
 		return (-1);
 	while (1)
 	{
-		str = readline("mini-->");
-		if (!str)
+		mini->str = readline("mini-->");
+		if (!mini->str)
 			return (-1);
-		if (*str)
+		if (*(mini->str))
 		{
-			add_history(str);
-			ft_parcing(str, mini);
+			add_history(mini->str);
+			ft_parcing(mini);
 		}
-		free(str);
+		free(mini->str);
 	}
 	return (0);
 }
@@ -65,12 +63,16 @@ static char	**ft_envcpy(int ac, char **av, char **env)
 
 int	main(int ac, char **av, char **env)
 {
-	t_mini	mini;
+	t_mini	*mini;
 
-	ft_memset(&mini, 0, sizeof(t_mini));
-	mini.env = ft_envcpy(ac, av, env);
-	if (!(mini.env))
+	mini = malloc(sizeof(t_mini));
+	if (!mini)
+		return (perror("minishell"), 1);
+	ft_memset(mini, 0, sizeof(t_mini));
+	mini->env = ft_envcpy(ac, av, env);
+	if (!(mini->env))
 		return (1);
-	ft_start(&mini);
-	ft_freetable(mini.env);
+	ft_start(mini);
+	ft_freetable(mini->env);
+	free(mini);
 }

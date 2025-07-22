@@ -36,13 +36,17 @@ static char	*ft_random_file(void)
 static void *ft_start_heredoc(t_parce *tmp)
 {
 	char	*filename;
+	char	*tmp_c;
 
-	filename = ft_strjoin("/tmp/", ft_random_file());
+	tmp_c = ft_random_file();
+	filename = ft_strjoin("/tmp/", tmp_c);
+	free(tmp_c);
 	if (!filename)
 		return (NULL);
 	tmp->fd_out = open(filename, O_CREAT, 0777);
 	if (tmp->fd_out < 0)
 		return (free(filename), NULL);
+	close(tmp->fd_out);
 	tmp->fd_out = open(filename, O_RDONLY);
 	if (tmp->fd_out < 0)
 		return (free(filename), NULL);

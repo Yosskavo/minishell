@@ -13,6 +13,7 @@
 #ifndef MINI_H
 # define MINI_H
 
+# include <stdio.h>
 # include "libft/libft.h"
 # include "list/ft_list.h"
 # include <readline/history.h>
@@ -20,13 +21,12 @@
 # include <sys/wait.h>
 # include "gnl/get_next_line.h"
 # include <signal.h>
-# include <stdio.h>
-# include <stdlib.h>
+// # include <stdlib.h>
 # include <fcntl.h>
-# include <unistd.h>
+// # include <unistd.h>
 
 # ifndef PACK_ERROR
-#  define HEREDOC_ERROR "minishell : warning: non delemater"
+#  define HEREDOC_ERROR "minishell : warning: non delemater\n"
 #  define TOCKEN_ERROR "minishell : syntax error near unexpacted tocken "
 #  define OPPERATION_ERROR "minishell : syntax error near unexpacted opperation "
 #  define SQOT_ERROR "minishell : string isn't close by \'\n"
@@ -45,20 +45,12 @@
 #  define S_PIPE "|"
 # endif
 
-// this struct will be the main struct
-// it will link with every struct we have here
-
-typedef struct s_mini
-{
-	t_parce	*start;
-	char	**env;
-}			t_mini;
 
 // if a return of function is
 // -1 or NULL thats mean error and should puterror print the error
 // happend by using a flag gaven atherwise perror print alot of error base on her data base
 
-int			ft_parcing(char *str, t_mini *mini);
+int			ft_parcing(t_mini *mini);
 int			ft_qots(t_parce **parce, char *str, int *i);
 void		ft_tocken_error(t_parce *parce);
 int			ft_spliting(char *str, t_parce **parce);

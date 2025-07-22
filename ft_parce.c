@@ -12,19 +12,30 @@
 
 #include "mini.h"
 
-int	ft_parcing(char *str, t_mini *mini)
+static void	ft_setup_before_heredoc(t_mini *mini)
 {
-	// ft_golobal_struct(mini);
-	if (ft_spliting(str, &(mini->start)) == -1)
+	t_parce *tmp;
+
+	tmp = mini->start;
+	while (tmp)
+	{
+		tmp->mini = mini;
+		tmp = tmp->next;
+	}
+}
+
+int	ft_parcing(t_mini *mini)
+{
+	if (ft_spliting(mini->str, &(mini->start)) == -1)
 		return (-1);
 	if (ft_tokenization(mini->start) == -1)
 		return (ft_clear_list(&(mini->start)), -1);
+	ft_setup_before_heredoc(mini);
 	if (ft_heredoc(mini->start))
-	return (ft_clear_list(&(mini->start)), -1);	
+		return (ft_clear_list(&(mini->start)), -1);
+	// if (ft_expantion(mini->start) == -1)
+	// 	return (ft_clear_list(&mini->start), -1);
 	ft_print_it(mini);
-	// ft_list_to_tree(mini);
-	// ft_expanding(parce);
-	// ft_excuting(mini);
 	ft_clear_list(&(mini->start));
 	return (0);
 }

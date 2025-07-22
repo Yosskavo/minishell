@@ -12,9 +12,37 @@
 
 #include "mini.h"
 
+static t_mini *ft_global(t_mini *mini)
+{
+	static t_mini *tmp;
+
+	if (!mini)
+		return (tmp);
+	tmp = mini;
+	return (tmp);
+}
+
+static void	ft_free_all_heredoc(void)
+{
+	t_mini *mini;
+
+	mini = ft_global(NULL);
+	ft_freetable(mini->env);
+	ft_clear_list(&(mini->start));
+	free(mini->str);
+	free(mini);
+}
+
 static void	ft_handle_sig_heredoc(int sig)
 {
+	t_mini *tmp;
+
 	(void)sig;
+	tmp = ft_global(NULL);
+	ft_freetable(tmp->env);
+	ft_clear_list(&(tmp->start));
+	free(tmp->str);
+	free(tmp);
 	exit(130);
 }
 
@@ -26,23 +54,20 @@ static void ft_signal_heredoc()
 		return (perror("minishell"), exit(0));
 }
 
-// static void	ft_put_heredoc_error(char *str)
-// {
-// 	ft_putstr_fd(HEREDOC_ERROR, 2);
-// }
 
 static void ft_read_herdoc(t_parce *tmp)
 {
 	char *str;
+	char *dest;
 
 	ft_signal_heredoc();
 	while (1)
 	{
 		str = readline("->");
 		if (!str)
-			return ((void)ft_putstr_fd(HEREDOC_ERROR, 2));
+			return (ft_free_all_heredoc(), (void)ft_putstr_fd(HEREDOC_ERROR, 2));
 		if (!ft_strcmp(str, tmp->str))
-			return ;
+			return (ft_free_all_heredoc());
 		if (!*str)
 		{
 			if (ft_putstr_fd("\n", tmp->fd_in) < 0)
@@ -50,12 +75,13 @@ static void ft_read_herdoc(t_parce *tmp)
 		}
 		else
 		{
-			if (ft_putstr_fd(ft_strjoin(str, "\n"), tmp->fd_in) < 0)
-				return (free(str), perror("minishell"));
+			dest = ft_strjoin(str, "\n");
+			if (ft_putstr_fd(dest, tmp->fd_in) < 0)
+				return (free(str), free(dest), perror("minishell"));
+			free(dest);
 		}
 		free(str);
 	}
-	return ;
 }
 
 void *ft_fork_heredoc(t_parce *tmp)
@@ -66,6 +92,7 @@ void *ft_fork_heredoc(t_parce *tmp)
 	child = fork();
 	if (child < 0)
 		return (perror("minishell"), NULL);
+	ft_global(tmp->mini);
 	if (child == 0)
 	{
 		ft_read_herdoc(tmp->next);
