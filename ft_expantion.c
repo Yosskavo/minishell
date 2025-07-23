@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expantion.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
+/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/23 01:08:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/23 06:16:06 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/07/23 08:12:11 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/23 08:15:51 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static char *ft_check_expention(char *str, char *remain, int *i)
 		if (!remain)
 			return (perror("minishell"), NULL);
 	}
-	
 }
 
 static void ft_try_expend(t_parce *parce)
