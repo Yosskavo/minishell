@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:47:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 13:10:14 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/23 02:20:57 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,10 @@ static char	*ft_random_file(void)
 static void *ft_start_heredoc(t_parce *tmp)
 {
 	char	*filename;
-	char	*tmp_c;
 
-	tmp_c = ft_random_file();
-	filename = ft_strjoin("/tmp/", tmp_c);
-	free(tmp_c);
+	filename = ft_random_file();
 	if (!filename)
-		return (NULL);
+		return (perror("minishell"), NULL);
 	tmp->fd_out = open(filename, O_CREAT, 0777);
 	if (tmp->fd_out < 0)
 		return (free(filename), NULL);

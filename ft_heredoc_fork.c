@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:25:58 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 16:24:10 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/23 03:15:28 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static void ft_signal_heredoc()
 static void ft_read_herdoc(t_parce *tmp)
 {
 	char *str;
-	char *dest;
 
 	ft_signal_heredoc();
 	while (1)
@@ -67,7 +66,7 @@ static void ft_read_herdoc(t_parce *tmp)
 		if (!str)
 			return (ft_free_all_heredoc(), (void)ft_putstr_fd(HEREDOC_ERROR, 2));
 		if (!ft_strcmp(str, tmp->str))
-			return (ft_free_all_heredoc());
+			return (free(str), ft_free_all_heredoc());
 		if (!*str)
 		{
 			if (ft_putstr_fd("\n", tmp->fd_in) < 0)
@@ -75,10 +74,8 @@ static void ft_read_herdoc(t_parce *tmp)
 		}
 		else
 		{
-			dest = ft_strjoin(str, "\n");
-			if (ft_putstr_fd(dest, tmp->fd_in) < 0)
-				return (free(str), free(dest), perror("minishell"));
-			free(dest);
+			ft_putstr_fd(str, tmp->fd_in);
+			ft_putstr_fd("\n", tmp->fd_in);
 		}
 		free(str);
 	}
@@ -98,11 +95,14 @@ void *ft_fork_heredoc(t_parce *tmp)
 		ft_read_herdoc(tmp->next);
 		exit(0);
 	}
-	else
+	else 
 	{
 		wait(&status);
 		if (WIFEXITED(status))
 			ft_status(WEXITSTATUS(status));
+		close(tmp->fd_in);
+		if (ft_status(-1) == 130)
+			return (NULL);
 	}
 	return ((void *)1);
 }
