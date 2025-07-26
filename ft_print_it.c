@@ -6,24 +6,25 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:12:43 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 13:25:28 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/25 04:05:23 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-
-void ft_write(int fd)
+void	ft_write(int fd)
 {
-	char *str;
+	char	c;
 
-	while ((str = get_next_line(fd)) != NULL)
+	while (read(fd, &c, 1))
 	{
-		printf ("%s", str);
-		free(str);
+		if (c == '\n')
+			write(1, " \\n ", 4);
+		else
+			write(1, &c, 1);
 	}
+	write(1, "\n", 1);
 }
-
 
 void	ft_print_it(t_mini *mini)
 {

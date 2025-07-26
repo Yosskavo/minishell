@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/23 01:58:48 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/25 04:52:43 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 # define FT_LIST_H
 
 # include <stdio.h>
-# include <unistd.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 // append = >> , rediraction = < , heredoc = << , overwrite = >
 
-typedef enum
+typedef enum e_tocken
 {
 	APPEND,
 	REDIRACTION,
@@ -31,12 +31,12 @@ typedef enum
 	DELEMITER,
 	FILENAME,
 	ERROR_TOCKEN,
-}					e_tocken;
+}					t_tocken;
 
 typedef struct s_parce
 {
 	char			*str;
-	e_tocken		tocken;
+	t_tocken		tocken;
 	int				fd_in;
 	int				fd_out;
 	struct s_parce	*next;
@@ -49,10 +49,10 @@ typedef struct s_parce
 
 typedef struct s_mini
 {
-	t_parce	*start;
-	char	*str;
-	char	**env;
-}			t_mini;
+	t_parce			*start;
+	char			*str;
+	char			**env;
+}					t_mini;
 
 t_parce				*ft_newlist(char *str);
 void				*ft_list_add_back(t_parce **lst, t_parce *n);

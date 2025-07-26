@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tokenisation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
+/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/11 13:59:57 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 11:22:06 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/07/25 23:42:12 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/25 23:42:20 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static e_tocken	ft_tocken(char *str)
+static t_tocken	ft_tocken(char *str)
 {
 	if (str[0] == '<' && str[1] == '<' && str[2] == '\0')
 		return (HEREDOC);

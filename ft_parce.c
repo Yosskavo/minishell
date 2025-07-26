@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/17 00:20:10 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/25 03:35:01 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_setup_before_heredoc(t_mini *mini)
 {
-	t_parce *tmp;
+	t_parce	*tmp;
 
 	tmp = mini->start;
 	while (tmp)

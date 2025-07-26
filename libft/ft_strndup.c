@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 00:37:41 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/11/07 13:53:16 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/07/24 14:17:05 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/24 14:17:38 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strndup(char *str, int size)
 {
-	if ((65 <= c && 90 >= c) || (97 <= c && 122 >= c))
-		return (1);
-	return (0);
-}
+	char	*dest;
+	int		i;
 
-/*int main()
- * {
- * 	if (ft_isalpha('a') == 1)
- * 		printf("no one no");
- * 	else
- * 		printf("nahh");
- *	return (0);
- * }
- */
+	dest = malloc(size + 1);
+	if (!dest)
+		return (NULL);
+	i = 0;
+	while (i < size)
+	{
+		dest[i] = str[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}

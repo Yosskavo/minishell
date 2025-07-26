@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:47:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/23 02:20:57 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/25 20:40:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*ft_random_file(void)
 {
-	int fd;
+	int		fd;
 	char	*c;
 
 	fd = open("/dev/random", O_RDONLY);
@@ -33,7 +33,7 @@ static char	*ft_random_file(void)
 	return (c);
 }
 
-static void *ft_start_heredoc(t_parce *tmp)
+static void	*ft_start_heredoc(t_parce *tmp)
 {
 	char	*filename;
 
@@ -55,24 +55,28 @@ static void *ft_start_heredoc(t_parce *tmp)
 	return ((void *)tmp);
 }
 
-static void ft_handle_heredoc(t_parce *tmp)
+static int	ft_handle_heredoc(t_parce *tmp)
 {
 	if (!ft_start_heredoc(tmp))
-		return (perror("minishell"));
-	ft_fork_heredoc(tmp->previous);
+		return (perror("minishell"), -1);
+	if (ft_fork_heredoc(tmp->previous))
+		return (-1);
+	return (0);
 }
 
 int	ft_heredoc(t_parce *parce)
 {
-	t_parce *tmp;
+	t_parce	*tmp;
 
 	tmp = parce;
 	while (tmp)
 	{
 		if (tmp->tocken == DELEMITER)
-			ft_handle_heredoc(tmp);
+		{
+			if (ft_handle_heredoc(tmp) == -1)
+				return (-1);
+		}
 		tmp = tmp->next;
 	}
 	return (0);
 }
-

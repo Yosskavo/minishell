@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 00:37:41 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/11/07 13:53:16 by yel-mota         ###   ########.fr       */
+/*   Created: 2024/10/22 01:49:07 by yel-mota          #+#    #+#             */
+/*   Updated: 2024/11/03 20:14:08 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strchr(const char *str, int c)
 {
-	if ((65 <= c && 90 >= c) || (97 <= c && 122 >= c))
-		return (1);
-	return (0);
-}
+	int	i;
 
-/*int main()
- * {
- * 	if (ft_isalpha('a') == 1)
- * 		printf("no one no");
- * 	else
- * 		printf("nahh");
- *	return (0);
- * }
- */
+	i = 0;
+	while (str[i] != (char )c)
+	{
+		if (str[i] == '\0')
+			return (NULL);
+		i++;
+	}
+	return ((char *)str + i);
+}

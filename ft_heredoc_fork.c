@@ -6,15 +6,15 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:25:58 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/23 03:15:28 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/25 03:27:16 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static t_mini *ft_global(t_mini *mini)
+static t_mini	*ft_global(t_mini *mini)
 {
-	static t_mini *tmp;
+	static t_mini	*tmp;
 
 	if (!mini)
 		return (tmp);
@@ -24,7 +24,7 @@ static t_mini *ft_global(t_mini *mini)
 
 static void	ft_free_all_heredoc(void)
 {
-	t_mini *mini;
+	t_mini	*mini;
 
 	mini = ft_global(NULL);
 	ft_freetable(mini->env);
@@ -35,7 +35,7 @@ static void	ft_free_all_heredoc(void)
 
 static void	ft_handle_sig_heredoc(int sig)
 {
-	t_mini *tmp;
+	t_mini	*tmp;
 
 	(void)sig;
 	tmp = ft_global(NULL);
@@ -46,7 +46,7 @@ static void	ft_handle_sig_heredoc(int sig)
 	exit(130);
 }
 
-static void ft_signal_heredoc()
+static void	ft_signal_heredoc(void)
 {
 	if (signal(SIGINT, &ft_handle_sig_heredoc) == SIG_ERR)
 		return (perror("minishell"), exit(0));
@@ -54,17 +54,17 @@ static void ft_signal_heredoc()
 		return (perror("minishell"), exit(0));
 }
 
-
-static void ft_read_herdoc(t_parce *tmp)
+static void	ft_read_herdoc(t_parce *tmp)
 {
-	char *str;
+	char	*str;
 
 	ft_signal_heredoc();
 	while (1)
 	{
 		str = readline("->");
 		if (!str)
-			return (ft_free_all_heredoc(), (void)ft_putstr_fd(HEREDOC_ERROR, 2));
+			return (ft_free_all_heredoc(), (void)ft_putstr_fd(HEREDOC_ERROR,
+					2));
 		if (!ft_strcmp(str, tmp->str))
 			return (free(str), ft_free_all_heredoc());
 		if (!*str)
@@ -81,10 +81,10 @@ static void ft_read_herdoc(t_parce *tmp)
 	}
 }
 
-void *ft_fork_heredoc(t_parce *tmp)
+void	*ft_fork_heredoc(t_parce *tmp)
 {
 	int	child;
-	int status;
+	int	status;
 
 	child = fork();
 	if (child < 0)
@@ -95,12 +95,13 @@ void *ft_fork_heredoc(t_parce *tmp)
 		ft_read_herdoc(tmp->next);
 		exit(0);
 	}
-	else 
+	else
 	{
 		wait(&status);
 		if (WIFEXITED(status))
 			ft_status(WEXITSTATUS(status));
 		close(tmp->fd_in);
+		tmp->fd_in = -1;
 		if (ft_status(-1) == 130)
 			return (NULL);
 	}

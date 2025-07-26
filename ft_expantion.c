@@ -6,71 +6,31 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 08:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/23 08:15:51 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/26 02:37:28 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static char *ft_check_expention(char *str, char *remain, int *i)
+static int	ft_valid_expention(char *str)
 {
-	char *dest;
-
-	if (!remain)
-	{
-		remain = ft_strdup("");
-		if (!remain)
-			return (perror("minishell"), NULL);
-	}
-}
-
-static void ft_try_expend(t_parce *parce)
-{
-	int	i;
-	char *str;
-
-	i = 0;
-	str = NULL;
-	while (parce->str[i])
-	{
-		if (parce->str[i] == '\'')
-		{
-			i++;
-			while (parce->str[i++] != '\'');
-		}
-		if (parce->str[i] == '$')
-			str = ft_check_expention(parce->str, str, &i);
-		else
-			i++;
-	}
+	if (str[0] == '_' || ft_isalnum(str[0]) || str[0] == '?')
+		return (1);
+	return (0);
 }
 
 int	ft_expention(t_shell *mini)
 {
-	t_parce *parce;
-	int			i;
+	t_parce	*parce;
 
 	parce = mini->start;
 	while (pacre)
 	{
-		if (parce->token == WORD)
+		if (parce->token == WORD && ft_)
 		{
-			i = 0;
-			while (parce->str[i] && parce->str[i] != '$')
-			{
-				if (parce->str[i] == '\'')
-				{
-					i++;
-					while (parce->str[i++] != '\'');
-				}
-				else
-					i++;
-			}
-			if (parce->str[i] == '$')
-				ft_try_expend(parce);
+			ft_expend_it();
 		}
 		parce = pcare->next;
 	}
 	return (0);
 }
-

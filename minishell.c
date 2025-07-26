@@ -6,11 +6,25 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/16 14:26:31 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/25 03:30:50 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
+
+static int	ft_valid_input(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	{
+		i++;
+	}
+	if (str[i])
+		return (1);
+	return (0);
+}
 
 static int	ft_start(t_mini *mini)
 {
@@ -22,7 +36,7 @@ static int	ft_start(t_mini *mini)
 		mini->str = readline("mini-->");
 		if (!mini->str)
 			return (-1);
-		if (*(mini->str))
+		if (*(mini->str) && ft_valid_input(mini->str))
 		{
 			add_history(mini->str);
 			ft_parcing(mini);
