@@ -6,21 +6,21 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 13:23:17 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/27 09:42:40 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINI_H
 # define MINI_H
 
-# include <stdio.h>
+# include "gnl/get_next_line.h"
 # include "libft/libft.h"
 # include "list/ft_list.h"
 # include <readline/history.h>
 # include <readline/readline.h>
-# include <sys/wait.h>
-# include "gnl/get_next_line.h"
 # include <signal.h>
+# include <stdio.h>
+# include <sys/wait.h>
 // # include <stdlib.h>
 # include <fcntl.h>
 // # include <unistd.h>
@@ -28,9 +28,14 @@
 # ifndef PACK_ERROR
 #  define HEREDOC_ERROR "minishell : warning: non delemater\n"
 #  define TOCKEN_ERROR "minishell : syntax error near unexpacted tocken "
-#  define OPPERATION_ERROR "minishell : syntax error near unexpacted opperation "
+#  define OPPERATION_ERROR "minishell : syntax error unexpacted opperation "
 #  define SQOT_ERROR "minishell : string isn't close by \'\n"
 #  define DQOT_ERROR "minishell : string isn't close by \"\n"
+# endif
+
+# ifndef FLAGS
+#  define OLD_CHAR "0"
+#  define EXP_CHAR "1"
 # endif
 
 // i want this as a checker for a tocken insted of do it manual
@@ -45,23 +50,25 @@
 #  define S_PIPE "|"
 # endif
 
-
 // if a return of function is
 // -1 or NULL thats mean error and should puterror print the error
-// happend by using a flag gaven atherwise perror print alot of error base on her data base
+// happend by using a flag gaven atherwise
+// perror print alot of error base on her data base
 
-int			ft_parcing(t_mini *mini);
-int			ft_qots(t_parce **parce, char *str, int *i);
-void		ft_tocken_error(t_parce *parce);
-int			ft_spliting(char *str, t_parce **parce);
-int			ft_word(t_parce **parce, char *s, int *pos);
-int			ft_tokenization(t_parce *parce);
-int			ft_split_operator(t_parce **parce, char *str, int *i);
-void		ft_puterror(int flag);
-void		ft_signal(void);
-void		ft_print_it(t_mini *parce);
-int			ft_put_malloced_error(char *s1, char *s2);
-void		*ft_fork_heredoc(t_parce *tmp);
-int			ft_status(int exit_status);
-int			ft_heredoc(t_parce *parce);
+int		ft_parcing(t_mini *mini);
+int		ft_qots(t_parce **parce, char *str, int *i);
+void	ft_tocken_error(t_parce *parce);
+int		ft_spliting(char *str, t_parce **parce);
+int		ft_word(t_parce **parce, char *s, int *pos);
+int		ft_tokenization(t_parce *parce);
+int		ft_split_operator(t_parce **parce, char *str, int *i);
+void	ft_puterror(int flag);
+void	ft_signal(void);
+void	ft_print_it(t_mini *parce);
+int		ft_put_malloced_error(char *s1, char *s2);
+void	*ft_fork_heredoc(t_parce *tmp);
+int		ft_status(int exit_status);
+int		ft_heredoc(t_parce *parce);
+// void	ft_fullmap_expand(t_expend *exp, char *flag, int size);
+int		ft_valid_expention(char *str);
 #endif

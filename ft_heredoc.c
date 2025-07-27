@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:47:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/25 20:40:44 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/26 07:58:15 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static int	ft_handle_heredoc(t_parce *tmp)
 {
 	if (!ft_start_heredoc(tmp))
 		return (perror("minishell"), -1);
-	if (ft_fork_heredoc(tmp->previous))
+	if (!ft_fork_heredoc(tmp->previous))
 		return (-1);
 	return (0);
 }

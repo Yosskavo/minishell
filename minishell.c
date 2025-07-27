@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/25 03:30:50 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/27 09:28:14 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_start(t_mini *mini)
 		return (-1);
 	while (1)
 	{
-		mini->str = readline("mini-->");
+		mini->str = readline("-¿ ");
 		if (!mini->str)
 			return (-1);
 		if (*(mini->str) && ft_valid_input(mini->str))
