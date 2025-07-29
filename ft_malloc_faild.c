@@ -6,11 +6,21 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:35:08 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/27 10:35:52 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/29 09:31:15 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_malloc_faild(void)
 {
+	t_mini	*mini;
+
+	mini = ft_global(NULL);
+	if (mini->env)
+		ft_clear_env(&(mini->env));
+	if (mini->start)
+		ft_clear_list(&(mini->start));
+	free(mini->str);
+	free(mini);
 	perror("minishell");
+	exit(1);
 }

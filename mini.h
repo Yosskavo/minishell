@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/27 09:42:40 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/28 13:51:54 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 // happend by using a flag gaven atherwise
 // perror print alot of error base on her data base
 
+t_mini	*ft_global(t_mini *mini);
 int		ft_parcing(t_mini *mini);
 int		ft_qots(t_parce **parce, char *str, int *i);
 void	ft_tocken_error(t_parce *parce);

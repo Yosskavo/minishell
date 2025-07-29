@@ -6,11 +6,26 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:12 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/11 23:38:33 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/29 11:50:33 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
+
+void	ft_clear_env(t_env **env)
+{
+	t_env	*tmp;
+
+	tmp = (*env)->next;
+	while (tmp)
+	{
+		(*env) = (*env)->next;
+		free(tmp->variable);
+		free(tmp->value);
+		free(tmp);
+		tmp = (*env);
+	}
+}
 
 void	ft_clear_list(t_parce **lst)
 {
@@ -20,7 +35,7 @@ void	ft_clear_list(t_parce **lst)
 	{
 		tmp = (*lst)->next;
 		if ((*lst)->fd_in > -1)
-			close ((*lst)->fd_in);
+			close((*lst)->fd_in);
 		if ((*lst)->fd_out > -1)
 			close((*lst)->fd_out);
 		free((*lst)->str);

@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_global.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/30 08:39:32 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 14:14:42 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/07/28 13:51:27 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/28 13:51:27 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_putstr_fd(char *str, int fd)
+t_mini	*ft_global(t_mini *mini)
 {
-	if (!str)
-		return (-1);
-	return (write(fd, str, ft_strlen(str)));
+	static t_mini	*tmp;
+
+	if (!mini)
+		return (tmp);
+	tmp = mini;
+	return (tmp);
 }

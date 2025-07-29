@@ -6,21 +6,11 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:25:58 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/26 07:57:52 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/28 13:51:12 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
-
-static t_mini	*ft_global(t_mini *mini)
-{
-	static t_mini	*tmp;
-
-	if (!mini)
-		return (tmp);
-	tmp = mini;
-	return (tmp);
-}
 
 static void	ft_free_all_heredoc(void)
 {
