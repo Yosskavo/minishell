@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:31:48 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/26 01:44:58 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:01:52 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+char	*ft_strnjoin(char const *s1, char const *s2, size_t size);
 int		ft_putstr_fd(char *str, int fd);
 size_t	ft_strlen(const char *str);
 char	*ft_strstr(char *big_str, char *small_str);
@@ -29,7 +30,7 @@ void	ft_freetable(char **table);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strcmp(char *s1, char *s2);
 char	*ft_strndup(char *str, int size);
-char	*ft_strncmp(char *str, char *s, int size);
+int		ft_strncmp(const char *str, const char *s, size_t size);
 int		ft_isalnum(int c);
 char	*ft_strchr(const char *str, int c);
 

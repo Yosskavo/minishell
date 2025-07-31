@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/29 09:22:48 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:48:37 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static int	ft_valid_input(char *str)
 static int	ft_start(t_mini *mini)
 {
 	ft_signal();
-	if (write(2, NULL, 0) < 0)
-		return (-1);
 	while (1)
 	{
 		mini->str = readline("¿ ");
@@ -42,19 +40,38 @@ static int	ft_start(t_mini *mini)
 	return (0);
 }
 
-int	main(int ac, char **av, char **env)
+void	print_env(t_env *env)
+{
+	while (env)
+	{
+		printf("%s = %s\n", env->variable, env->value);
+		env = env->next;
+	}
+}
+
+static void	ft_setup(int ac, char **av, char **env)
 {
 	t_mini	*mini;
 
 	mini = malloc(sizeof(t_mini));
 	if (!mini)
-		return (perror("minishell"), 1);
+		return (perror("minishell"), exit(2), (void)1);
 	ft_memset(mini, 0, sizeof(t_mini));
 	ft_global(mini);
-	mini->env = ft_envcpy(ac, av, env);
-	if (!(mini->env))
-		return (1);
+	mini->env = ft_envcpy(env);
+	// print_env(mini->env);
 	ft_start(mini);
-	ft_freetable(mini->env);
+	// ft_clear_env(&(mini->env));
 	free(mini);
+	(void)ac;
+	(void)av;
+}
+
+int	main(int ac, char **av, char **env)
+{
+	// t_mini	*mini;
+	// if (write(2, NULL, 0) < 0)
+	// 	return (perror("minishell"), 2);
+	ft_setup(ac, av, env);
+	return (0);
 }

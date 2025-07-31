@@ -6,44 +6,28 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 08:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/28 13:48:07 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:33:13 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "mini.h"
 
-static int	ft_any_dolar_sing(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\'')
-		{
-			i++;
-			while (str[i++] != '\'')
-				;
-		}
-		if (str[i] == '$' && ft_valid_expention(str[i]))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int	ft_expention(t_shell *mini)
+void	ft_expention(t_mini *mini)
 {
 	t_parce	*parce;
 
 	parce = mini->start;
-	while (pacre)
+	while (parce)
 	{
-		if (parce->token == WORD && ft_any_dolar_sign(parce->str))
+		if ((parce->tocken == WORD || parce->tocken == FILENAME)
+			&& ft_any_dolar_sign(parce->str))
 		{
+			parce->exp = malloc(sizeof(t_expend));
+			if (!parce->exp)
+				ft_malloc_faild();
+			ft_memset(parce->exp, 0, sizeof(t_expend));
 			ft_expend_it(parce);
 		}
-		parce = pcare->next;
+		parce = parce->next;
 	}
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 09:20:46 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/29 11:41:42 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:44:09 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,5 @@ t_env	*ft_envcpy(char **o_env)
 		ft_lstadd_back_env(&env, tmp);
 		i++;
 	}
+	return (env);
 }

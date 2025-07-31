@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:08 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/29 11:24:03 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 12:09:02 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ static t_env	*ft_lst_last_env(t_env *env)
 void	ft_lstadd_back_env(t_env **head, t_env *env)
 {
 	if (!*head)
-		return (*head = new, (void)1);
-	ft_lst_last_env(*head)->next = new;
+		return (*head = env, (void)1);
+	ft_lst_last_env(*head)->next = env;
 }

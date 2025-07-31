@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:25:58 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/28 13:51:12 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 12:06:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_free_all_heredoc(void)
 	t_mini	*mini;
 
 	mini = ft_global(NULL);
-	ft_freetable(mini->env);
+	ft_clear_env(&(mini->env));
 	ft_clear_list(&(mini->start));
 	free(mini->str);
 	free(mini);
@@ -29,7 +29,7 @@ static void	ft_handle_sig_heredoc(int sig)
 
 	(void)sig;
 	tmp = ft_global(NULL);
-	ft_freetable(tmp->env);
+	ft_clear_env(&(tmp->env));
 	ft_clear_list(&(tmp->start));
 	free(tmp->str);
 	free(tmp);

@@ -6,9 +6,11 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 13:51:27 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/28 13:51:27 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 13:02:12 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "mini.h"
 
 t_mini	*ft_global(t_mini *mini)
 {

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:12:43 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/25 04:05:23 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 14:03:27 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ void	ft_print_it(t_mini *mini)
 	parce = mini->start;
 	while (parce)
 	{
-		if (*(parce->str) == '\0')
-			printf("str : empty string \n"); // if (parce->tocken == WORD)
-		else
-			printf("str : %s --- tocken :", parce->str);
+		printf("str : %s --- token : ", parce->str);
 		if (parce->tocken == WORD)
 			printf("word \n");
 		else if (parce->tocken == PIPE)
@@ -54,7 +51,10 @@ void	ft_print_it(t_mini *mini)
 		else if (parce->tocken == FILENAME)
 			printf("filename\n");
 		else if (parce->tocken == DELEMITER)
-			printf("delemiter \n");
+			printf("delemiter --> ");
+		else if (parce->tocken == EXPEND)
+			printf("expend --> exp : %s --- map : %s\n", parce->exp->exp,
+				parce->exp->map);
 		if (parce->tocken == DELEMITER)
 		{
 			ft_write(parce->fd_out);

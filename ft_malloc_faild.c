@@ -6,9 +6,11 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:35:08 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/29 09:31:15 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 12:56:00 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "mini.h"
 
 void	ft_malloc_faild(void)
 {
@@ -22,5 +24,5 @@ void	ft_malloc_faild(void)
 	free(mini->str);
 	free(mini);
 	perror("minishell");
-	exit(1);
+	exit(2);
 }

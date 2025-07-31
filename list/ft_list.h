@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/29 11:50:50 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 12:02:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef enum e_tocken
 	WORD,
 	DELEMITER,
 	FILENAME,
+	EXPEND,
 	ERROR_TOCKEN,
 }					t_tocken;
 
@@ -37,10 +38,18 @@ typedef enum e_tocken
 
 typedef struct s_env
 {
-	char			*variabl;
+	char			*variable;
 	char			*value;
 	struct s_env	*next;
 }					t_env;
+
+// this struct for exepention
+
+typedef struct s_expend
+{
+	char			*exp;
+	char			*map;
+}					t_expend;
 
 // this is a struct parced by the input
 
@@ -53,6 +62,7 @@ typedef struct s_parce
 	struct s_parce	*next;
 	struct s_parce	*previous;
 	struct s_mini	*mini;
+	struct s_expend	*exp;
 }					t_parce;
 
 // this struct will be the main struct
@@ -75,4 +85,5 @@ void				ft_clear_list(t_parce **lst);
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_lstadd_back_env(t_env **head, t_env *env);
 void				ft_clear_env(t_env **env);
+void				ft_expend_free(t_parce *parce);
 #endif

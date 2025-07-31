@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 21:34:18 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 13:57:25 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/07/31 08:24:32 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/07/31 08:24:37 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
+// # include <stdlib.h>
+// # include <unistd.h>
 # include "../libft/libft.h"
+# include <fcntl.h>
+# include <stdio.h>
+
 char	*get_next_line(int fd);
 char	*ft_strrest(char *str);
 char	*ft_strline(char *str);
