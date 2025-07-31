@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:47:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/26 07:58:15 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 19:10:57 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static char	*ft_random_file(void)
 	fd = c[0] + c[1] + c[2] + c[3];
 	free(c);
 	c = ft_itoa(fd);
+	if (!c)
+		ft_malloc_faild();
 	return (c);
 }
 

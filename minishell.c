@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 14:44:27 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 21:30:57 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	ft_setup(int ac, char **av, char **env)
 	ft_memset(mini, 0, sizeof(t_mini));
 	ft_global(mini);
 	mini->env = ft_envcpy(env);
-	// print_env(mini->env);
 	ft_start(mini);
 	ft_clear_env(&(mini->env));
 	free(mini);
@@ -60,9 +59,7 @@ static void	ft_setup(int ac, char **av, char **env)
 
 int	main(int ac, char **av, char **env)
 {
-	// t_mini	*mini;
-	// if (write(2, NULL, 0) < 0)
-	// 	return (perror("minishell"), 2);
 	ft_setup(ac, av, env);
+	printf("exit");
 	return (0);
 }

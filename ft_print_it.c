@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:12:43 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 14:03:27 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 21:46:07 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,23 @@ void	ft_write(int fd)
 	while (read(fd, &c, 1))
 	{
 		if (c == '\n')
-			write(1, " \\n ", 4);
+			printf("\\n");
 		else
-			write(1, &c, 1);
+			printf("%c", c);
 	}
-	write(1, "\n", 1);
+	printf("\n");
+}
+
+void	ft_print(t_parce *parce)
+{
+	if (!parce)
+		printf(" (null)");
+	while (parce)
+	{
+		printf(" %s ", parce->str);
+		parce = parce->next;
+	}
+	printf("\n");
 }
 
 void	ft_print_it(t_mini *mini)
@@ -53,8 +65,11 @@ void	ft_print_it(t_mini *mini)
 		else if (parce->tocken == DELEMITER)
 			printf("delemiter --> ");
 		else if (parce->tocken == EXPEND)
-			printf("expend --> exp : %s --- map : %s\n", parce->exp->exp,
-				parce->exp->map);
+		{
+			printf("expend --> exp : %s --- map : %s --- parce :",
+				parce->exp->exp, parce->exp->map);
+			ft_print(parce->exp->parce);
+		}
 		if (parce->tocken == DELEMITER)
 		{
 			ft_write(parce->fd_out);

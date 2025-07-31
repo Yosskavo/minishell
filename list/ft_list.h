@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 12:02:44 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 21:05:22 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_expend
 {
 	char			*exp;
 	char			*map;
+	struct s_parce	*parce;
 }					t_expend;
 
 // this is a struct parced by the input

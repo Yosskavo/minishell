@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 10:16:24 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/17 17:44:31 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 18:59:14 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	ft_word(t_parce **parce, char *s, int *pos)
 		return (-1);
 	dest = malloc(ft_tell_space(s + (*pos)) + 1);
 	if (!dest)
-		return (ft_puterror(0), -1);
+		ft_malloc_faild();
 	i = 0;
 	while (s[*pos] && s[*pos] != ' ' && (s[*pos] < 9 || s[*pos] > 13)
 		&& s[*pos] != '<' && s[*pos] != '>' && s[*pos] != '|')
@@ -115,6 +115,6 @@ int	ft_word(t_parce **parce, char *s, int *pos)
 	}
 	dest[i] = '\0';
 	if (!ft_list_add_back(parce, ft_newlist(dest)))
-		return (ft_puterror(0), -1);
+		ft_malloc_faild();
 	return (0);
 }

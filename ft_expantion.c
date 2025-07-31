@@ -6,17 +6,14 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 08:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 13:33:13 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 21:11:19 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-void	ft_expention(t_mini *mini)
+static void	ft_expend_everything(t_parce *parce)
 {
-	t_parce	*parce;
-
-	parce = mini->start;
 	while (parce)
 	{
 		if ((parce->tocken == WORD || parce->tocken == FILENAME)
@@ -30,4 +27,29 @@ void	ft_expention(t_mini *mini)
 		}
 		parce = parce->next;
 	}
+}
+
+// static int	ft_expend_they_space(t_expend *exp)
+// {
+// 	int	i;
+//
+// 	i = 0;
+// 	while (exp->exp[i] != ' ' && (exp->exp[i]))
+// }
+
+static void	ft_expend_split(t_parce *parce)
+{
+	while (parce)
+	{
+		if (parce->tocken == EXPEND)
+			ft_expend_split_it(parce);
+		parce = parce->next;
+	}
+}
+
+void	ft_expention(t_mini *mini)
+{
+	ft_expend_everything(mini->start);
+	ft_expend_split(mini->start);
+	// ft_delete_qots(mini->start);
 }

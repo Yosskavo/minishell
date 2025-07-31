@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 14:44:42 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 21:00:51 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int		ft_spliting(char *str, t_parce **parce);
 int		ft_parcing(t_mini *mini);
 int		ft_qots(t_parce **parce, char *str, int *i);
 int		ft_word(t_parce **parce, char *s, int *pos);
-int		ft_split_operator(t_parce **parce, char *str, int *i);
+void	ft_split_operator(t_parce **parce, char *str, int *i);
 
 // this function gave to every element a token to gave more info about
 // the element
@@ -95,6 +95,7 @@ void	*ft_fork_heredoc(t_parce *tmp);
 
 // this function are utils for expende
 
+void	ft_expend_split_it(t_parce *parce);
 void	ft_expention(t_mini *mini);
 int		ft_any_dolar_sign(char *str);
 void	ft_expend_it(t_parce *parce);
