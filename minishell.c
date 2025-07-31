@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 13:48:37 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 14:44:27 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,6 @@ static int	ft_start(t_mini *mini)
 	return (0);
 }
 
-void	print_env(t_env *env)
-{
-	while (env)
-	{
-		printf("%s = %s\n", env->variable, env->value);
-		env = env->next;
-	}
-}
-
 static void	ft_setup(int ac, char **av, char **env)
 {
 	t_mini	*mini;
@@ -61,7 +52,7 @@ static void	ft_setup(int ac, char **av, char **env)
 	mini->env = ft_envcpy(env);
 	// print_env(mini->env);
 	ft_start(mini);
-	// ft_clear_env(&(mini->env));
+	ft_clear_env(&(mini->env));
 	free(mini);
 	(void)ac;
 	(void)av;

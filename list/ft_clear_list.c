@@ -6,17 +6,26 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:12 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 12:02:41 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/07/31 14:45:39 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
+void	print_env(t_env *env)
+{
+	while (env)
+	{
+		printf("%s = %s\n", env->variable, env->value);
+		env = env->next;
+	}
+}
+
 void	ft_clear_env(t_env **env)
 {
 	t_env	*tmp;
 
-	tmp = (*env)->next;
+	tmp = (*env);
 	while (tmp)
 	{
 		(*env) = (*env)->next;
