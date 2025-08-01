@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 21:00:51 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 06:48:35 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,10 @@
 
 t_env	*ft_envcpy(char **o_env);
 
-// global function is storing the addres of global struct and just put NULL
-// to gave you in return the addres and status to save exit status you can just
+// status is for saving exit status, you can just
 // gave -1 as an argument to return you a the last exit status
 // signal containe the signals function and the handler of SIGQUIT and SIGINIT
 
-t_mini	*ft_global(t_mini *mini);
 int		ft_status(int exit_status);
 void	ft_signal(void);
 

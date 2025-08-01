@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_global.c                                        :+:      :+:    :+:   */
+/*   ft_expend_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/28 13:51:27 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 13:02:12 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/08/01 11:01:20 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/01 11:01:25 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-t_mini	*ft_global(t_mini *mini)
+void	ft_expend_list(t_parce **head, t_parce *new)
 {
-	static t_mini	*tmp;
+	t_parce	*tmp;
 
-	if (!mini)
-		return (tmp);
-	tmp = mini;
-	return (tmp);
+	tmp = new->exp->parce;
+	if (!tmp->next && !tmp->previous)
+	{
+		ft_clear_list(new);
+		*head = tmp;
+		return ;
+	}
+	if (!tmp->next)
+	{
+	}
 }

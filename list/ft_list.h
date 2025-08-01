@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 22:40:15 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 11:19:24 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef enum e_tocken
 	DELEMITER,
 	FILENAME,
 	EXPEND,
+	FILENAME_EXPEND,
 	ERROR_TOCKEN,
 }					t_tocken;
 
@@ -77,7 +78,7 @@ typedef struct s_mini
 }					t_mini;
 
 // function of linked list
-
+t_mini				*ft_global(t_mini *mini);
 t_env				*ft_lstnew_env(char *var, char *val);
 t_parce				*ft_newlist(char *str);
 void				*ft_list_add_back(t_parce **lst, t_parce *n);

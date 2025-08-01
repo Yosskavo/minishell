@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 08:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 21:11:19 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 11:20:00 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,12 @@ static void	ft_expend_everything(t_parce *parce)
 				ft_malloc_faild();
 			ft_memset(parce->exp, 0, sizeof(t_expend));
 			ft_expend_it(parce);
+			if (parce->tocken == FILENAME_EXPEND)
+				ft_expend_syntax_ambiguous(parce);
 		}
 		parce = parce->next;
 	}
 }
-
-// static int	ft_expend_they_space(t_expend *exp)
-// {
-// 	int	i;
-//
-// 	i = 0;
-// 	while (exp->exp[i] != ' ' && (exp->exp[i]))
-// }
 
 static void	ft_expend_split(t_parce *parce)
 {
@@ -47,9 +41,22 @@ static void	ft_expend_split(t_parce *parce)
 	}
 }
 
+// static void	ft_expend_link_list(t_parce **parce)
+// {
+// 	t_parce	*tmp;
+//
+// 	tmp = *parce;
+// 	while (tmp)
+// 	{
+// 		if (tmp->tocken == EXPEND)
+// 			ft_expend_list(parce, tmp);
+// 		tmp = tmp->next;
+// 	}
+// }
+
 void	ft_expention(t_mini *mini)
 {
 	ft_expend_everything(mini->start);
 	ft_expend_split(mini->start);
-	// ft_delete_qots(mini->start);
+	// ft_expend_link_list(&(mini->start));
 }

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:02:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 18:47:05 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 11:18:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,8 @@ void	ft_expend_it(t_parce *parce)
 	}
 	if (ft_strlen(parce->str + old))
 		ft_rest_of_str(parce->exp, parce->str + old);
-	parce->tocken = EXPEND;
+	if (parce->tocken == FILENAME)
+		parce->tocken = FILENAME_EXPEND;
+	else
+		parce->tocken = EXPEND;
 }

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 10:16:24 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 18:59:14 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 08:20:17 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,6 @@ static int	ft_qots_end(char *str, int *i)
 	return (0);
 }
 
-static void	ft_cpy_str_word(char *dest, char *s, int *pos, int *i)
-{
-	int	size;
-	int	count;
-
-	size = 0;
-	ft_qots_end(s + *(pos), &size);
-	count = 0;
-	while (count < size)
-	{
-		dest[*i] = s[*pos];
-		(*pos)++;
-		(*i)++;
-		count++;
-	}
-}
-
 static int	ft_check_any_string(char *str)
 {
 	int	i;
@@ -74,7 +57,8 @@ static int	ft_tell_space(char *str)
 	char	c;
 
 	i = 0;
-	while (str[i] && !(str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)))
+	while (str[i] && !(str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		&& !(str[i] == '|' || str[i] == '>' || str[i] == '<'))
 	{
 		if (str[i] == '\"' || str[i] == '\'')
 		{
@@ -94,26 +78,22 @@ int	ft_word(t_parce **parce, char *s, int *pos)
 {
 	char	*dest;
 	int		i;
+	int		size;
 
 	if (ft_check_any_string(s + *(pos)) == -1)
 		return (-1);
-	dest = malloc(ft_tell_space(s + (*pos)) + 1);
+	size = ft_tell_space(s + *(pos));
+	dest = malloc(size + 1);
 	if (!dest)
 		ft_malloc_faild();
 	i = 0;
-	while (s[*pos] && s[*pos] != ' ' && (s[*pos] < 9 || s[*pos] > 13)
-		&& s[*pos] != '<' && s[*pos] != '>' && s[*pos] != '|')
+	while (i < size)
 	{
-		if (s[*pos] == '\"' || s[*pos] == '\'')
-			ft_cpy_str_word(dest, s, pos, &i);
-		else
-		{
-			dest[i] = s[*pos];
-			i++;
-			(*pos)++;
-		}
+		dest[i] = s[*pos + i];
+		i++;
 	}
 	dest[i] = '\0';
+	(*pos) += size;
 	if (!ft_list_add_back(parce, ft_newlist(dest)))
 		ft_malloc_faild();
 	return (0);

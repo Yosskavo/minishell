@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:19 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/29 11:15:25 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 06:45:40 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_parce	*ft_newlist(char *str)
 	new->str = str;
 	new->fd_in = -1;
 	new->fd_out = -1;
+	new->mini = ft_global(NULL);
 	return (new);
 }
 

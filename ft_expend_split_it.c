@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 20:21:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 21:44:32 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 08:09:58 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,16 @@ static int	ft_till_space_expend(t_expend *exp, int i)
 	return (j);
 }
 
-void	ft_expend_word(t_expend *exp, t_parce **parce, int *i)
+static void	ft_expend_token(t_parce *parce)
+{
+	while (parce)
+	{
+		parce->tocken = EXPEND;
+		parce = parce->next;
+	}
+}
+
+static void	ft_expend_word(t_expend *exp, t_parce **parce, int *i)
 {
 	char	*dest;
 	int		size;
@@ -77,4 +86,5 @@ void	ft_expend_split_it(t_parce *parce)
 			ft_expend_word(exp, &tmp, &i);
 	}
 	parce->exp->parce = tmp;
+	ft_expend_token(tmp);
 }

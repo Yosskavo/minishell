@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parce.c                                         :+:      :+:    :+:   */
+/*   ft_global.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/01 06:54:59 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/07/28 13:51:27 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/01 06:51:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mini.h"
+#include "ft_list.h"
 
-int	ft_parcing(t_mini *mini)
+t_mini	*ft_global(t_mini *mini)
 {
-	if (ft_spliting(mini->str, &(mini->start)) == -1)
-		return (-1);
-	if (ft_tokenization(mini->start) == -1)
-		return (ft_clear_list(&(mini->start)), -1);
-	if (ft_heredoc(mini->start))
-		return (ft_clear_list(&(mini->start)), -1);
-	ft_expention(mini);
-	ft_print_it(mini);
-	ft_clear_list(&(mini->start));
-	return (0);
+	static t_mini	*tmp;
+
+	if (!mini)
+		return (tmp);
+	tmp = mini;
+	return (tmp);
 }
