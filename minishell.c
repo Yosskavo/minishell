@@ -6,21 +6,11 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 21:30:57 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 22:04:39 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
-
-static int	ft_valid_input(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	return (str[i]);
-}
 
 static int	ft_start(t_mini *mini)
 {

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 09:10:46 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 14:37:33 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 22:47:14 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,27 @@
 char	*ft_search_expend(char *str, int size)
 {
 	t_env	*env;
+	char	*cmp;
+	int		i;
 
+	i = 0;
 	env = ft_global(NULL)->env;
+	cmp = malloc(size + 1);
+	if (!cmp)
+		ft_malloc_faild();
+	while (i < size)
+	{
+		cmp[i] = str[i];
+		i++;
+		cmp[i] = '\0';
+	}
 	while (env)
 	{
-		if (!ft_strncmp(str, env->variable, size))
-			return (env->value);
+		if (!ft_strcmp(cmp, env->variable))
+			return (free(cmp), env->value);
 		env = env->next;
 	}
+	free(cmp);
 	return (NULL);
 }
 

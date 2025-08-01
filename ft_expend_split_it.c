@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 20:21:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/01 08:09:58 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 22:36:49 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_expend_split_it(t_parce *parce)
 	i = 0;
 	tmp = NULL;
 	exp = parce->exp;
-	if (!exp->exp)
+	if (!exp->exp || !*(exp->exp) || !ft_valid_input(exp->exp))
 		return ;
 	while (exp->exp[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:02:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/01 11:18:44 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 22:08:16 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static void	ft_expend_continue(t_expend *exp, char *str, int *old, int *i)
 	(*old) = ++(*i);
 	(*i) += ft_env_var_size(str + *old);
 	dest = ft_search_expend(str + *old, *i - *old);
+	printf("%s %s %i\n", dest, str + *old, *i - *old);
 	*old = (*i);
 	if (!dest && !j)
 		return ;

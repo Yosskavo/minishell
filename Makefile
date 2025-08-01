@@ -15,7 +15,7 @@ SRC = ft_env.c              ft_spliting.c              libft/ft_strcmp.c \
 	  ft_parce.c            libft/ft_itoa.c            list/ft_memset.c \
 	  ft_print_it.c         libft/ft_lengh_of_table.c  list/ft_newlist.c \
 	  ft_puterror.c         libft/ft_putstr_fd.c       minishell.c \
-	  ft_signal.c           libft/ft_strchr.c
+	  ft_signal.c           libft/ft_strchr.c          libft/ft_valid_input.c
 
 
 SRC := $(wildcard */*.c) $(wildcard *.c)

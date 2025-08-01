@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 15:31:48 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 13:01:52 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 21:49:11 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+// this some function from libft
+
+int		ft_valid_input(char *str);
 char	*ft_strnjoin(char const *s1, char const *s2, size_t size);
 int		ft_putstr_fd(char *str, int fd);
 size_t	ft_strlen(const char *str);

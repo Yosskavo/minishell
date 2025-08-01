@@ -6,11 +6,20 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 08:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/01 11:20:00 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/01 22:37:21 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
+
+static void	ft_expend_syntax_ambiguous(t_parce *parce)
+{
+	if (!parce->exp->exp || *(parce->exp->exp) == '\0'
+		|| !ft_valid_input(parce->exp->exp))
+	{
+		parce->ambiguous = 1;
+	}
+}
 
 static void	ft_expend_everything(t_parce *parce)
 {
