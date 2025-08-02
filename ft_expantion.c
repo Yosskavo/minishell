@@ -6,20 +6,20 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 08:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/01 22:37:21 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/02 20:35:34 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static void	ft_expend_syntax_ambiguous(t_parce *parce)
-{
-	if (!parce->exp->exp || *(parce->exp->exp) == '\0'
-		|| !ft_valid_input(parce->exp->exp))
-	{
-		parce->ambiguous = 1;
-	}
-}
+// static void	ft_expend_syntax_ambiguous(t_parce *parce)
+// {
+// 	if (!parce->exp->exp || *(parce->exp->exp) == '\0'
+// 		|| !ft_valid_input(parce->exp->exp))
+// 	{
+// 		parce->ambiguous = 1;
+// 	}
+// }
 
 static void	ft_expend_everything(t_parce *parce)
 {
@@ -33,8 +33,6 @@ static void	ft_expend_everything(t_parce *parce)
 				ft_malloc_faild();
 			ft_memset(parce->exp, 0, sizeof(t_expend));
 			ft_expend_it(parce);
-			if (parce->tocken == FILENAME_EXPEND)
-				ft_expend_syntax_ambiguous(parce);
 		}
 		parce = parce->next;
 	}
@@ -44,28 +42,15 @@ static void	ft_expend_split(t_parce *parce)
 {
 	while (parce)
 	{
-		if (parce->tocken == EXPEND)
+		if (parce->tocken == EXPEND || parce->tocken == FILENAME_EXPEND)
 			ft_expend_split_it(parce);
 		parce = parce->next;
 	}
 }
 
-// static void	ft_expend_link_list(t_parce **parce)
-// {
-// 	t_parce	*tmp;
-//
-// 	tmp = *parce;
-// 	while (tmp)
-// 	{
-// 		if (tmp->tocken == EXPEND)
-// 			ft_expend_list(parce, tmp);
-// 		tmp = tmp->next;
-// 	}
-// }
-
 void	ft_expention(t_mini *mini)
 {
 	ft_expend_everything(mini->start);
 	ft_expend_split(mini->start);
-	// ft_expend_link_list(&(mini->start));
+	mini->start = ft_expend_link_list(mini->start);
 }

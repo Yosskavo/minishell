@@ -6,11 +6,24 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 20:21:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/01 22:36:49 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/02 14:59:08 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
+
+static t_parce	*ft_lstnew_expend(char *str, char *map)
+{
+	t_parce	*new;
+
+	new = malloc(sizeof(t_parce));
+	if (!new)
+		ft_malloc_faild();
+	ft_memset(new, 0, sizeof(t_parce));
+	new->str = str;
+	new->map = map;
+	return (new);
+}
 
 static int	ft_till_space_expend(t_expend *exp, int i)
 {
@@ -36,8 +49,10 @@ static int	ft_till_space_expend(t_expend *exp, int i)
 	return (j);
 }
 
-static void	ft_expend_token(t_parce *parce)
+static void	ft_expend_token(t_parce *parce, t_tocken tocken)
 {
+	parce->tocken = tocken;
+	parce = parce->next;
 	while (parce)
 	{
 		parce->tocken = EXPEND;
@@ -48,21 +63,25 @@ static void	ft_expend_token(t_parce *parce)
 static void	ft_expend_word(t_expend *exp, t_parce **parce, int *i)
 {
 	char	*dest;
+	char	*map;
 	int		size;
 	int		j;
 
 	size = ft_till_space_expend(exp, *i);
 	dest = malloc(size + 1);
-	if (!dest)
+	map = malloc(size + 1);
+	if (!dest || !map)
 		ft_malloc_faild();
 	j = 0;
 	while (j < size)
 	{
 		dest[j] = exp->exp[*i + j];
+		map[j] = exp->map[*i + j];
 		j++;
 	}
 	dest[j] = '\0';
-	if (!ft_list_add_back(parce, ft_newlist(dest)))
+	map[j] = '\0';
+	if (!ft_list_add_back(parce, ft_lstnew_expend(dest, map)))
 		ft_malloc_faild();
 	(*i) += size;
 }
@@ -86,5 +105,5 @@ void	ft_expend_split_it(t_parce *parce)
 			ft_expend_word(exp, &tmp, &i);
 	}
 	parce->exp->parce = tmp;
-	ft_expend_token(tmp);
+	ft_expend_token(tmp, parce->tocken);
 }

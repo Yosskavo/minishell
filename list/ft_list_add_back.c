@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:08 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 12:09:02 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/02 22:13:06 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,12 @@ t_parce	*ft_list_last(t_parce *lst)
 
 void	*ft_list_add_back(t_parce **lst, t_parce *new)
 {
-	t_parce	*tmp;
-
 	if (!new || !lst)
 		return (NULL);
 	if (!*lst)
 		return (*lst = new, new);
-	tmp = ft_list_last(*lst);
-	tmp->next = new;
-	new->previous = tmp;
+	new->previous = ft_list_last(*lst);
+	new->previous->next = new;
 	return (new);
 }
 

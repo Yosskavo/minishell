@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/01 21:40:33 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/02 22:10:01 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef enum e_tocken
 	EXPEND,
 	FILENAME_EXPEND,
 	ERROR_TOCKEN,
+	AMBIGUOUS
 }					t_tocken;
 
 // this will be a linked list full of the env
@@ -58,14 +59,13 @@ typedef struct s_expend
 typedef struct s_parce
 {
 	char			*str;
+	char			*map;
 	t_tocken		tocken;
-	int				ambiguous;
-	int				isqoted;
+	int				qoted;
 	int				fd_in;
 	int				fd_out;
 	struct s_parce	*next;
 	struct s_parce	*previous;
-	struct s_mini	*mini;
 	struct s_expend	*exp;
 }					t_parce;
 
@@ -85,6 +85,7 @@ t_env				*ft_lstnew_env(char *var, char *val);
 t_parce				*ft_newlist(char *str);
 void				*ft_list_add_back(t_parce **lst, t_parce *n);
 t_parce				*ft_list_last(t_parce *lst);
+void				ft_clear_linked(t_parce **parce);
 void				ft_clear_list(t_parce **lst);
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_lstadd_back_env(t_env **head, t_env *env);

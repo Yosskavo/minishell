@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/01 06:48:35 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/02 22:17:08 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_split_operator(t_parce **parce, char *str, int *i);
 void	ft_tocken_error(t_parce *parce);
 int		ft_tokenization(t_parce *parce);
 
-// printf error i guess
+// printf error i parces
 
 void	ft_malloc_faild(void);
 void	ft_puterror(int flag);
@@ -101,6 +101,13 @@ int		ft_valid_expention(char str);
 void	ft_fullmap_expand(t_expend *exp, char *flag, int size);
 int		ft_env_var_size(char *str);
 char	*ft_search_expend(char *str, int size);
+t_parce	*ft_expend_link_list(t_parce *mini);
+
+// this functions is for qots that should deleted
+
+void	ft_is_qoted(t_parce *parce);
+void	ft_delete_qots(t_parce *parce);
+
 // this all the function used in minishell
 
 #endif

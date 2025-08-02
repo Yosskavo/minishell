@@ -6,18 +6,24 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:12 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 14:45:39 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:17:09 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void	print_env(t_env *env)
+void	ft_clear_linked(t_parce **parce)
 {
-	while (env)
+	t_parce	*tmp;
+
+	tmp = *parce;
+	while (tmp)
 	{
-		printf("%s = %s\n", env->variable, env->value);
-		env = env->next;
+		*parce = (*parce)->next;
+		free(tmp->map);
+		free(tmp->str);
+		free(tmp);
+		tmp = *parce;
 	}
 }
 
@@ -43,6 +49,21 @@ void	ft_expend_free(t_parce *parce)
 	free(parce->exp);
 }
 
+void	ft_mini_clear_list(t_parce **lst)
+{
+	t_parce	*tmp;
+
+	while (*lst)
+	{
+		tmp = (*lst)->next;
+		free((*lst)->str);
+		free((*lst)->map);
+		free(*lst);
+		(*lst) = NULL;
+		(*lst) = tmp;
+	}
+}
+
 void	ft_clear_list(t_parce **lst)
 {
 	t_parce	*tmp;
@@ -50,13 +71,18 @@ void	ft_clear_list(t_parce **lst)
 	while (*lst)
 	{
 		tmp = (*lst)->next;
+		free((*lst)->str);
+		free((*lst)->map);
 		if ((*lst)->fd_in > -1)
 			close((*lst)->fd_in);
 		if ((*lst)->fd_out > -1)
 			close((*lst)->fd_out);
-		free((*lst)->str);
 		if ((*lst)->exp)
+		{
+			ft_mini_clear_list(&((*lst)->exp->parce));
 			ft_expend_free(*lst);
+			(*lst)->exp = NULL;
+		}
 		free(*lst);
 		(*lst) = tmp;
 	}

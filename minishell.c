@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/01 22:04:39 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/02 21:30:21 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ static int	ft_start(t_mini *mini)
 			ft_parcing(mini);
 		}
 		free(mini->str);
+		mini->str = NULL;
 	}
 	return (0);
 }
@@ -50,6 +51,7 @@ static void	ft_setup(int ac, char **av, char **env)
 int	main(int ac, char **av, char **env)
 {
 	ft_setup(ac, av, env);
-	printf("exit");
+	rl_clear_history();
+	printf("exit\n");
 	return (0);
 }

@@ -1,36 +1,26 @@
 NAME = minishell
 
-CC = cc
+CFLAGS = -Wall -Wextra -Werror -g
 
-SRC = ft_env.c              ft_spliting.c              libft/ft_strcmp.c \
-	  ft_expantion.c        ft_status.c                libft/ft_strdup.c \
-	  ft_expantion_utils.c  ft_tokenisation.c          libft/ft_strjoin.c \
-	  ft_expend_it.c        ft_word.c                  libft/ft_strlen.c \
-	  ft_expend_split_it.c  gnl/get_next_line.c        libft/ft_strncmp.c \
-	  list/ft_global.c      gnl/get_next_line_utils.c  libft/ft_strndup.c \
-	  ft_heredoc.c          libft/ft_freetable.c       libft/ft_strnjoin.c \
-	  ft_heredoc_fork.c     libft/ft_isalnum.c         libft/ft_strstr.c \
-	  ft_malloc_faild.c     libft/ft_isalpha.c         list/ft_clear_list.c \
-	  ft_operator.c         libft/ft_isdigit.c         list/ft_list_add_back.c \
-	  ft_parce.c            libft/ft_itoa.c            list/ft_memset.c \
-	  ft_print_it.c         libft/ft_lengh_of_table.c  list/ft_newlist.c \
-	  ft_puterror.c         libft/ft_putstr_fd.c       minishell.c \
-	  ft_signal.c           libft/ft_strchr.c          libft/ft_valid_input.c
+SRC = ft_env.c              ft_expend_split_it.c  ft_parce.c     ft_status.c                libft/ft_freetable.c  libft/ft_lengh_of_table.c  libft/ft_strjoin.c   libft/ft_strstr.c        list/ft_memset.c \
+	  ft_expantion.c        ft_heredoc.c          ft_print_it.c  ft_tokenisation.c          libft/ft_isalnum.c    libft/ft_putstr_fd.c       libft/ft_strlen.c    libft/ft_valid_input.c   list/ft_newlist.c \
+	  ft_expantion_utils.c  ft_heredoc_fork.c     ft_puterror.c  ft_word.c                  libft/ft_isalpha.c    libft/ft_strchr.c          libft/ft_strncmp.c   list/ft_clear_list.c     minishell.c \
+	  ft_expend_it.c        ft_malloc_faild.c     ft_signal.c    gnl/get_next_line.c        libft/ft_isdigit.c    libft/ft_strcmp.c          libft/ft_strndup.c   list/ft_global.c \
+	  ft_expend_list.c      ft_operator.c         ft_spliting.c  gnl/get_next_line_utils.c  libft/ft_itoa.c       libft/ft_strdup.c          libft/ft_strnjoin.c  list/ft_list_add_back.c \
+	  ft_qots.c ft_qots_utils.c
 
 
-SRC := $(wildcard */*.c) $(wildcard *.c)
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -g
-
-%.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
 
 all : $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) -lreadline -I $(MALLOC) $(OBJ) -o $(NAME)
+	cc $(CFLAGS) -lreadline $(OBJ) -o $(NAME)
+
+%.o : %.c
+	cc $(CFLAGS) -c $< -o $@
 
 clean : 
 	@rm -fv $(OBJ)
@@ -40,4 +30,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : clean all re fclean
+.PHONY : clean fclean re all
