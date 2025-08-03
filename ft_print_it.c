@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:12:43 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/02 21:03:04 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/03 17:03:00 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ft_write(int fd)
 	printf("\n");
 }
 //
-// void	ft_print(t_parce *parce)
+// void	ft_print_1(t_parce *parce)
 // {
 // 	printf(" ---- parce : ");
 // 	if (!parce)
@@ -43,7 +43,7 @@ void	ft_write(int fd)
 // 	printf("\n");
 // }
 //
-// void	ft_print_it(t_mini *mini)
+// void	ft_print_it_2(t_mini *mini)
 // {
 // 	t_parce	*parce;
 //
@@ -74,13 +74,13 @@ void	ft_write(int fd)
 // 			if (!parce->str)
 // 				printf("expend --> exp : %s --- map : %s --- parce :",
 // 					parce->exp->exp, parce->exp->map);
-// 			ft_print(parce->exp->parce);
+// 			ft_print_1(parce->exp->parce);
 // 		}
 // 		else if (parce->tocken == FILENAME_EXPEND)
 // 		{
 // 			printf("filename expend --> exp : %s --- map : %s ",
 // 				parce->exp->exp, parce->exp->map);
-// 			ft_print(parce->exp->parce);
+// 			ft_print_1(parce->exp->parce);
 // 		}
 // 		if (parce->tocken == DELEMITER)
 // 		{
@@ -89,15 +89,14 @@ void	ft_write(int fd)
 // 		parce = parce->next;
 // 	}
 // }
-//
 
 void	ft_print(t_parce *parce)
 {
 	if (parce->tocken == FILENAME_EXPEND || parce->tocken == EXPEND)
 		printf(" --- map : %s\n", parce->map);
-	if (parce->tocken == DELEMITER)
+	if (parce->tocken == HEREDOC)
 	{
-		printf("delemiter --- file : ");
+		printf("heredoc --- file : ");
 		ft_write(parce->fd_out);
 	}
 }
@@ -116,8 +115,8 @@ void	ft_print_it(t_mini *mini)
 			printf("overwrite\n");
 		if (parce->tocken == APPEND)
 			printf("append\n");
-		if (parce->tocken == HEREDOC)
-			printf("heredoc\n");
+		if (parce->tocken == DELEMITER)
+			printf("delemiter\n");
 		if (parce->tocken == FILENAME)
 			printf("filename\n");
 		if (parce->tocken == REDIRACTION)
@@ -130,7 +129,7 @@ void	ft_print_it(t_mini *mini)
 			printf("filename expend ");
 		if (parce->tocken == EXPEND)
 			printf("expend ");
-		if (parce->tocken == EXPEND || parce->tocken == DELEMITER
+		if (parce->tocken == EXPEND || parce->tocken == HEREDOC
 			|| parce->tocken == FILENAME_EXPEND)
 			ft_print(parce);
 		parce = parce->next;

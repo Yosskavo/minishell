@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/13 13:47:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 19:10:57 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/03 17:21:53 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*ft_random_file(void)
 	free(c);
 	c = ft_itoa(fd);
 	if (!c)
-		ft_malloc_faild();
+		ft_expend_malloc_faild();
 	return (c);
 }
 
@@ -61,7 +61,7 @@ static int	ft_handle_heredoc(t_parce *tmp)
 {
 	if (!ft_start_heredoc(tmp))
 		return (perror("minishell"), -1);
-	if (!ft_fork_heredoc(tmp->previous))
+	if (!ft_fork_heredoc(tmp))
 		return (-1);
 	return (0);
 }
@@ -73,7 +73,7 @@ int	ft_heredoc(t_parce *parce)
 	tmp = parce;
 	while (tmp)
 	{
-		if (tmp->tocken == DELEMITER)
+		if (tmp->tocken == HEREDOC)
 		{
 			if (ft_handle_heredoc(tmp) == -1)
 				return (-1);

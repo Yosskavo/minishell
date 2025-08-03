@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 08:20:47 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/03 14:27:55 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,13 @@ int		ft_tokenization(t_parce *parce);
 void	ft_malloc_faild(void);
 void	ft_puterror(int flag);
 void	ft_print_it(t_mini *parce);
-
+void	ft_print_it_2(t_mini *parce);
 // this function to handle heredoc
 
+void	ft_read_herdoc(t_parce *tmp);
 int		ft_heredoc(t_parce *parce);
 void	*ft_fork_heredoc(t_parce *tmp);
+void	ft_expend_heredoc(char *str, int *i, int fd);
 
 // this function are utils for expende
 

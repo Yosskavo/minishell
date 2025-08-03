@@ -6,26 +6,26 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:12 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/02 21:17:09 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/03 14:17:53 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-void	ft_clear_linked(t_parce **parce)
-{
-	t_parce	*tmp;
-
-	tmp = *parce;
-	while (tmp)
-	{
-		*parce = (*parce)->next;
-		free(tmp->map);
-		free(tmp->str);
-		free(tmp);
-		tmp = *parce;
-	}
-}
+// void	ft_clear_linked(t_parce **parce)
+// {
+// 	t_parce	*tmp;
+//
+// 	tmp = *parce;
+// 	while (tmp)
+// 	{
+// 		*parce = (*parce)->next;
+// 		free(tmp->map);
+// 		free(tmp->str);
+// 		free(tmp);
+// 		tmp = *parce;
+// 	}
+// }
 
 void	ft_clear_env(t_env **env)
 {
@@ -56,6 +56,10 @@ void	ft_mini_clear_list(t_parce **lst)
 	while (*lst)
 	{
 		tmp = (*lst)->next;
+		if ((*lst)->fd_out > -1)
+			close((*lst)->fd_out);
+		if ((*lst)->fd_in > -1)
+			close((*lst)->fd_in);
 		free((*lst)->str);
 		free((*lst)->map);
 		free(*lst);

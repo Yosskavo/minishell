@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 08:29:23 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/03 14:20:52 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,11 @@ t_env				*ft_lstnew_env(char *var, char *val);
 t_parce				*ft_newlist(char *str);
 void				*ft_list_add_back(t_parce **lst, t_parce *n);
 t_parce				*ft_list_last(t_parce *lst);
-void				ft_clear_linked(t_parce **parce);
+// void				ft_clear_linked(t_parce **parce);
 void				ft_clear_list(t_parce **lst);
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_lstadd_back_env(t_env **head, t_env *env);
 void				ft_clear_env(t_env **env);
 void				ft_expend_free(t_parce *parce);
+void				ft_mini_clear_list(t_parce **lst);
 #endif

@@ -6,22 +6,11 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:25:58 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/02 14:16:00 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/03 16:52:35 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
-
-static void	ft_free_all_heredoc(void)
-{
-	t_mini	*mini;
-
-	mini = ft_global(NULL);
-	ft_clear_env(&(mini->env));
-	ft_clear_list(&(mini->start));
-	free(mini->str);
-	free(mini);
-}
 
 static void	ft_handle_sig_heredoc(int sig)
 {
@@ -30,9 +19,10 @@ static void	ft_handle_sig_heredoc(int sig)
 	(void)sig;
 	tmp = ft_global(NULL);
 	ft_clear_env(&(tmp->env));
-	ft_clear_list(&(tmp->start));
+	ft_mini_clear_list(&(tmp->start));
 	free(tmp->str);
 	free(tmp);
+	rl_clear_history();
 	exit(130);
 }
 
@@ -42,33 +32,6 @@ static void	ft_signal_heredoc(void)
 		return (perror("minishell"), exit(0));
 	if (signal(SIGQUIT, SIG_IGN) == SIG_ERR)
 		return (perror("minishell"), exit(0));
-}
-
-static void	ft_read_herdoc(t_parce *tmp)
-{
-	char	*str;
-
-	ft_signal_heredoc();
-	while (1)
-	{
-		str = readline("->");
-		if (!str)
-			return (ft_free_all_heredoc(), (void)ft_putstr_fd(HEREDOC_ERROR,
-					2));
-		if (!ft_strcmp(str, tmp->str))
-			return (free(str), ft_free_all_heredoc());
-		if (!*str)
-		{
-			if (ft_putstr_fd("\n", tmp->fd_in) < 0)
-				return (free(str), perror("minishell"));
-		}
-		else
-		{
-			ft_putstr_fd(str, tmp->fd_in);
-			ft_putstr_fd("\n", tmp->fd_in);
-		}
-		free(str);
-	}
 }
 
 void	*ft_fork_heredoc(t_parce *tmp)
@@ -81,7 +44,8 @@ void	*ft_fork_heredoc(t_parce *tmp)
 		return (perror("minishell"), NULL);
 	if (child == 0)
 	{
-		ft_read_herdoc(tmp->next);
+		ft_signal_heredoc();
+		ft_read_herdoc(tmp);
 		exit(0);
 	}
 	else

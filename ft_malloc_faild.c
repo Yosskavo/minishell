@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:35:08 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 08:29:09 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/03 14:18:24 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_expend_malloc_faild(void)
 	if (mini->env)
 		ft_clear_env(&(mini->env));
 	if (mini->start)
-		ft_clear_linked(&(mini->start));
+		ft_mini_clear_list(&(mini->start));
 	free(mini->str);
 	free(mini);
 	perror("minishell");

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 20:21:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/02 14:59:08 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/03 14:24:49 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static t_parce	*ft_lstnew_expend(char *str, char *map)
 		ft_malloc_faild();
 	ft_memset(new, 0, sizeof(t_parce));
 	new->str = str;
+	new->fd_in = -1;
+	new->fd_out = -1;
 	new->map = map;
 	return (new);
 }
