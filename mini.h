@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/02 22:17:08 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/03 08:20:47 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ t_parce	*ft_expend_link_list(t_parce *mini);
 
 void	ft_is_qoted(t_parce *parce);
 void	ft_delete_qots(t_parce *parce);
-
+char	*ft_qots_malloc(t_parce *parce, int flag, int *size);
 // this all the function used in minishell
 
 #endif

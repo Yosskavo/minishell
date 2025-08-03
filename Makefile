@@ -7,7 +7,7 @@ SRC = ft_env.c              ft_expend_split_it.c  ft_parce.c     ft_status.c    
 	  ft_expantion_utils.c  ft_heredoc_fork.c     ft_puterror.c  ft_word.c                  libft/ft_isalpha.c    libft/ft_strchr.c          libft/ft_strncmp.c   list/ft_clear_list.c     minishell.c \
 	  ft_expend_it.c        ft_malloc_faild.c     ft_signal.c    gnl/get_next_line.c        libft/ft_isdigit.c    libft/ft_strcmp.c          libft/ft_strndup.c   list/ft_global.c \
 	  ft_expend_list.c      ft_operator.c         ft_spliting.c  gnl/get_next_line_utils.c  libft/ft_itoa.c       libft/ft_strdup.c          libft/ft_strnjoin.c  list/ft_list_add_back.c \
-	  ft_qots.c ft_qots_utils.c
+	  ft_qots.c             ft_qots_check.c       ft_qots_utils.c
 
 
 

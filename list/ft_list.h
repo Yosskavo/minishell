@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/02 22:10:01 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/03 08:29:23 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct s_mini
 }					t_mini;
 
 // function of linked list
+void				ft_expend_malloc_faild(void);
 t_mini				*ft_global(t_mini *mini);
 t_env				*ft_lstnew_env(char *var, char *val);
 t_parce				*ft_newlist(char *str);
