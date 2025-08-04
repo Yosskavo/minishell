@@ -6,11 +6,20 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 13:51:27 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/01 06:51:44 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/04 16:12:53 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
+
+int	ft_global_var(int i)
+{
+	static int	status;
+
+	if (i != -1)
+		status = i;
+	return (status);
+}
 
 t_mini	*ft_global(t_mini *mini)
 {

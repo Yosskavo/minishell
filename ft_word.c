@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 10:16:24 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/01 08:20:17 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:44:28 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	ft_word(t_parce **parce, char *s, int *pos)
 	int		size;
 
 	if (ft_check_any_string(s + *(pos)) == -1)
-		return (-1);
+		return (ft_status(1), -1);
 	size = ft_tell_space(s + *(pos));
 	dest = malloc(size + 1);
 	if (!dest)

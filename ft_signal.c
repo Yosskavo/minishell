@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@1337.student.ma>        +#+  +:+       +#+        */
+/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/14 08:55:37 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/31 21:30:54 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/08/04 13:05:15 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/04 16:18:29 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_handle_sig(int sig)
 {
-	if (SIGINT == sig)
+	if (SIGINT == sig && !ft_global_var(-1))
 	{
 		write(1, "\n", 1);
 		rl_on_new_line();

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 04:16:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/15 13:26:02 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/08/04 13:05:49 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/04 13:05:49 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
 
 char	*ft_strread(int fd, char *dest)
 {

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:25:58 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 16:52:35 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/04 16:20:09 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ static void	ft_handle_sig_heredoc(int sig)
 {
 	t_mini	*tmp;
 
-	(void)sig;
+	if (!ft_global_var(-1) || sig != SIGINT)
+		return ;
+	write(1, "\n", 1);
 	tmp = ft_global(NULL);
 	ft_clear_env(&(tmp->env));
 	ft_mini_clear_list(&(tmp->start));
@@ -42,6 +44,7 @@ void	*ft_fork_heredoc(t_parce *tmp)
 	child = fork();
 	if (child < 0)
 		return (perror("minishell"), NULL);
+	ft_global_var(1);
 	if (child == 0)
 	{
 		ft_signal_heredoc();
@@ -58,5 +61,6 @@ void	*ft_fork_heredoc(t_parce *tmp)
 		if (ft_status(-1) == 130)
 			return (NULL);
 	}
+	ft_global_var(0);
 	return ((void *)1);
 }

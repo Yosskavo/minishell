@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 00:37:41 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/11/07 13:53:16 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/08/04 13:08:07 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/04 13:08:15 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,3 @@ int	ft_isalpha(int c)
 		return (1);
 	return (0);
 }
-
-/*int main()
- * {
- * 	if (ft_isalpha('a') == 1)
- * 		printf("no one no");
- * 	else
- * 		printf("nahh");
- *	return (0);
- * }
- */

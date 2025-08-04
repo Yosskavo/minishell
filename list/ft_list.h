@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 14:20:52 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/04 16:17:29 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef enum e_tocken
 	OVERWRITE,
 	HEREDOC,
 	PIPE,
-	DOLLAR_SIGN,
 	WORD,
 	DELEMITER,
 	FILENAME,
@@ -79,18 +78,38 @@ typedef struct s_mini
 	t_env			*env;
 }					t_mini;
 
-// function of linked list
-void				ft_expend_malloc_faild(void);
+// function of linked list :
+//
+// this function for clearing :
+t_parce				*ft_clean_before_exec(t_parce *parce);
+void				ft_clear_list(t_parce **lst);
+void				ft_mini_clear_list(t_parce **lst);
+void				ft_clear_env(t_env **env);
+
+// global function
 t_mini				*ft_global(t_mini *mini);
+int					ft_global_var(int i);
+
+// expend free and if allocation faild
+
+void				ft_expend_malloc_faild(void);
+void				ft_expend_free(t_parce *parce);
+
+// creat new node
+
 t_env				*ft_lstnew_env(char *var, char *val);
 t_parce				*ft_newlist(char *str);
-void				*ft_list_add_back(t_parce **lst, t_parce *n);
-t_parce				*ft_list_last(t_parce *lst);
-// void				ft_clear_linked(t_parce **parce);
-void				ft_clear_list(t_parce **lst);
+
+// it set all the element of struct by 0
+
 void				*ft_memset(void *s, int c, size_t n);
+
+// return last node in linked list
+
+t_parce				*ft_list_last(t_parce *lst);
+
+// add back in linked list
+
+void				*ft_list_add_back(t_parce **lst, t_parce *n);
 void				ft_lstadd_back_env(t_env **head, t_env *env);
-void				ft_clear_env(t_env **env);
-void				ft_expend_free(t_parce *parce);
-void				ft_mini_clear_list(t_parce **lst);
 #endif

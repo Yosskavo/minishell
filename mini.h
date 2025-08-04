@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 14:27:55 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/04 11:09:01 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	ft_malloc_faild(void);
 void	ft_puterror(int flag);
 void	ft_print_it(t_mini *parce);
 void	ft_print_it_2(t_mini *parce);
+
 // this function to handle heredoc
 
 void	ft_read_herdoc(t_parce *tmp);
@@ -110,6 +111,11 @@ t_parce	*ft_expend_link_list(t_parce *mini);
 void	ft_is_qoted(t_parce *parce);
 void	ft_delete_qots(t_parce *parce);
 char	*ft_qots_malloc(t_parce *parce, int flag, int *size);
+
+// some steps before the execution
+
+t_parce	*ft_clean_before_exec(t_parce *parce);
+
 // this all the function used in minishell
 
 #endif

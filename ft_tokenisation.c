@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 23:42:12 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/25 23:42:20 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/04 15:55:30 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ int	ft_tokenization(t_parce *parce)
 
 	tmp = ft_operation_tocken(parce);
 	if (tmp)
-		return (ft_tocken_error(tmp), -1);
+		return (ft_tocken_error(tmp), ft_status(1), -1);
 	tmp = ft_check_tocken(parce);
 	if (tmp)
-		return (ft_tocken_error(tmp), -1);
+		return (ft_tocken_error(tmp), ft_status(1), -1);
 	return (0);
 }

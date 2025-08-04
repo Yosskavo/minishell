@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/22 01:49:07 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/11/03 20:14:08 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/08/04 13:08:38 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/04 13:08:41 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strchr(const char *str, int c)
 	int	i;
 
 	i = 0;
-	while (str[i] != (char )c)
+	while (str[i] != (char)c)
 	{
 		if (str[i] == '\0')
 			return (NULL);

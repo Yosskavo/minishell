@@ -7,7 +7,8 @@ SRC = ft_env.c              ft_expend_split_it.c  ft_parce.c       ft_signal.c  
 	  ft_expantion_utils.c  ft_heredoc_fork.c     ft_puterror.c    ft_status.c          libft/ft_isalnum.c         libft/ft_putstr_fd.c       libft/ft_strncmp.c   list/ft_global.c \
 	  ft_expend_heredoc.c   ft_heredoc_read.c     ft_qots.c        ft_tokenisation.c    libft/ft_isalpha.c         libft/ft_strchr.c          libft/ft_strndup.c   list/ft_list_add_back.c \
 	  ft_expend_it.c        ft_malloc_faild.c     ft_qots_check.c  ft_word.c            libft/ft_isdigit.c         libft/ft_strcmp.c          libft/ft_strnjoin.c  list/ft_memset.c \
-	  ft_expend_list.c      ft_operator.c         ft_qots_utils.c  gnl/get_next_line.c  libft/ft_itoa.c            libft/ft_strdup.c          libft/ft_strstr.c    list/ft_newlist.c
+	  ft_expend_list.c      ft_operator.c         ft_qots_utils.c  gnl/get_next_line.c  libft/ft_itoa.c            libft/ft_strdup.c          libft/ft_strstr.c    list/ft_newlist.c \
+	  list/ft_clean_before_exec.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/25 21:26:43 by yel-mota          #+#    #+#             */
-/*   Updated: 2024/11/07 14:24:10 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/08/04 13:09:05 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/04 13:09:09 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ char	*ft_itoa(int n)
 }
 /*int main ()
 {
-        printf("%s",ft_itoa(1234));
-        return (0);
+		printf("%s",ft_itoa(1234));
+		return (0);
 }*/

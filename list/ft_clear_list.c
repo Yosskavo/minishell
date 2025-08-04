@@ -6,26 +6,11 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:12 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 14:17:53 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/04 13:04:28 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
-
-// void	ft_clear_linked(t_parce **parce)
-// {
-// 	t_parce	*tmp;
-//
-// 	tmp = *parce;
-// 	while (tmp)
-// 	{
-// 		*parce = (*parce)->next;
-// 		free(tmp->map);
-// 		free(tmp->str);
-// 		free(tmp);
-// 		tmp = *parce;
-// 	}
-// }
 
 void	ft_clear_env(t_env **env)
 {
@@ -47,6 +32,7 @@ void	ft_expend_free(t_parce *parce)
 	free(parce->exp->exp);
 	free(parce->exp->map);
 	free(parce->exp);
+	parce->exp = NULL;
 }
 
 void	ft_mini_clear_list(t_parce **lst)
