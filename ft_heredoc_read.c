@@ -6,13 +6,13 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 09:57:30 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 16:58:21 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 13:25:23 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static void	ft_free_all_heredoc(void)
+void	ft_free_all_heredoc(void)
 {
 	t_mini	*mini;
 

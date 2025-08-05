@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/04 11:09:01 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 13:38:35 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_env	*ft_envcpy(char **o_env);
 
 int		ft_status(int exit_status);
 void	ft_signal(void);
-
+void	ft_free_all_heredoc(void);
 // this function using in parcing the input by readline
 
 int		ft_spliting(char *str, t_parce **parce);

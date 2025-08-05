@@ -6,25 +6,42 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 08:10:33 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 08:45:30 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/03 13:50:53 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
+static int	ft_condi(char m, char c)
+{
+	return (m == '0' && (c == '\"' || c == '\''));
+}
+
 static int	ft_expend_size_without_qots(t_parce *parce)
 {
-	int	i;
-	int	size;
+	int		i;
+	int		size;
+	char	c;
 
 	i = 0;
 	size = 0;
 	while (parce->str[i])
 	{
-		if (parce->str[i] != '\'' && parce->str[i] != '\"'
-			&& parce->map[i] != '0')
+		if (ft_condi(parce->map[i], parce->str[i]))
+		{
+			c = parce->str[i++];
+			while (!(parce->str[i] == c && parce->map[i] == '0'))
+			{
+				size++;
+				i++;
+			}
+			i++;
+		}
+		else
+		{
 			size++;
-		i++;
+			i++;
+		}
 	}
 	return (size);
 }

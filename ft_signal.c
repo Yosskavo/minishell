@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 13:05:15 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/04 16:18:29 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 13:38:39 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,18 @@
 
 static void	ft_handle_sig(int sig)
 {
-	if (SIGINT == sig && !ft_global_var(-1))
+	(void)sig;
+	if (!ft_global_var(-1))
 	{
 		write(1, "\n", 1);
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
+	}
+	else if (ft_global_var(-1) == 1)
+	{
+		ft_free_all_heredoc();
+		exit(130);
 	}
 }
 
