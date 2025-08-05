@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 20:21:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 14:24:49 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 18:33:59 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,9 @@ static int	ft_till_space_expend(t_expend *exp, int i)
 
 static void	ft_expend_token(t_parce *parce, t_tocken tocken)
 {
-	parce->tocken = tocken;
-	parce = parce->next;
 	while (parce)
 	{
-		parce->tocken = EXPEND;
+		parce->tocken = tocken;
 		parce = parce->next;
 	}
 }

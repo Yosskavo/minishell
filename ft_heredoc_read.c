@@ -6,11 +6,19 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 09:57:30 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 15:13:45 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:31:47 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
+
+static void	ft_putheredoc_error(char *str)
+{
+	ft_putstr_fd(HEREDOC_ERROR, 2);
+	ft_putstr_fd(str, 2);
+	ft_putchar_fd('\n', 2);
+	ft_free_all_heredoc();
+}
 
 void	ft_free_all_heredoc(void)
 {
@@ -52,8 +60,7 @@ void	ft_read_herdoc(t_parce *tmp)
 	{
 		str = readline("->");
 		if (!str)
-			return (ft_free_all_heredoc(), (void)ft_putstr_fd(HEREDOC_ERROR,
-					2));
+			return (ft_putheredoc_error(tmp->next->str));
 		if (!ft_strcmp(str, tmp->next->str))
 			return (free(str), ft_free_all_heredoc());
 		if (!*str)

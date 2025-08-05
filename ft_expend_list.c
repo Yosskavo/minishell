@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/01 11:01:20 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/02 21:23:35 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 18:38:53 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	ft_expend_mini_free(t_parce *parce)
 
 static void	ft_expend_filename_expend_null_node(t_parce **head, t_parce *new)
 {
+	if (new->exp->parce)
+		ft_mini_clear_list(&(new->exp->parce));
 	ft_expend_mini_free(new);
 	new->tocken = AMBIGUOUS;
 	ft_list_add_back(head, new);
@@ -33,7 +35,8 @@ static void	ft_expend_filename_expend_null_node(t_parce **head, t_parce *new)
 
 static void	ft_expend_handle_list(t_parce **head, t_parce *new)
 {
-	if (new->tocken == FILENAME_EXPEND && !new->exp->parce)
+	if (new->tocken == FILENAME_EXPEND && (!new->exp->parce
+			|| new->exp->parce->next))
 	{
 		ft_expend_filename_expend_null_node(head, new);
 		return ;

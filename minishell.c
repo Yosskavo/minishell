@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/02 21:30:21 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 18:31:09 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,5 @@ int	main(int ac, char **av, char **env)
 	ft_setup(ac, av, env);
 	rl_clear_history();
 	printf("exit\n");
-	return (0);
+	return (ft_status(-1));
 }

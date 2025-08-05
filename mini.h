@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 13:38:35 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 18:31:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,10 @@
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
-// # include <stdio.h>
 # include <sys/wait.h>
-// # include <stdlib.h>
-// # include <fcntl.h>
-// # include <unistd.h>
 
 # ifndef PACK_ERROR
-#  define HEREDOC_ERROR "minishell : warning: non delemater\n"
+#  define HEREDOC_ERROR "minishell : warning: non delemater : "
 #  define TOCKEN_ERROR "minishell : syntax error near unexpacted tocken "
 #  define OPPERATION_ERROR "minishell : syntax error unexpacted opperation "
 #  define SQOT_ERROR "minishell : string isn't close by \'\n"
@@ -65,7 +61,7 @@ t_env	*ft_envcpy(char **o_env);
 
 int		ft_status(int exit_status);
 void	ft_signal(void);
-void	ft_free_all_heredoc(void);
+
 // this function using in parcing the input by readline
 
 int		ft_spliting(char *str, t_parce **parce);
@@ -93,6 +89,7 @@ void	ft_read_herdoc(t_parce *tmp);
 int		ft_heredoc(t_parce *parce);
 void	*ft_fork_heredoc(t_parce *tmp);
 void	ft_expend_heredoc(char *str, int *i, int fd);
+void	ft_free_all_heredoc(void);
 
 // this function are utils for expende
 
