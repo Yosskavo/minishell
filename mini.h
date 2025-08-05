@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 18:31:44 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 22:56:07 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,14 @@
 // happend by using a flag gaven atherwise
 // perror print alot of error base on her data base
 
+// this is the function that start parcing and exicuting
+
+int		ft_start(void);
+
+// transfare the t_parce to t_exec
+
+t_exec	*ft_transefarce(void);
+
 // this is an env function to copy or chnage something in env
 
 t_env	*ft_envcpy(char **o_env);
@@ -65,7 +73,6 @@ void	ft_signal(void);
 // this function using in parcing the input by readline
 
 int		ft_spliting(char *str, t_parce **parce);
-int		ft_parcing(t_mini *mini);
 int		ft_qots(t_parce **parce, char *str, int *i);
 int		ft_word(t_parce **parce, char *s, int *pos);
 void	ft_split_operator(t_parce **parce, char *str, int *i);
@@ -78,10 +85,12 @@ int		ft_tokenization(t_parce *parce);
 
 // printf error i parces
 
+void	ft_free_exec_alloc(t_exec **head);
 void	ft_malloc_faild(void);
 void	ft_puterror(int flag);
-void	ft_print_it(t_mini *parce);
+void	ft_print_it(t_parce *parce);
 void	ft_print_it_2(t_mini *parce);
+void	print(t_exec *p);
 
 // this function to handle heredoc
 

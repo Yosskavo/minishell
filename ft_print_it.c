@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:12:43 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 17:03:00 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 22:48:41 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	ft_write(int fd)
 // 		parce = parce->next;
 // 	}
 // }
-
+//
 void	ft_print(t_parce *parce)
 {
 	if (parce->tocken == FILENAME_EXPEND || parce->tocken == EXPEND)
@@ -101,11 +101,8 @@ void	ft_print(t_parce *parce)
 	}
 }
 
-void	ft_print_it(t_mini *mini)
+void	ft_print_it(t_parce *parce)
 {
-	t_parce	*parce;
-
-	parce = mini->start;
 	while (parce)
 	{
 		printf("str : %s --- token : ", parce->str);
@@ -133,5 +130,15 @@ void	ft_print_it(t_mini *mini)
 			|| parce->tocken == FILENAME_EXPEND)
 			ft_print(parce);
 		parce = parce->next;
+	}
+}
+
+void	print(t_exec *p)
+{
+	while (p)
+	{
+		ft_print_it(p->cmd);
+		ft_print_it(p->redi);
+		p = p->next;
 	}
 }

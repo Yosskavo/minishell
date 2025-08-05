@@ -6,11 +6,26 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:08 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/02 22:13:06 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 20:34:17 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
+
+void	*ft_add_exec_list_back(t_exec **head, t_exec *new)
+{
+	t_exec	*tmp;
+
+	if (!new)
+		return (NULL);
+	if (!*head)
+		return (*head = new, (void *)1);
+	tmp = *head;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+	return ((void *)1);
+}
 
 t_parce	*ft_list_last(t_parce *lst)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parce.c                                         :+:      :+:    :+:   */
+/*   ft_start.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 18:30:45 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 22:49:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ int	ft_parcing(t_mini *mini)
 	if (ft_heredoc(mini->start))
 		return (ft_clear_list(&(mini->start)), -1);
 	mini->start = ft_clean_before_exec(mini->start);
-	// ft_transefarce(mini);
-	ft_print_it(mini);
+	mini->execute = ft_transefarce();
+	// ft_print_it(mini);
 	ft_mini_clear_list(&(mini->start));
 	mini->start = NULL;
+	print(mini->execute);
 	return (0);
 }
+
 int	ft_start(void)
 {
 	t_mini	*mini;

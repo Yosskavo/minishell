@@ -6,11 +6,24 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:35:08 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 14:18:24 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 22:55:06 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
+
+void	ft_free_exec_alloc(t_exec **head)
+{
+	t_exec	*tmp;
+
+	while (*head)
+	{
+		tmp = (*head)->next;
+		free((*head));
+		*head = tmp;
+	}
+	*head = NULL;
+}
 
 void	ft_malloc_faild(void)
 {

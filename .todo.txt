@@ -1,0 +1,8 @@
+
+--> pipe
+
+--> rediraction
+
+--> built-in
+
+--> execve

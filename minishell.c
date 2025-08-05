@@ -6,13 +6,13 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 18:31:09 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 22:47:16 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static int	ft_start(t_mini *mini)
+static int	ft_readline(t_mini *mini)
 {
 	ft_signal();
 	while (1)
@@ -23,7 +23,7 @@ static int	ft_start(t_mini *mini)
 		if (*(mini->str) && ft_valid_input(mini->str))
 		{
 			add_history(mini->str);
-			ft_parcing(mini);
+			ft_start();
 		}
 		free(mini->str);
 		mini->str = NULL;
@@ -41,7 +41,7 @@ static void	ft_setup(int ac, char **av, char **env)
 	ft_memset(mini, 0, sizeof(t_mini));
 	ft_global(mini);
 	mini->env = ft_envcpy(env);
-	ft_start(mini);
+	ft_readline(mini);
 	ft_clear_env(&(mini->env));
 	free(mini);
 	(void)ac;
