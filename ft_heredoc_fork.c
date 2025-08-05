@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/15 09:25:58 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 13:37:26 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:14:50 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void	*ft_fork_heredoc(t_parce *tmp)
 	child = fork();
 	if (child < 0)
 		return (perror("minishell"), NULL);
-	ft_global_var(1);
 	if (child == 0)
 	{
 		ft_read_herdoc(tmp);
@@ -49,14 +48,15 @@ void	*ft_fork_heredoc(t_parce *tmp)
 	}
 	else
 	{
+		signal(SIGINT, SIG_IGN);
 		wait(&status);
 		if (WIFEXITED(status))
 			ft_status(WEXITSTATUS(status));
 		close(tmp->fd_in);
 		tmp->fd_in = -1;
+		ft_signal();
 		if (ft_status(-1) == 130)
 			return (NULL);
 	}
-	ft_global_var(0);
 	return ((void *)1);
 }

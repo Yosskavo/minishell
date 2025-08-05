@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 09:57:30 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 13:25:23 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:13:45 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	ft_write_heredoc(char *str, int fd)
 	int	i;
 
 	i = 0;
-	printf("%zu\n", ft_strlen(str));
 	while (str[i])
 	{
 		if (str[i] == '$' && ft_valid_expention(str[i + 1]) == 2)
@@ -40,7 +39,6 @@ static void	ft_write_heredoc(char *str, int fd)
 			i++;
 		}
 	}
-	printf("%d\n", i);
 	ft_putchar_fd('\n', fd);
 }
 
@@ -48,6 +46,8 @@ void	ft_read_herdoc(t_parce *tmp)
 {
 	char	*str;
 
+	ft_global_var(1);
+	ft_signal();
 	while (1)
 	{
 		str = readline("->");
