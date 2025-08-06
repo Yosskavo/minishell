@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 18:50:46 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 22:56:49 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/06 12:33:21 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,29 @@ t_exec	*ft_transefarce(void)
 	t_parce	*parce;
 	t_parce	*trach_head;
 	t_parce	*tmp;
+	t_exec	*tmp_head;
 	t_exec	*head;
-	t_exec	*tmp_exec;
 
 	tmp = ft_global(NULL)->start;
 	head = ft_new_exec_list(tmp);
-	tmp_exec = head;
+	tmp_head = head;
+	trach_head = NULL;
+	parce = tmp;
 	while (tmp)
 	{
-		parce = tmp->next;
+		parce = parce->next;
 		tmp->next = NULL;
 		tmp->previous = NULL;
-		if (parce->tocken == PIPE)
+		if (tmp->tocken == PIPE)
 		{
 			ft_list_add_back(&(trach_head), tmp);
 			head = head->next;
 		}
-		else if (parce->tocken == WORD)
+		else if (tmp->tocken == WORD)
 			ft_list_add_back(&(head->cmd), tmp);
 		else
 			ft_list_add_back(&(head->redi), tmp);
 		tmp = parce;
 	}
-	return (ft_mini_clear_list(&trach_head), tmp_exec);
+	return (ft_mini_clear_list(&trach_head), tmp_head);
 }

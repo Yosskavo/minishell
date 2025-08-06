@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:12:43 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 22:48:41 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:36:06 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ void	ft_print(t_parce *parce)
 
 void	ft_print_it(t_parce *parce)
 {
+	if (!parce)
+		printf("parce is (NULL)\n");
 	while (parce)
 	{
 		printf("str : %s --- token : ", parce->str);
@@ -137,7 +139,9 @@ void	print(t_exec *p)
 {
 	while (p)
 	{
+		printf("<-- cmd line -->\n");
 		ft_print_it(p->cmd);
+		printf("<-- rediraction line -->\n");
 		ft_print_it(p->redi);
 		p = p->next;
 	}

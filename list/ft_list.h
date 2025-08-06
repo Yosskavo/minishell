@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 22:51:21 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:26:07 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ t_parce				*ft_clean_before_exec(t_parce *parce);
 void				ft_clear_list(t_parce **lst);
 void				ft_mini_clear_list(t_parce **lst);
 void				ft_clear_env(t_env **env);
-
+void				ft_clear_exec(t_exec **execute);
 // global function
 t_mini				*ft_global(t_mini *mini);
 int					ft_global_var(int i);
