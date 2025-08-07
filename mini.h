@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 22:56:07 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/06 21:09:02 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		ft_start(void);
 
 // transfare the t_parce to t_exec
 
-t_exec	*ft_transefarce(void);
+t_exec	*ft_transefarce(t_parce *parce);
 
 // this is an env function to copy or chnage something in env
 

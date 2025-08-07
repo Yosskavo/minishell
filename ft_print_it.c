@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:12:43 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/06 11:36:06 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/06 20:18:11 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ void	ft_print_it(t_parce *parce)
 		printf("str : %s --- token : ", parce->str);
 		if (parce->tocken == WORD)
 			printf("word\n");
+		if (parce->tocken == BUILT_IN)
+			printf("built-in\n");
 		if (parce->tocken == OVERWRITE)
 			printf("overwrite\n");
 		if (parce->tocken == APPEND)

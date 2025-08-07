@@ -6,18 +6,39 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/06 12:51:47 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/06 21:11:21 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
+int	ft_check_built_in(char *str)
+{
+	if (!str)
+		return (0);
+	if (!ft_strcmp(str, "echo"))
+		return (1);
+	if (!ft_strcmp(str, "pwd"))
+		return (2);
+	if (!ft_strcmp(str, "export"))
+		return (3);
+	if (!ft_strcmp(str, "unset"))
+		return (4);
+	if (!ft_strcmp(str, "env"))
+		return (5);
+	if (!ft_strcmp(str, "cd"))
+		return (6);
+	if (!ft_strcmp(str, "exit"))
+		return (7);
+	return (0);
+}
+
 static void	ft_last_check(t_exec *execute)
 {
 	while (execute)
 	{
-		if (execute->parce)
-			if (ft_check_built_in(execute->cmd))
+		if (execute->cmd)
+			if (ft_check_built_in(execute->cmd->str))
 				execute->cmd->tocken = BUILT_IN;
 		execute = execute->next;
 	}
@@ -36,9 +57,9 @@ int	ft_parcing(t_mini *mini)
 	mini->start = ft_clean_before_exec(mini->start);
 	if (!(mini->start))
 		return (-1);
-	mini->execute = ft_transefarce();
-	ft_last_check(mini->execute);
+	mini->execute = ft_transefarce(mini->start);
 	mini->start = NULL;
+	ft_last_check(mini->execute);
 	return (0);
 }
 
@@ -49,6 +70,8 @@ int	ft_start(void)
 	mini = ft_global(NULL);
 	if (ft_parcing(mini) == -1)
 		return (-1);
+	// if (ft_execute(mini) == -1)
+	// 	return (-1);
 	print(mini->execute);
 	ft_clear_exec(&(mini->execute));
 	mini->execute = NULL;
