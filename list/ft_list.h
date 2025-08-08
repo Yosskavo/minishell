@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/06 20:08:39 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/06 11:26:07 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ typedef enum e_tocken
 	EXPEND,
 	FILENAME_EXPEND,
 	ERROR_TOCKEN,
-	AMBIGUOUS,
-	BUILT_IN
+	AMBIGUOUS
 }					t_tocken;
 
 // this struct for execution
