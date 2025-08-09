@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/06 21:09:02 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/09 17:23:17 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 #  define OPPERATION_ERROR "minishell : syntax error unexpacted opperation "
 #  define SQOT_ERROR "minishell : string isn't close by \'\n"
 #  define DQOT_ERROR "minishell : string isn't close by \"\n"
+#  define AMBIGUOUS_ERROR "minishell : ambiguous rediraction error \n"
 # endif
 
 # ifndef FLAGS
@@ -121,6 +122,15 @@ char	*ft_qots_malloc(t_parce *parce, int flag, int *size);
 // some steps before the execution
 
 t_parce	*ft_clean_before_exec(t_parce *parce);
+
+// this is the execution functions :
+
+void	ft_restor_fd(void);
+int		ft_execute(t_mini *mini);
+int		ft_redi(t_exec *execute);
+int		ft_before_forking(t_exec *execute);
+int		ft_pipe(void *flag);
+void	ft_dup(void);
 
 // this all the function used in minishell
 

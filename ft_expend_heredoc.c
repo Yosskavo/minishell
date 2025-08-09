@@ -15,9 +15,7 @@
 static char	*ft_expend_heredoc_search(char *str, int size)
 {
 	t_env	*env;
-	int		i;
 
-	i = 0;
 	env = ft_global(NULL)->env;
 	while (env)
 	{

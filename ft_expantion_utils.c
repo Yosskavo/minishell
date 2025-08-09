@@ -15,9 +15,7 @@
 char	*ft_search_expend(char *str, int size)
 {
 	t_env	*env;
-	int		i;
 
-	i = 0;
 	env = ft_global(NULL)->env;
 	while (env)
 	{

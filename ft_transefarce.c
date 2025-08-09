@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 18:50:46 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/06 21:15:29 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/08 23:51:21 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_exec	*ft_new_exec_list(t_parce *parce)
 	return (head);
 }
 
-static void	ft_help(t_exec **head, t_exec *tmp)
+static void	ft_help(t_exec **head, t_exec **tmp_head, t_parce *tmp)
 {
 	*head = ft_new_exec_list(tmp);
 	*tmp_head = *head;

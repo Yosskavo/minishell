@@ -47,11 +47,8 @@ static void	ft_check_word_qots(t_parce *parce)
 
 void	ft_is_qoted(t_parce *parce)
 {
-	int	i;
-
 	while (parce)
 	{
-		i = 0;
 		if (parce->tocken == FILENAME_EXPEND || parce->tocken == EXPEND)
 			ft_expend_check_qots(parce);
 		if (parce->tocken == WORD || parce->tocken == DELEMITER)

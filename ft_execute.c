@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 21:20:19 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/06 21:24:37 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/09 17:24:01 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_execute(t_mini *mini)
 {
 	if (!(mini->execute->next) && mini->execute->cmd->tocken == BUILT_IN)
-		ft_before_built_in(mini->execute);
+		return (ft_before_built_in(mini->execute));
 	else
-		ft_bofore_forking(mini->execute);
+		return (ft_bofore_forking(mini->execute));
 }
