@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/09 14:41:16 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/11 06:31:25 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_mini
 {
 	char			*str;
 	int				old_fd;
+	int				fd[2];
 	t_parce			*start;
 	t_env			*env;
 	t_exec			*execute;

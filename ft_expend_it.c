@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:02:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/02 10:01:34 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/10 13:56:08 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	ft_expend_status(t_expend *exp, char *str, int *old, int *i)
 		ft_malloc_faild();
 	dst = ft_strjoin(exp->exp, dest);
 	if (!dst)
-		ft_malloc_faild();
+		return (free(dest), ft_malloc_faild());
 	ft_fullmap_expand(exp, EXP_CHAR, ft_strlen(dest));
 	free(dest);
 	free(exp->exp);

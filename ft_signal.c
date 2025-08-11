@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 13:05:15 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 14:57:19 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/10 13:58:32 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	ft_handle_sig(int sig)
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
+		ft_status(130);
 	}
 	else if (ft_global_var(-1) == 1)
 	{

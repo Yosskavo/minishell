@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/06 21:11:21 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/11 18:10:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int	ft_start(void)
 	mini = ft_global(NULL);
 	if (ft_parcing(mini) == -1)
 		return (-1);
-	// if (ft_execute(mini) == -1)
-	// 	return (-1);
-	print(mini->execute);
+	if (ft_execute(mini) == -1)
+		return (-1);
+	// print(mini->execute);
 	ft_clear_exec(&(mini->execute));
 	mini->execute = NULL;
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 21:26:41 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/09 17:30:05 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/11 19:59:52 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 int	ft_fork(t_exec *execute)
 {
 	int		child;
-	char	*str;
+	char	*str[] = {execute->cmd->str, NULL};
 
-	str = "";
 	child = fork();
 	if (child == 0)
 	{
-		execvp(execute->cmd->str, &str);
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
+		execvp(execute->cmd->str, str);
+		exit(0);
 	}
 	return (child);
 }
@@ -29,15 +31,23 @@ int	ft_fork(t_exec *execute)
 int	ft_before_forking(t_exec *execute)
 {
 	int	child;
+	int	flag;
 	int	status;
 
+	signal(SIGINT, SIG_IGN);
 	if (execute->next || execute->redi)
 		ft_dup();
 	while (execute)
 	{
 		if (ft_pipe(execute->next) == -1)
 			return (ft_restor_fd(), -1);
-		if (ft_redi(execute) == -1)
+		flag = ft_redi(execute);
+		if (flag == -2)
+		{
+			execute = execute->next;
+			continue ;
+		}
+		else if (flag == -1)
 			return (ft_restor_fd(), -1);
 		child = ft_fork(execute);
 		if (child < 0)
@@ -46,6 +56,7 @@ int	ft_before_forking(t_exec *execute)
 	}
 	waitpid(child, &status, 0);
 	wait(NULL);
+	ft_signal();
 	ft_restor_fd();
 	return (0);
 }

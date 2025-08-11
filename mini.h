@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/09 17:23:17 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/11 05:45:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,12 +125,12 @@ t_parce	*ft_clean_before_exec(t_parce *parce);
 
 // this is the execution functions :
 
-void	ft_restor_fd(void);
+int		ft_restor_fd(void);
 int		ft_execute(t_mini *mini);
 int		ft_redi(t_exec *execute);
 int		ft_before_forking(t_exec *execute);
 int		ft_pipe(void *flag);
-void	ft_dup(void);
+int		ft_dup(void);
 
 // this all the function used in minishell
 

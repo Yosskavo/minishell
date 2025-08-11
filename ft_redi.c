@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 15:44:47 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/09 17:14:49 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/11 19:49:21 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ static int	ft_duptwo(t_tocken tocken, int fd)
 		return (ft_putstr_fd(AMBIGUOUS_ERROR, 2), -2);
 	if (fd == -1)
 		return (perror("minishell"), -1);
+	flag = 0;
 	if (tocken == HEREDOC || tocken == REDIRACTION)
-		flag = dup2(STDIN_FILENO, fd);
+		flag = dup2(fd, STDIN_FILENO);
 	else if (tocken == APPEND || tocken == OVERWRITE)
-		flag = dup2(STDOUT_FILENO, fd);
+		flag = dup2(fd, STDOUT_FILENO);
+	close(fd);
 	if (flag < 0)
-		return (close(fd), -1);
+		return (-1);
 	return (0);
 }
 
@@ -53,7 +55,7 @@ int	ft_redi(t_exec *execute)
 	t_parce	*tmp;
 	int		flag;
 
-	tmp = exectute->redi;
+	tmp = execute->redi;
 	while (tmp)
 	{
 		flag = ft_duptwo(tmp->tocken, ft_open(tmp));
