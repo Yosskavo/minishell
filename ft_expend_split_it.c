@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 20:21:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 18:33:59 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/11 23:32:23 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	ft_expend_word(t_expend *exp, t_parce **parce, int *i)
 	dest = malloc(size + 1);
 	map = malloc(size + 1);
 	if (!dest || !map)
-		ft_malloc_faild();
+		return (free(map), free(dest), ft_malloc_faild());
 	j = 0;
 	while (j < size)
 	{

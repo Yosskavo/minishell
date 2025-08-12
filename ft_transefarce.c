@@ -6,24 +6,24 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 18:50:46 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/08 23:51:21 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/11 20:52:21 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-int	ft_many_pipe(t_parce *parce)
+int	ft_many_tocken(t_parce *parce, t_tocken tocken)
 {
 	int	size;
 
 	size = 0;
 	while (parce)
 	{
-		if (parce->tocken == PIPE)
+		if (parce->tocken == tocken)
 			size++;
 		parce = parce->next;
 	}
-	return (size + 1);
+	return (size);
 }
 
 t_exec	*ft_new_exec_list(t_parce *parce)
@@ -32,7 +32,7 @@ t_exec	*ft_new_exec_list(t_parce *parce)
 	int		i;
 	int		size;
 
-	size = ft_many_pipe(parce);
+	size = ft_many_tocken(parce, PIPE) + 1;
 	i = 0;
 	head = NULL;
 	while (i < size)

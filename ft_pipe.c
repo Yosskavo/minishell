@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 09:56:36 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/11 19:36:58 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/12 22:35:17 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	ft_help(int *old_fd, int fd[2])
 {
+	perror("minishell");
 	if (*old_fd > -1)
 	{
 		close(*old_fd);

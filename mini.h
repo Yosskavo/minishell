@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/11 05:45:44 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/12 22:30:49 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 #  define HEREDOC_ERROR "minishell : warning: non delemater : "
 #  define TOCKEN_ERROR "minishell : syntax error near unexpacted tocken "
 #  define OPPERATION_ERROR "minishell : syntax error unexpacted opperation "
+#  define MALLOC_FAILD "minishell : malloc faild\n"
 #  define SQOT_ERROR "minishell : string isn't close by \'\n"
 #  define DQOT_ERROR "minishell : string isn't close by \"\n"
 #  define AMBIGUOUS_ERROR "minishell : ambiguous rediraction error \n"

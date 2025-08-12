@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 21:48:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/04 21:48:55 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/12 22:28:59 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_env	*ft_envcpy(char **o_env)
 	{
 		tmp = ft_lstnew_env(ft_env_var(o_env[i]), ft_env_val(o_env[i]));
 		if (!tmp)
-			ft_malloc_faild();
+			return (ft_clear_env(&env), ft_malloc_faild());
 		ft_lstadd_back_env(&env, tmp);
 		i++;
 	}

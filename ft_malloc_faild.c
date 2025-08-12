@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:35:08 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 22:55:06 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/12 22:30:12 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_malloc_faild(void)
 		ft_clear_list(&(mini->start));
 	free(mini->str);
 	free(mini);
-	perror("minishell");
+	ft_putstr_fd(MALLOC_ERROR, 2);
 	exit(2);
 }
 
@@ -51,6 +51,6 @@ void	ft_expend_malloc_faild(void)
 		ft_mini_clear_list(&(mini->start));
 	free(mini->str);
 	free(mini);
-	perror("minishell");
+	ft_putstr_fd(MALLOC_ERROR, 2);
 	exit(2);
 }

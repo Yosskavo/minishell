@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/11 06:31:25 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/11 21:02:05 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef enum e_tocken
 
 typedef struct s_exec
 {
+	char			**args;
 	struct s_parce	*cmd;
 	struct s_parce	*redi;
 	struct s_exec	*next;
