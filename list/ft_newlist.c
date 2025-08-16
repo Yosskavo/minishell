@@ -6,20 +6,23 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:19 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/05 20:40:28 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/16 15:17:45 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-t_exec	*ft_newexec_lst(void)
+t_exec	*ft_newexec_lst(char **dest)
 {
 	t_exec	*new;
 
+	if (!dest)
+		return (NULL);
 	new = malloc(sizeof(t_exec));
 	if (!new)
-		return (NULL);
+		return (ft_freetable(dest), NULL);
 	ft_memset(new, 0, sizeof(t_exec));
+	new->args = dest;
 	return (new);
 }
 

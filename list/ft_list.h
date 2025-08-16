@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:16:29 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/11 21:02:05 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/16 15:37:29 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef enum e_tocken
 typedef struct s_exec
 {
 	char			**args;
-	struct s_parce	*cmd;
+	t_tocken		tocken;
 	struct s_parce	*redi;
 	struct s_exec	*next;
 }					t_exec;
@@ -92,15 +92,20 @@ typedef struct s_mini
 	t_exec			*execute;
 }					t_mini;
 
-// function of linked list :
-//
+// what is next is function of linked list ,and
+// ather that i use to create or destroy a node:
+
 // this function for clearing :
+
 t_parce				*ft_clean_before_exec(t_parce *parce);
 void				ft_clear_list(t_parce **lst);
 void				ft_mini_clear_list(t_parce **lst);
 void				ft_clear_env(t_env **env);
 void				ft_clear_exec(t_exec **execute);
+void				ft_freetable(char **table);
+
 // global function
+
 t_mini				*ft_global(t_mini *mini);
 int					ft_global_var(int i);
 
@@ -113,9 +118,9 @@ void				ft_expend_free(t_parce *parce);
 
 t_env				*ft_lstnew_env(char *var, char *val);
 t_parce				*ft_newlist(char *str);
-t_exec				*ft_newexec_lst(void);
+t_exec				*ft_newexec_lst(char **dest);
 
-// it set all the element of struct by 0
+// it set all the element of struct by c
 
 void				*ft_memset(void *s, int c, size_t n);
 

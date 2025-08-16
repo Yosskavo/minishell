@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/12 22:30:49 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/16 15:39:03 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@
 
 // if a return of function is
 // -1 or NULL thats mean error and should puterror print the error
-// happend by using a flag gaven atherwise
-// perror print alot of error base on her data base
+// happend by using a flag gaven, atherwise
+// perror print alot of error base on her data base on errno
 
 // this is the function that start parcing and exicuting
 
@@ -60,6 +60,9 @@ int		ft_start(void);
 // transfare the t_parce to t_exec
 
 t_exec	*ft_transefarce(t_parce *parce);
+int		ft_many_tocken(t_parce *parce, t_tocken tocken);
+int		ft_many_tocken_between_tocken(t_parce *parce, t_tocken tocken,
+			t_tocken delimeter);
 
 // this is an env function to copy or chnage something in env
 

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:35:08 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/12 22:30:12 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/16 15:17:38 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_free_exec_alloc(t_exec **head)
 	while (*head)
 	{
 		tmp = (*head)->next;
+		ft_freetable((*head)->args);
 		free((*head));
 		*head = tmp;
 	}
@@ -36,7 +37,7 @@ void	ft_malloc_faild(void)
 		ft_clear_list(&(mini->start));
 	free(mini->str);
 	free(mini);
-	ft_putstr_fd(MALLOC_ERROR, 2);
+	ft_putstr_fd(MALLOC_FAILD, 2);
 	exit(2);
 }
 
@@ -51,6 +52,6 @@ void	ft_expend_malloc_faild(void)
 		ft_mini_clear_list(&(mini->start));
 	free(mini->str);
 	free(mini);
-	ft_putstr_fd(MALLOC_ERROR, 2);
+	ft_putstr_fd(MALLOC_FAILD, 2);
 	exit(2);
 }

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:12:43 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/06 20:18:11 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/16 15:28:18 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,12 +137,29 @@ void	ft_print_it(t_parce *parce)
 	}
 }
 
+void	ft_print_table(char **table, t_tocken tocken)
+{
+	int	i;
+
+	if (tocken == BUILT_IN)
+		printf("tocken : built-in --- str : ");
+	i = 0;
+	if (!table[i])
+		return ((void)printf("args are (nulll)\n"));
+	while (table[i])
+	{
+		printf("%s ", table[i]);
+		i++;
+	}
+	printf("\n");
+}
+
 void	print(t_exec *p)
 {
 	while (p)
 	{
 		printf("<-- cmd line -->\n");
-		ft_print_it(p->cmd);
+		ft_print_table(p->args, p->tocken);
 		printf("<-- rediraction line -->\n");
 		ft_print_it(p->redi);
 		p = p->next;

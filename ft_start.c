@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/11 23:36:59 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/16 16:11:40 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static void	ft_last_check(t_exec *execute)
 {
 	while (execute)
 	{
-		if (execute->cmd)
-			if (ft_check_built_in(execute->cmd->str))
-				execute->cmd->tocken = BUILT_IN;
+		if (execute->args[0])
+			if (ft_check_built_in(execute->args[0]))
+				execute->tocken = BUILT_IN;
 		execute = execute->next;
 	}
 }
@@ -72,7 +72,6 @@ int	ft_start(void)
 		return (-1);
 	if (ft_execute(mini) == -1)
 		return (-1);
-	// print(mini->execute);
 	ft_clear_exec(&(mini->execute));
 	mini->execute = NULL;
 	return (0);

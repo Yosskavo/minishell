@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/12 22:32:01 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/13 20:27:12 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	ft_setup(int ac, char **av, char **env)
 
 	mini = malloc(sizeof(t_mini));
 	if (!mini)
-		return (ft_putstr_fd(MALLOC_ERROR), exit(1));
+		return (ft_putstr_fd(MALLOC_FAILD, 2), exit(1));
 	ft_memset(mini, 0, sizeof(t_mini));
 	ft_global(mini)->old_fd = -1;
 	mini->fd[0] = -1;

@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_freetable.c                                     :+:      :+:    :+:   */
+/*   ft_clear_all.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/04 13:09:40 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/04 13:09:44 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/08/16 16:28:13 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/16 17:34:39 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_freetable(char **table)
+void	ft_clear_all(void)
 {
-	int	i;
+	t_mini	*mini;
 
-	i = 0;
-	while (table[i])
-	{
-		free(table[i]);
-		table[i] = NULL;
-		i++;
-	}
-	free(table);
+	mini = ft_global(NULL);
+	ft_clear_exec(&(mini->execute));
+	ft_clear_env(&(mini->env));
+	if (mini->old_fd > -1)
+		close(mini->old_fd);
+	if (mini->fd[0] > -1)
+		close(mini->fd[0]);
+	if (mini->fd[1] > -1)
+		close(mini->fd[1])
 }

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:12 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/06 11:27:29 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/16 15:20:03 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_clear_exec(t_exec **execute)
 	while (*execute)
 	{
 		tmp = (*execute)->next;
-		ft_mini_clear_list(&((*execute)->cmd));
+		ft_freetable((*execute)->args);
 		ft_mini_clear_list(&((*execute)->redi));
 		free((*execute));
 		(*execute) = tmp;
