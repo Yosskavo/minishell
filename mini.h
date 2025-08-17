@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/16 15:39:03 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/17 04:29:59 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 # include <readline/readline.h>
 # include <signal.h>
 # include <sys/wait.h>
+
+# ifndef PACK_ACCESS
+#  define ERROR_X " command not found\n"
+#  define ERROR_DIR " is a diractory\n"
+#  define ERROR_PER " Permission denied\n"
+# endif
 
 # ifndef PACK_ERROR
 #  define HEREDOC_ERROR "minishell : warning: non delemater : "

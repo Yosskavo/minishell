@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/13 20:27:12 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/16 18:40:05 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ static int	ft_readline(t_mini *mini)
 			add_history(mini->str);
 			ft_start();
 		}
-		free(mini->str);
-		mini->str = NULL;
+		else
+		{
+			free(mini->str);
+			mini->str = NULL;
+		}
 	}
 	return (0);
 }

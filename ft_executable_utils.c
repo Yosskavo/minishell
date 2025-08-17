@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_clear_all.c                                     :+:      :+:    :+:   */
+/*   ft_executable_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/16 16:28:13 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/16 20:20:33 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/08/17 03:36:10 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/17 08:16:06 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_clear_all(void)
-{
-	t_mini	*mini;
+#include "mini.h"
 
-	mini = ft_global(NULL);
-	ft_clear_exec(&(mini->execute));
-	ft_clear_env(&(mini->env));
-	if (mini->old_fd > -1)
-		close(mini->old_fd);
-	if (mini->fd[0] > -1)
-		close(mini->fd[0]);
-	if (mini->fd[1] > 1)
-		close(mini->fd[1]);
+void	ft_execute_creat_path(t_exec *execute)
+{
+	char	*path;
+	char	**table;
+	int		i;
+
+	path = ft_execute_search_expend(PATH);
+	if (!path)
+		return (execute->error = ERROR_X, (void)1);
+	table = ft_split(path, ':');
+	if (!table)
+		ft_expend_malloc_faild();
+	i = 0;
+	while (table[i])
+	{
+		path = ft_pathjoin(table[i], execute->args[0]);
+		if (!ft_check(execute, path))
+			return ;
+		i++;
+	}
 }
