@@ -6,11 +6,27 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 03:36:10 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/17 08:16:06 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/17 21:40:55 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
+
+int	ft_excute_command_status(t_exec *execute, char *path)
+{
+	char		*tmp;
+	struct stat	node;
+
+	if (stat(path, &node))
+		return (1);
+	if (S_ISDIR(node.st_mode))
+		return (3);
+	if (access(path, X_OK))
+		return (execute->cmd->path = path, execute->cmd->error = ERROR_X, 1);
+	execute->cmd->error = NULL;
+	execute->cmd->path = path;
+	return (0);
+}
 
 void	ft_execute_creat_path(t_exec *execute)
 {
@@ -18,18 +34,25 @@ void	ft_execute_creat_path(t_exec *execute)
 	char	**table;
 	int		i;
 
-	path = ft_execute_search_expend(PATH);
+	path = ft_search_expend("PATH", ft_strlen("PATH"));
 	if (!path)
-		return (execute->error = ERROR_X, (void)1);
+		return ;
 	table = ft_split(path, ':');
 	if (!table)
 		ft_expend_malloc_faild();
 	i = 0;
+	path = NULL;
 	while (table[i])
 	{
-		path = ft_pathjoin(table[i], execute->args[0]);
-		if (!ft_check(execute, path))
-			return ;
+		free(path);
+		path = ft_strcjoin(table[i], execute->args[0], '/');
+		if (!path)
+			return (ft_freetable(table), ft_expend_malloc_faild());
+		if (!ft_excute_command_status(execute, path))
+			return (ft_freetable(table), (void)1);
 		i++;
 	}
+	if (!(execute->cmd->path))
+		execute->cmd->path = path;
+	ft_freetable(table);
 }

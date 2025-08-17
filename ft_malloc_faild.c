@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 10:35:08 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/17 03:10:30 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/17 17:05:34 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_free_exec_alloc(t_exec **head)
 		if ((*head)->cmd)
 		{
 			free((*head)->cmd->path);
-			free((*heaed)->cmd);
+			free((*head)->cmd);
 		}
 		free((*head));
 		*head = tmp;

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/17 00:03:30 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/17 17:05:03 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	ft_last_check(t_exec *execute)
 		}
 		execute = execute->next;
 	}
-	ft_executable();
+	// ft_executable();
 }
 
 int	ft_parcing(t_mini *mini)

@@ -6,34 +6,19 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 18:44:03 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/17 03:38:15 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/17 21:53:19 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-char	*ft_execute_search_expend(char *str)
+static void	ft_execute_check_path(t_exec *execute)
 {
-	t_env	*env;
-
-	env = ft_global(NULL)->env;
-	while (env)
-	{
-		if (!ft_strcmp(env, str))
-			return (env->value);
-		env = env->next;
-	}
-	return (NULL);
-}
-
-static void	ft_execute_fix_path(t_exec *execute)
-{
-	char	*tmp;
-
-	tmp = ft_search_expend(PWD);
-	execute->cmd->path = ft_strjoin(tmp, execute->args[0]);
+	execute->cmd->path = ft_strdup(execute->args[0]);
 	if (!(execute->cmd->path))
 		ft_expend_malloc_faild();
+	if (ft_excute_command_status(execute, execute->cmd->path))
+		;
 }
 
 static void	ft_executable_check(t_exec *execute)
@@ -43,13 +28,11 @@ static void	ft_executable_check(t_exec *execute)
 	execute->cmd = malloc(sizeof(t_cmd));
 	if (!(execute->cmd))
 		ft_expend_malloc_faild();
-	if (*(execute->args[0]) == '/')
-		execute->cmd->path = ft_strdup(args[0]);
-	else if (ft_strchr(execute->args[0], '/'))
-		ft_execute_fix_path(execute);
+	ft_memset(execute->cmd, 0, sizeof(t_cmd));
+	if (ft_strchr(execute->args[0], '/'))
+		return (ft_execute_check_path(execute));
 	else
 		return (ft_execute_creat_path());
-	ft_execute_path();
 }
 
 void	ft_executable(void)

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/17 04:29:59 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/17 18:50:33 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
+# include <sys/stat.h>
 # include <sys/wait.h>
 
 # ifndef PACK_ACCESS
-#  define ERROR_X " command not found\n"
-#  define ERROR_DIR " is a diractory\n"
-#  define ERROR_PER " Permission denied\n"
+#  define ERROR_F " command not found\n"
+#  define ERROR_D " is a diractory\n"
+#  define ERROR_X " Permission denied\n"
 # endif
 
 # ifndef PACK_ERROR
