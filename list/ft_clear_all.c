@@ -6,9 +6,11 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 16:28:13 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/16 20:20:33 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 05:22:43 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_list.h"
 
 void	ft_clear_all(void)
 {
@@ -23,4 +25,10 @@ void	ft_clear_all(void)
 		close(mini->fd[0]);
 	if (mini->fd[1] > 1)
 		close(mini->fd[1]);
+}
+
+void	ft_clear(void)
+{
+	ft_clear_all();
+	free(ft_global(NULL));
 }

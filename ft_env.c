@@ -6,11 +6,49 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 21:48:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/13 08:45:02 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 04:45:23 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
+
+static int	ft_envsize(void)
+{
+	t_env	*env;
+	int		i;
+
+	i = 0;
+	env = ft_global(NULL)->env;
+	while (env)
+	{
+		env = env->next;
+		i++;
+	}
+	return (i);
+}
+
+char	**ft_linked_to_envtable(void)
+{
+	t_env	*env;
+	char	**dest;
+	int		i;
+
+	env = ft_global(NULL)->env;
+	dest = malloc(sizeof(char *) * (ft_envsize() + 1));
+	if (!dest)
+		ft_expend_malloc_faild();
+	i = 0;
+	while (env)
+	{
+		dest[i] = ft_strcjoin(env->variable, env->value, '=');
+		if (!dest[i])
+			return (ft_freetable(dest), ft_expend_malloc_faild(), NULL);
+		i++;
+		env = env->next;
+	}
+	dest[i] = NULL;
+	return (dest);
+}
 
 static char	*ft_env_val(char *env)
 {

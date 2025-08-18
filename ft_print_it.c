@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 14:12:43 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/16 15:28:18 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 02:43:09 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,11 +137,11 @@ void	ft_print_it(t_parce *parce)
 	}
 }
 
-void	ft_print_table(char **table, t_tocken tocken)
+void	ft_print_table(char **table, t_tcmd tocken)
 {
 	int	i;
 
-	if (tocken == BUILT_IN)
+	if (tocken != COMMAND)
 		printf("tocken : built-in --- str : ");
 	i = 0;
 	if (!table[i])

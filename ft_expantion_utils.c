@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 09:10:46 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 17:29:14 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 06:17:36 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,26 +63,14 @@ int	ft_env_var_size(char *str)
 	return (i);
 }
 
-int	ft_any_dolar_sign(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\'')
-		{
-			i++;
-			while (str[i++] != '\'')
-				;
-		}
-		if (!str[i])
-			break ;
-		if (str[i] == '$' && str[i + 1] == '$')
-			i += 2;
-		if (str[i] == '$' && ft_valid_expention(str[i + 1]) == 2)
-			return (i + 1);
-		i++;
-	}
-	return (0);
-}
+// static int	ft_any_dolar_sign_help(char *str, int *i)
+// {
+// 	(*i)++;
+// 	while (str[*i] != '"')
+// 	{
+// 		if (str[*i] == '$' && str[*i + 1] == '$')
+// 			*i += 2;
+// 		if (str[*i] == '$' && ft_valid_expention(str[i + 1]) == 2)
+// 			return (*i + 1);
+// 	}
+// }

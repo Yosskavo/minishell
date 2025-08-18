@@ -6,30 +6,66 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 21:26:41 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/16 16:23:53 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 06:01:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
+static void	ft_fork_error(char **table, t_exec *execute)
+{
+	char	*dest;
+	int		status;
+
+	ft_freetable(table);
+	if (execute->cmd->error == STATUS_F)
+		dest = ft_strjoin(execute->args[0], ERROR_F);
+	if (execute->cmd->error == STATUS_D)
+		dest = ft_strjoin(execute->args[0], ERROR_D);
+	if (execute->cmd->error == STATUS_X)
+		dest = ft_strjoin(execute->args[0], ERROR_X);
+	if (!dest)
+		ft_expend_malloc_faild();
+	ft_putstr_fd(dest, 2);
+	free(dest);
+	status = execute->cmd->error;
+	if (execute->cmd->error == STATUS_D)
+		status = execute->cmd->error - 2;
+	ft_clear();
+	exit(status);
+}
+
+static void	ft_help(char **table)
+{
+	ft_putstr_fd(EMPTY_STR_ERROR, 2);
+	ft_freetable(table);
+	ft_clear();
+	exit(127);
+}
+
 int	ft_fork(t_exec *execute)
 {
-	int	child;
+	int		child;
+	char	**table;
 
+	table = ft_linked_to_envtable();
 	child = fork();
 	if (child == 0)
 	{
 		if (!(execute->args) || !(execute->args[0]))
 		{
-			ft_clear_exec(&(ft_global(NULL)->execute));
+			ft_clear();
 			exit(0);
 		}
+		if (!*(execute->args[0]))
+			ft_help(table);
+		if (execute->cmd->error)
+			ft_fork_error(table, execute);
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
-		execvp(execute->args[0], execute->args);
-		exit(0);
+		execve(execute->cmd->path, execute->args, table);
 	}
-	return (child);
+	return (ft_freetable(table), child);
 }
 
 int	ft_before_forking(t_exec *execute)

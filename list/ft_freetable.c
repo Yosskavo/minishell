@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 13:09:40 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/16 15:30:33 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 04:46:41 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void	ft_freetable(char **table)
 		i++;
 	}
 	free(table);
+	table = NULL;
 }

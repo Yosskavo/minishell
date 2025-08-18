@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/17 18:50:33 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 05:43:45 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,16 @@
 # include <sys/wait.h>
 
 # ifndef PACK_ACCESS
-#  define ERROR_F " command not found\n"
-#  define ERROR_D " is a diractory\n"
-#  define ERROR_X " Permission denied\n"
+#  define ERROR_F ": command not found\n"
+#  define ERROR_D ": is a diractory\n"
+#  define ERROR_X ": permission denied\n"
+#  define EMPTY_STR_ERROR "\'\': command not found\n"
+# endif
+
+# ifndef STATUS_EX
+#  define STATUS_X 126
+#  define STATUS_F 127
+#  define STATUS_D 128
 # endif
 
 # ifndef PACK_ERROR
@@ -71,9 +78,18 @@ int		ft_many_tocken(t_parce *parce, t_tocken tocken);
 int		ft_many_tocken_between_tocken(t_parce *parce, t_tocken tocken,
 			t_tocken delimeter);
 
+// function that handle the path of command
+
+void	ft_execute_creat_path(t_exec *execute);
+void	ft_execute_check_path(t_exec *execute);
+int		ft_excute_command_status(t_exec *execute, char *path);
+void	ft_executable(void);
+
 // this is an env function to copy or chnage something in env
+// and the second copy linked list env to a char **
 
 t_env	*ft_envcpy(char **o_env);
+char	**ft_linked_to_envtable(void);
 
 // status is for saving exit status, you can just
 // gave -1 as an argument to return you a the last exit status

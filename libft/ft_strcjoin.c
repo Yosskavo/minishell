@@ -6,11 +6,13 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 19:24:35 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/17 19:24:51 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 02:47:07 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_charcjoin(char *so, char *ss, char c)
+#include "libft.h"
+
+char	*ft_strcjoin(char *so, char *ss, char c)
 {
 	char	*dest;
 	int		i;

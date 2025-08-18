@@ -6,13 +6,13 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/17 17:05:03 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 02:38:39 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-int	ft_check_built_in(char *str)
+static t_tcmd	ft_check_built_in(char *str)
 {
 	if (!str)
 		return (0);
@@ -38,18 +38,13 @@ static void	ft_last_check(t_exec *execute)
 	while (execute)
 	{
 		if (execute->args[0])
-		{
-			if (ft_check_built_in(execute->args[0]))
-				execute->tocken = BUILT_IN;
-			else
-				execute->tocken = COMMAND;
-		}
+			execute->tocken = ft_check_built_in(execute->args[0]);
 		execute = execute->next;
 	}
-	// ft_executable();
+	ft_executable();
 }
 
-int	ft_parcing(t_mini *mini)
+static int	ft_parcing(t_mini *mini)
 {
 	if (ft_spliting(mini->str, &(mini->start)) == -1)
 		return (free(mini->str), mini->str = NULL, -1);
