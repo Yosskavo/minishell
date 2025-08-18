@@ -6,11 +6,11 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 13:09:05 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/04 13:09:09 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 21:35:04 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mini.h"
 
 static size_t	ft_elemint(int n)
 {

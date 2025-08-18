@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "mini.h"
 
 static void	ft_help_clean(t_parce *tmp)
 {

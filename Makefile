@@ -1,34 +1,34 @@
 NAME = minishell
+CC = @cc
+CFLAGS = -Wall -Wextra -Werror -g -Iinclude
 
-CFLAGS = -Wall -Wextra -Werror -g
-
-SRC = ft_env.c               ft_expend_it.c        ft_heredoc_read.c  ft_qots_check.c  ft_tokenisation.c          libft/ft_isalpha.c         libft/ft_strcjoin.c  libft/ft_strnjoin.c          list/ft_global.c \
-	  ft_executable.c        ft_expend_list.c      ft_malloc_faild.c  ft_qots_utils.c  ft_transefarce.c           libft/ft_isdigit.c         libft/ft_strcmp.c    libft/ft_strstr.c            list/ft_list_add_back.c \
-	  ft_executable_utils.c  ft_expend_split_it.c  ft_operator.c      ft_redi.c        ft_trans_utils.c           libft/ft_itoa.c            libft/ft_strdup.c    libft/ft_valid_input.c       list/ft_memset.c \
-	  ft_execute.c           ft_fd.c               ft_pipe.c          ft_signal.c      ft_word.c                  libft/ft_lengh_of_table.c  libft/ft_strjoin.c   list/ft_clean_before_exec.c  list/ft_newlist.c \
-	  ft_expantion.c         ft_fork.c             ft_print_it.c      ft_spliting.c    gnl/get_next_line.c        libft/ft_putchar_fd.c      libft/ft_strlen.c    list/ft_clear_all.c          minishell.c \
-	  ft_expantion_utils.c   ft_heredoc.c          ft_puterror.c      ft_start.c       gnl/get_next_line_utils.c  libft/ft_putstr_fd.c       libft/ft_strncmp.c   list/ft_clear_list.c \
-	  ft_expend_heredoc.c    ft_heredoc_fork.c     ft_qots.c          ft_status.c      libft/ft_isalnum.c         libft/ft_strchr.c          libft/ft_strndup.c   list/ft_freetable.c libft/ft_split.c \
-	  libft/ft_substr.c ft_any_dollar_sign.c ft_wait.c  ft_built_in.c ft_execve.c
-
+SRC = builtin/ft_built_in.c          execute/ft_wait.c               heredoc/ft_expend_heredoc.c  libft/ft_putstr_fd.c  libft/ft_strnjoin.c          list/ft_memset.c         utils/ft_env.c \
+	  builtin/ft_pwd.c               expanding/ft_any_dollar_sign.c  heredoc/ft_heredoc.c         libft/ft_split.c      libft/ft_strstr.c            list/ft_newlist.c        utils/ft_malloc_faild.c \
+	  execute/ft_executable.c        expanding/ft_expantion.c        heredoc/ft_heredoc_fork.c    libft/ft_strchr.c     libft/ft_substr.c            parce/ft_operator.c      utils/ft_print_it.c \
+	  execute/ft_executable_utils.c  expanding/ft_expantion_utils.c  heredoc/ft_heredoc_read.c    libft/ft_strcjoin.c   libft/ft_valid_input.c       parce/ft_spliting.c      utils/ft_puterror.c \
+	  execute/ft_execute.c           expanding/ft_expend_it.c        libft/ft_isalnum.c           libft/ft_strcmp.c     list/ft_clean_before_exec.c  parce/ft_tokenisation.c  utils/ft_signal.c \
+	  execute/ft_execve.c            expanding/ft_expend_list.c      libft/ft_isalpha.c           libft/ft_strdup.c     list/ft_clear_all.c          parce/ft_transefarce.c   utils/ft_status.c \
+	  execute/ft_fd.c                expanding/ft_expend_split_it.c  libft/ft_isdigit.c           libft/ft_strjoin.c    list/ft_clear_list.c         parce/ft_trans_utils.c \
+	  execute/ft_fork.c              expanding/ft_qots.c             libft/ft_itoa.c              libft/ft_strlen.c     list/ft_freetable.c          parce/ft_word.c \
+	  execute/ft_pipe.c              expanding/ft_qots_check.c       libft/ft_lengh_of_table.c    libft/ft_strncmp.c    list/ft_global.c             src/ft_start.c \
+	  execute/ft_redi.c              expanding/ft_qots_utils.c       libft/ft_putchar_fd.c        libft/ft_strndup.c    list/ft_list_add_back.c      src/minishell.c
 
 OBJ = $(SRC:.c=.o)
 
+all: $(NAME)
 
-all : $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) -lreadline
 
-$(NAME) : $(OBJ)
-	@cc $(CFLAGS) -lreadline $(OBJ) -o $(NAME)
+%.o: %.c include/mini.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
-%.o : %.c
-	@cc $(CFLAGS) -c $< -o $@
-
-clean : 
+clean:
 	@rm -fv $(OBJ)
 
-fclean : clean
+fclean: clean
 	@rm -fv $(NAME)
 
-re : fclean all
+re: fclean all
 
-.PHONY : clean fclean re all
+.PHONY: all clean fclean re

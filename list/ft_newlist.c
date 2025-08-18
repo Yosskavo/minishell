@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "mini.h"
 
 t_exec	*ft_newexec_lst(char **dest)
 {

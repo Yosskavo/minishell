@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 17:21:33 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 18:24:44 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 21:26:00 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 void	ft_built_in(t_exec *execute)
 {
 	// if (execute->tocken == PWD)
-	// 	return ();
+	// 	return (ft_pwd());
 	// if (execute->tocken == ECHO)
-	// 	return ();
+	// 	return (ft_echo());
 	// if (execute->tocken == EXPORT)
-	// 	return ();
+	// 	return (ft_export);
 	// if (execute->tocken == UNSET)
-	// 	return ();
+	// 	return (ft_unset());
 	// if (execute->tocken == CD)
-	// 	return ();
+	// 	return (ft_cd());
 	// if (execute->tocken == EXIT)
-	// 	return ();
+	// 	return (ft_exit());
 	// if (execute->tocken == ENV)
-	// 	return ();
+	// 	return (ft_env());
 	(void)execute;
 	printf("built in\n");
 }

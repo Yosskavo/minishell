@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mini.h"
 
 char	*ft_strnjoin(char const *s1, char const *s2, size_t size)
 {

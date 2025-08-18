@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mini.h"
 
 char	*ft_strcjoin(char *so, char *ss, char c)
 {

@@ -6,11 +6,11 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 13:08:38 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/04 13:08:41 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 21:35:29 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mini.h"
 
 char	*ft_strchr(const char *str, int c)
 {

@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fork.c                                          :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 21:26:41 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 18:26:36 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/08/18 21:11:33 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/18 21:57:50 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-int	ft_fork(t_exec *execute)
+void	ft_pwd(void)
 {
-	int	child;
-
-	child = fork();
-	if (child == 0)
-	{
-		signal(SIGINT, SIG_DFL);
-		signal(SIGQUIT, SIG_DFL);
-		if (execute->tocken != COMMAND)
-			ft_built_in(execute);
-		else
-			ft_execve(execute);
-		ft_clear();
-		exit(ft_status(-1));
-	}
-	return (child);
+	// getcwd();
 }

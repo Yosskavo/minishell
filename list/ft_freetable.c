@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "mini.h"
 
 void	ft_freetable(char **table)
 {

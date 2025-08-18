@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
+#include "mini.h"
 
 void	*ft_add_exec_list_back(t_exec **head, t_exec *new)
 {

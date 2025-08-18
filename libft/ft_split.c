@@ -6,11 +6,11 @@
 /*   By: yel-mota <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:14:18 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 02:50:33 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 21:35:16 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "mini.h"
 
 static size_t	ft_contword(const char *str, char c)
 {
