@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 10:16:24 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/04 15:44:28 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:46:27 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,13 @@
 static int	ft_qots_end(char *str, int *i)
 {
 	char	c;
-	int		flag;
 
 	c = str[*i];
-	if (c == '\"')
-		flag = 2;
-	else
-		flag = 1;
 	(*i)++;
 	while (str[*i] != c)
 	{
 		if (!str[*i])
-			return (ft_puterror(flag), -1);
+			return (ft_puterror(c), -1);
 		(*i)++;
 	}
 	(*i)++;

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 08:17:05 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/07/30 10:30:02 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:46:02 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,10 @@ void	ft_tocken_error(t_parce *parce)
 	}
 }
 
-void	ft_puterror(int flag)
+void	ft_puterror(char c)
 {
-	if (flag == 1)
-	{
+	if (c == '\'')
 		ft_putstr_fd(SQOT_ERROR, 2);
-	}
-	else if (flag == 2)
-	{
+	else
 		ft_putstr_fd(DQOT_ERROR, 2);
-	}
 }

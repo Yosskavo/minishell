@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 05:43:45 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 18:19:37 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # endif
 
 # ifndef PACK_ERROR
+#  define SIGQUIT_ERROR "Quit (core dumped)\n"
 #  define HEREDOC_ERROR "minishell : warning: non delemater : "
 #  define TOCKEN_ERROR "minishell : syntax error near unexpacted tocken "
 #  define OPPERATION_ERROR "minishell : syntax error unexpacted opperation "
@@ -115,7 +116,7 @@ int		ft_tokenization(t_parce *parce);
 
 void	ft_free_exec_alloc(t_exec **head);
 void	ft_malloc_faild(void);
-void	ft_puterror(int flag);
+void	ft_puterror(char c);
 void	ft_print_it(t_parce *parce);
 void	ft_print_it_2(t_mini *parce);
 void	print(t_exec *p);
@@ -152,12 +153,18 @@ t_parce	*ft_clean_before_exec(t_parce *parce);
 
 // this is the execution functions :
 
+int		ft_fork(t_exec *execute);
 int		ft_restor_fd(void);
 int		ft_execute(t_mini *mini);
 int		ft_redi(t_exec *execute);
-int		ft_before_forking(t_exec *execute);
 int		ft_pipe(void *flag);
 int		ft_dup(void);
+void	ft_wait(int child);
+
+// we have two decides in our last step
+
+void	ft_execve(t_exec *execute);
+void	ft_built_in(t_exec *execute);
 
 // this all the function used in minishell
 

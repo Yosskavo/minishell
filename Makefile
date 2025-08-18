@@ -9,7 +9,7 @@ SRC = ft_env.c               ft_expend_it.c        ft_heredoc_read.c  ft_qots_ch
 	  ft_expantion.c         ft_fork.c             ft_print_it.c      ft_spliting.c    gnl/get_next_line.c        libft/ft_putchar_fd.c      libft/ft_strlen.c    list/ft_clear_all.c          minishell.c \
 	  ft_expantion_utils.c   ft_heredoc.c          ft_puterror.c      ft_start.c       gnl/get_next_line_utils.c  libft/ft_putstr_fd.c       libft/ft_strncmp.c   list/ft_clear_list.c \
 	  ft_expend_heredoc.c    ft_heredoc_fork.c     ft_qots.c          ft_status.c      libft/ft_isalnum.c         libft/ft_strchr.c          libft/ft_strndup.c   list/ft_freetable.c libft/ft_split.c \
-	  libft/ft_substr.c ft_any_dollar_sign.c
+	  libft/ft_substr.c ft_any_dollar_sign.c ft_wait.c  ft_built_in.c ft_execve.c
 
 
 OBJ = $(SRC:.c=.o)

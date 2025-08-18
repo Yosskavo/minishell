@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fork.c                                          :+:      :+:    :+:   */
+/*   ft_built_in.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 21:26:41 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 18:26:36 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/08/18 17:21:33 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/18 18:24:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-int	ft_fork(t_exec *execute)
+void	ft_built_in(t_exec *execute)
 {
-	int	child;
-
-	child = fork();
-	if (child == 0)
-	{
-		signal(SIGINT, SIG_DFL);
-		signal(SIGQUIT, SIG_DFL);
-		if (execute->tocken != COMMAND)
-			ft_built_in(execute);
-		else
-			ft_execve(execute);
-		ft_clear();
-		exit(ft_status(-1));
-	}
-	return (child);
+	// if (execute->tocken == PWD)
+	// 	return ();
+	// if (execute->tocken == ECHO)
+	// 	return ();
+	// if (execute->tocken == EXPORT)
+	// 	return ();
+	// if (execute->tocken == UNSET)
+	// 	return ();
+	// if (execute->tocken == CD)
+	// 	return ();
+	// if (execute->tocken == EXIT)
+	// 	return ();
+	// if (execute->tocken == ENV)
+	// 	return ();
+	(void)execute;
+	printf("built in\n");
 }

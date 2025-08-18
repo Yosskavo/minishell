@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 23:42:12 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/04 15:55:30 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 16:45:04 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static t_tocken	ft_tocken(char *str)
 {
-	if (str[0] == '<' && str[1] == '<' && str[2] == '\0')
+	if (!ft_strcmp(str, S_HERE_DOC))
 		return (HEREDOC);
-	if (str[0] == '>' && str[1] == '>' && str[2] == '\0')
+	if (!ft_strcmp(str, S_APPEND))
 		return (APPEND);
-	if (str[0] == '>' && str[1] == '\0')
+	if (!ft_strcmp(str, S_OVER_WRITE))
 		return (OVERWRITE);
-	if (str[0] == '<' && str[1] == '\0')
+	if (!ft_strcmp(str, S_RE_DIRACTION))
 		return (REDIRACTION);
-	if (str[0] == '|' && str[1] == '\0')
+	if (!ft_strcmp(str, S_PIPE))
 		return (PIPE);
 	return (ERROR_TOCKEN);
 }

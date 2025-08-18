@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fork.c                                          :+:      :+:    :+:   */
+/*   ft_wait.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 21:26:41 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 18:26:36 by yel-mota         ###   ########.fr       */
+/*   Created: 2025/08/18 17:41:23 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/18 18:43:20 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-int	ft_fork(t_exec *execute)
+void	ft_wait(int child)
 {
-	int	child;
+	int	status;
 
-	child = fork();
-	if (child == 0)
-	{
-		signal(SIGINT, SIG_DFL);
-		signal(SIGQUIT, SIG_DFL);
-		if (execute->tocken != COMMAND)
-			ft_built_in(execute);
-		else
-			ft_execve(execute);
-		ft_clear();
-		exit(ft_status(-1));
-	}
-	return (child);
+	status = 0;
+	waitpid(child, &status, 0);
+	wait(NULL);
+	if (WIFEXITED(status))
+		ft_status(WEXITSTATUS(status));
+	else if (WIFSIGNALED(status))
+		ft_status(WTERMSIG(status) + 128);
+	if (ft_status(-1) == 131)
+		ft_putstr_fd(SIGQUIT_ERROR, 2);
 }
