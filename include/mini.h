@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 21:46:51 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 22:14:41 by nel-khol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 // headers needed in project
 
 # include <fcntl.h>
-# include <readline/history.h>
-# include <readline/readline.h>
 # include <signal.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
 # include <unistd.h>
+# include <readline/history.h>
+# include <readline/readline.h>
 
 // error flags for execve
 
@@ -92,6 +92,9 @@ typedef enum e_tocken
 	AMBIGUOUS,
 	BUILT_IN
 }					t_tocken;
+
+// this enum is for flaging if the command is a built in and witch one
+// and if not built in should be command
 
 typedef enum e_tcmd
 {
