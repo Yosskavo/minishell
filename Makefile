@@ -12,7 +12,7 @@ SRC = builtin/ft_built_in.c          execute/ft_wait.c               heredoc/ft_
 	  execute/ft_fork.c              expanding/ft_qots.c             libft/ft_itoa.c              libft/ft_strlen.c     list/ft_freetable.c          parce/ft_word.c \
 	  execute/ft_pipe.c              expanding/ft_qots_check.c       libft/ft_lengh_of_table.c    libft/ft_strncmp.c    utils/ft_global.c             src/ft_start.c \
 	  execute/ft_redi.c              expanding/ft_qots_utils.c       libft/ft_putchar_fd.c        libft/ft_strndup.c    list/ft_list_add_back.c      src/minishell.c libft/ft_putendl_fd.c \
-	  builtin/ft_echo.c              builtin/ft_env.c
+	  builtin/ft_echo.c              builtin/ft_env.c                builtin/ft_exit.c            libft/ft_atoi.c
 
 OBJ = $(SRC:.c=.o)
 

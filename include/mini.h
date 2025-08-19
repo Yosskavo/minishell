@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/19 06:37:03 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 08:56:33 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@
 #  define STATUS_D 128
 # endif
 
+// the limits in string form
+
+# define MAX_EXIT "9223372036854775807"
+# define MIN_EXIT "-9223372036854775808"
+
 // error pack need by parcing or executing
 
 # ifndef PACK_ERROR
@@ -53,6 +58,8 @@
 #  define HEREDOC_ERROR "minishell : warning: non delemater : "
 #  define TOCKEN_ERROR "minishell : syntax error near unexpacted tocken "
 #  define OPPERATION_ERROR "minishell : syntax error unexpacted opperation "
+#  define NAR_ERROR " : numeric argument required\n"
+#  define TMA_ERROR "minishell : exit : too many argument\n"
 #  define MALLOC_FAILD "minishell : malloc faild\n"
 #  define SQOT_ERROR "minishell : string isn't close by \'\n"
 #  define DQOT_ERROR "minishell : string isn't close by \"\n"
@@ -292,6 +299,7 @@ void				ft_built_in(t_exec *execute);
 void				ft_pwd(void);
 void				ft_echo(t_exec *execute);
 void				ft_env(void);
+void				ft_exit(t_exec *execute);
 
 // ------------------- this some function from libft -----------------------
 
@@ -332,6 +340,7 @@ size_t				ft_lengh_of_table(char **table);
 
 // casting
 
+int					ft_atoi(const char *nptr);
 char				*ft_itoa(int n);
 
 // free
