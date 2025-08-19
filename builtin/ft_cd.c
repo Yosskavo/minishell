@@ -6,25 +6,26 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:53:35 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 05:53:51 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/19 11:47:26 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
-int ft_cd(t_exec *execute)
+
+void	ft_cd(t_exec *execute)
 {
-    char *dir = execute->args[1];
-    if (!dir) {
-        dir = getenv("HOME");
-        if (!dir) {
-            fprintf(stderr, "cd: HOME not set\n");
-            return 1;
-        }
-    }
-    printf("Changing directory to: %s\n", dir);
-    if (chdir(dir) != 0) {
-        perror("cd");
-        return 1;
-    }
-    return 0;
+	char	*dest;
+
+	if (!(execute->args[1]))
+	{
+		dest = ft_search_expend("HOME", ft_strlen("HOME"));
+		if (!dest)
+			return (ft_status(1), ft_putstr_fd(CD_HOME_ERROR, 2), (void)1);
+		if (chdir(dest))
+			return (ft_status(1), perror("minishell"), (void)1);
+	}
+	if (chdir(execute->args[1]))
+		return (ft_status(2), perror("minishell"));
+	// ft_update_env();
+	ft_status(0);
 }

@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 17:21:33 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/19 11:31:26 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 11:44:34 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_built_in(t_exec *execute)
 	if (execute->tocken == UNSET)
 		return (ft_unset(execute));
 	if (execute->tocken == CD)
-		return (ft_cd());
+		return (ft_cd(execute));
 	if (execute->tocken == EXIT)
 		return (ft_exit(execute));
 	if (execute->tocken == ENV)

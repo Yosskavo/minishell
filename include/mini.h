@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/19 11:25:18 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 11:45:21 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@
 #  define HEREDOC_ERROR "minishell : warning: non delemater : "
 #  define TOCKEN_ERROR "minishell : syntax error near unexpacted tocken "
 #  define OPPERATION_ERROR "minishell : syntax error unexpacted opperation "
+#  define CD_HOME_ERROR "minishell : cd : no HOME set\n"
 #  define NAR_ERROR " : numeric argument required\n"
 #  define TMA_ERROR "minishell : exit : too many argument\n"
 #  define MALLOC_FAILD "minishell : malloc faild\n"
@@ -298,6 +299,7 @@ void				ft_built_in(t_exec *execute);
 // built in functions :
 
 void				ft_pwd(void);
+void				ft_cd(t_exec *execute);
 void				ft_echo(t_exec *execute);
 void				ft_env(void);
 void				ft_exit(t_exec *execute);
