@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:32:27 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 05:32:29 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/19 10:20:32 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,11 @@ void	ft_wait(t_exec *execute)
 	int	status;
 
 	status = 0;
-	while (execute)
-	{
-		waitpid(execute->child, &status, 0);
+	while (execute->next)
 		execute = execute->next;
-	}
-	// wait(NULL);
+	waitpid(execute->child, &status, 0);
+	while (wait(NULL) != -1)
+		;
 	if (WIFEXITED(status))
 		ft_status(WEXITSTATUS(status));
 	else if (WIFSIGNALED(status))

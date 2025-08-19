@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:31:45 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 05:31:47 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/19 10:12:09 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	ft_execve(t_exec *execute)
 	table = ft_linked_to_envtable();
 	if (!table)
 		return (ft_putstr_fd(MALLOC_FAILD, 2), ft_clear(), exit(1));
+	if (ft_global(NULL)->old_fd > -1)
+		close(ft_global(NULL)->old_fd);
 	execve(execute->cmd->path, execute->args, table);
 	perror("minishell");
 	ft_freetable(table);
