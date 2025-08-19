@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 22:14:41 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/19 04:16:18 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,16 @@
 // headers needed in project
 
 # include <fcntl.h>
+# include <limits.h>
 # include <signal.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/stat.h>
 # include <sys/wait.h>
 # include <unistd.h>
+
+// headers of readline
+
 # include <readline/history.h>
 # include <readline/readline.h>
 
@@ -128,6 +132,7 @@ typedef struct s_exec
 {
 	char			**args;
 	t_cmd			*cmd;
+	int				child;
 	t_tcmd			tocken;
 	struct s_parce	*redi;
 	struct s_exec	*next;
@@ -275,14 +280,18 @@ int					ft_execute(t_mini *mini);
 int					ft_redi(t_exec *execute);
 int					ft_pipe(void *flag);
 int					ft_dup(void);
-void				ft_wait(int child);
+void				ft_wait(t_exec *child);
 
 // we have two decides in our last step
 
 void				ft_execve(t_exec *execute);
 void				ft_built_in(t_exec *execute);
 
-// this some function from libft
+// built in functions :
+
+void				ft_pwd(void);
+
+// ------------------- this some function from libft -----------------------
 
 // function to check the caracters
 int					ft_isalnum(int c);
@@ -311,6 +320,7 @@ char				*ft_strstr(char *big_str, char *small_str);
 // printing in file dicriptor
 
 int					ft_putstr_fd(char *str, int fd);
+void				ft_putendl_fd(char *str, int fdfd);
 void				ft_putchar_fd(char c, int fd);
 
 // calculate the lenght
@@ -326,10 +336,10 @@ char				*ft_itoa(int n);
 
 void				ft_freetable(char **table);
 
-// this all the function used in minishell
+// ------ this is the linked list functions ---------
+
 // what is next is function of linked list ,and
 // ather that i use to create or destroy a node:
-
 // this function for clearing :
 
 t_parce				*ft_clean_before_exec(t_parce *parce);
@@ -370,4 +380,5 @@ void				*ft_list_add_back(t_parce **lst, t_parce *n);
 void				ft_lstadd_back_env(t_env **head, t_env *env);
 void				*ft_add_exec_list_back(t_exec **head, t_exec *new);
 
+// this all the function used in minishell
 #endif

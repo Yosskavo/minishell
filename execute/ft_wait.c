@@ -6,19 +6,23 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 17:41:23 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 22:05:40 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 03:41:02 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-void	ft_wait(int child)
+void	ft_wait(t_exec *execute)
 {
 	int	status;
 
 	status = 0;
-	waitpid(child, &status, 0);
-	wait(NULL);
+	while (execute)
+	{
+		waitpid(execute->child, &status, 0);
+		execute = execute->next;
+	}
+	// wait(NULL);
 	if (WIFEXITED(status))
 		ft_status(WEXITSTATUS(status));
 	else if (WIFSIGNALED(status))

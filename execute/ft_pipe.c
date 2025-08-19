@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 09:56:36 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 18:46:08 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 04:21:25 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,34 +57,48 @@ static void	ft_update_fd(void *flag, int *old_fd, int fd[2])
 		*old_fd = fd[0];
 	else if (!flag)
 	{
-		close(*old_fd);
+		printf("%d %d\n", *old_fd, fd[0]);
+		if (*old_fd > -1)
+			close(*old_fd);
 		*old_fd = -1;
-		close(fd[0]);
+		if (fd[0] > -1)
+			close(fd[0]);
 	}
 	else
 	{
-		close(*old_fd);
+		if (*old_fd > -1)
+			close(*old_fd);
 		*old_fd = fd[0];
 	}
 	fd[0] = -1;
-	close(fd[1]);
+	if (fd[1] > -1)
+		close(fd[1]);
 	fd[1] = -1;
 }
 
 int	ft_pipe(void *flag)
 {
-	int		fd[2];
 	t_mini	*mini;
+	int		fd[2];
 
 	mini = ft_global(NULL);
 	if (mini->old_fd == -1 && !flag)
 		return (0);
 	fd[0] = -1;
 	fd[1] = -1;
-	if (pipe(fd) < 0)
-		return (ft_help(&(mini->old_fd), fd));
+	if (flag)
+		if (pipe(fd) < 0)
+			return (ft_help(&(mini->old_fd), fd));
 	ft_stdout(flag, fd, &(mini->old_fd));
 	ft_stdin(&(mini->old_fd), fd);
 	ft_update_fd(flag, &(mini->old_fd), fd);
 	return (0);
 }
+
+// int	ft_pipe(void *flag)
+// {
+// 	int		fd[2];
+// 	t_mini	*mini;
+//
+// 	mini = ft_global();
+// }

@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yel-mota <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/18 21:11:33 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/19 05:22:52 by yel-mota         ###   ########.fr       */
+/*   Created: 2024/10/27 18:30:52 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/19 02:29:04 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-void	ft_pwd(void)
+void	ft_putendl_fd(char *s, int fd)
 {
-	char	dest[PATH_MAX];
-
-	if (!getcwd(dest, PATH_MAX))
-		return (ft_status(1), perror("minishell"));
-	ft_putendl_fd(dest, 1);
-	ft_status(0);
+	ft_putstr_fd(s, fd);
+	write(fd, "\n", 1);
 }
