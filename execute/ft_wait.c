@@ -12,13 +12,17 @@
 
 #include "mini.h"
 
-void	ft_wait(int child)
+void	ft_wait(t_exec *execute)
 {
 	int	status;
 
 	status = 0;
-	waitpid(child, &status, 0);
-	wait(NULL);
+	while (execute)
+	{
+		waitpid(execute->child, &status, 0);
+		execute = execute->next;
+	}
+	// wait(NULL);
 	if (WIFEXITED(status))
 		ft_status(WEXITSTATUS(status));
 	else if (WIFSIGNALED(status))
