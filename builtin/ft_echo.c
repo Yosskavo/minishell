@@ -6,34 +6,51 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:54:32 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 05:55:00 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/19 06:28:07 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-int ft_echo(t_exec *execute)
+static int	ft_newline(char *str)
 {
-    int i = 1;
-    int newline = 1;
+	int	i;
 
-    // Check for multiple -n options (e.g. echo -n -n hello)
-    while (execute->args[i] && strcmp(execute->args[i], "-n") == 0)
-    {
-        newline = 0;
-        i++;
-    }
+	i = 0;
+	if (str[i] != '-')
+		return (1);
+	i++;
+	while (str[i] == 'n')
+	{
+		i++;
+		if (!str[i])
+			return (0);
+	}
+	return (1);
+}
 
-    while (execute->args[i])
-    {
-        printf("%s", execute->args[i]);
-        if (execute->args[i + 1])
-            printf(" ");
-        i++;
-    }
+void	ft_echo(t_exec *execute)
+{
+	int	i;
+	int	newline;
 
-    if (newline)
-        printf("\n");
-
-    return 0;
+	i = 1;
+	newline = 1;
+	while (execute->args[i])
+	{
+		if (ft_newline(execute->args[i]))
+			break ;
+		newline = 0;
+		i++;
+	}
+	while (execute->args[i])
+	{
+		ft_putstr_fd(execute->args[i], 1);
+		if ((execute->args[i + 1]))
+			ft_putstr_fd(execute->args[i], 1);
+		i++;
+	}
+	if (newline)
+		printf("\n");
+	ft_status(0);
 }

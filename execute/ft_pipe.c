@@ -6,110 +6,112 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 09:56:36 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 22:19:20 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/19 06:18:08 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static int	ft_handle_error(int old_fd, int fd[2])
-{
-	perror("minishell");
-	if (old_fd > -1)
-		close(old_fd);
-	if (fd[0] > -1)
-		close(fd[0]);
-	if (fd[1] > -1)
-		close(fd[1]);
-	return (-1);
-}
-
-int	ft_pipe(int *old_fd, void *flag)
-{
-	int	fd[2];
-
-	fd[0] = -1;
-	fd[1] = -1;
-
-	// إذا parent ما محتاجش pipe جديد
-	if (*old_fd == -1 && !flag)
-		return (0);
-
-	// إنشاء pipe جديد
-	if (pipe(fd) < 0)
-		return (ft_handle_error(*old_fd, fd));
-
-	// ===== stdout setup =====
-	if (flag)
-	{
-		if (dup2(fd[1], STDOUT_FILENO) < 0)
-			return (ft_handle_error(*old_fd, fd));
-	}
-
-	// ===== stdin setup =====
-	if (*old_fd != -1)
-	{
-		if (dup2(*old_fd, STDIN_FILENO) < 0)
-			return (ft_handle_error(*old_fd, fd));
-	}
-
-	// ===== close unused fd =====
-	if (*old_fd != -1)
-		close(*old_fd);  // يسد القديم
-	*old_fd = fd[0];     // fd[0] غادي يبقى للـ next command
-	close(fd[1]);        // write-end parent يسدو هنا
-
-	return (0);
-}
-
-static void	ft_update_fd(void *flag, int *old_fd, int fd[2])
-{
-	if (*old_fd == -1)
-		*old_fd = fd[0];
-	else if (!flag)
-	{
-		printf("%d %d\n", *old_fd, fd[0]);
-		if (*old_fd > -1)
-			close(*old_fd);
-		*old_fd = -1;
-		if (fd[0] > -1)
-			close(fd[0]);
-	}
-	else
-	{
-		if (*old_fd > -1)
-			close(*old_fd);
-		*old_fd = fd[0];
-	}
-	fd[0] = -1;
-	if (fd[1] > -1)
-		close(fd[1]);
-	fd[1] = -1;
-}
-
-int	ft_pipe(void *flag)
-{
-	t_mini	*mini;
-	int		fd[2];
-
-	mini = ft_global(NULL);
-	if (mini->old_fd == -1 && !flag)
-		return (0);
-	fd[0] = -1;
-	fd[1] = -1;
-	if (flag)
-		if (pipe(fd) < 0)
-			return (ft_help(&(mini->old_fd), fd));
-	ft_stdout(flag, fd, &(mini->old_fd));
-	ft_stdin(&(mini->old_fd), fd);
-	ft_update_fd(flag, &(mini->old_fd), fd);
-	return (0);
-}
+// static int	ft_handle_error(int old_fd, int fd[2])
+// {
+// 	perror("minishell");
+// 	if (old_fd > -1)
+// 		close(old_fd);
+// 	if (fd[0] > -1)
+// 		close(fd[0]);
+// 	if (fd[1] > -1)
+// 		close(fd[1]);
+// 	return (-1);
+// }
+//
+// int	ft_pipe(int *old_fd, void *flag)
+// {
+// 	int	fd[2];
+//
+// 	fd[0] = -1;
+// 	fd[1] = -1;
+//
+// 	// إذا parent ما محتاجش pipe جديد
+// 	if (*old_fd == -1 && !flag)
+// 		return (0);
+//
+// 	// إنشاء pipe جديد
+// 	if (pipe(fd) < 0)
+// 		return (ft_handle_error(*old_fd, fd));
+//
+// 	// ===== stdout setup =====
+// 	if (flag)
+// 	{
+// 		if (dup2(fd[1], STDOUT_FILENO) < 0)
+// 			return (ft_handle_error(*old_fd, fd));
+// 	}
+//
+// 	// ===== stdin setup =====
+// 	if (*old_fd != -1)
+// 	{
+// 		if (dup2(*old_fd, STDIN_FILENO) < 0)
+// 			return (ft_handle_error(*old_fd, fd));
+// 	}
+//
+// 	// ===== close unused fd =====
+// 	if (*old_fd != -1)
+// 		close(*old_fd);  // يسد القديم
+// 	*old_fd = fd[0];     // fd[0] غادي يبقى للـ next command
+// 	close(fd[1]);        // write-end parent يسدو هنا
+//
+// 	return (0);
+// }
+//
+// static void	ft_update_fd(void *flag, int *old_fd, int fd[2])
+// {
+// 	if (*old_fd == -1)
+// 		*old_fd = fd[0];
+// 	else if (!flag)
+// 	{
+// 		printf("%d %d\n", *old_fd, fd[0]);
+// 		if (*old_fd > -1)
+// 			close(*old_fd);
+// 		*old_fd = -1;
+// 		if (fd[0] > -1)
+// 			close(fd[0]);
+// 	}
+// 	else
+// 	{
+// 		if (*old_fd > -1)
+// 			close(*old_fd);
+// 		*old_fd = fd[0];
+// 	}
+// 	fd[0] = -1;
+// 	if (fd[1] > -1)
+// 		close(fd[1]);
+// 	fd[1] = -1;
+// }
 
 // int	ft_pipe(void *flag)
 // {
-// 	int		fd[2];
 // 	t_mini	*mini;
+// 	int		fd[2];
 //
-// 	mini = ft_global();
+// 	mini = ft_global(NULL);
+// 	if (mini->old_fd == -1 && !flag)
+// 		return (0);
+// 	fd[0] = -1;
+// 	fd[1] = -1;
+// 	if (flag)
+// 		if (pipe(fd) < 0)
+// 			return (ft_help(&(mini->old_fd), fd));
+// 	ft_stdout(flag, fd, &(mini->old_fd));
+// 	ft_stdin(&(mini->old_fd), fd);
+// 	ft_update_fd(flag, &(mini->old_fd), fd);
+// 	return (0);
 // }
+//
+int	ft_pipe(void *flag)
+{
+	// int		fd[2];
+	// t_mini	*mini;
+	//
+	// mini = ft_global();
+	(void)flag;
+	return (1);
+}

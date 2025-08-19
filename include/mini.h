@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/19 04:16:18 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 06:15:35 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,6 +290,7 @@ void				ft_built_in(t_exec *execute);
 // built in functions :
 
 void				ft_pwd(void);
+void				ft_echo(t_exec *execute);
 
 // ------------------- this some function from libft -----------------------
 
