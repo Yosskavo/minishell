@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:58:17 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 11:26:35 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 11:32:21 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,10 @@ static void	ft_env_unset(char *str)
 				env->next->previous = NULL;
 				ft_global(NULL)->env = ft_global(NULL)->env->next;
 			}
-			break ;
+			return (ft_free_unset(env));
 		}
 		env = env->next;
 	}
-	if (!env)
-		return ;
-	ft_free_unset(env);
 }
 
 void	ft_unset(t_exec *execute)
