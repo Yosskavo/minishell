@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 09:56:36 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/19 10:16:10 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 10:27:49 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	ft_update_fd(void *flag, int *old_fd, int fd[2])
 	{
 		close(*old_fd);
 		*old_fd = -1;
-		// close(fd[0]);
 	}
 	else
 	{
@@ -70,7 +69,6 @@ static void	ft_update_fd(void *flag, int *old_fd, int fd[2])
 	if (flag)
 		close(fd[1]);
 	fd[1] = -1;
-	dprintf(2, "old : %d read : %d write : %d\n", *old_fd, fd[0], fd[1]);
 }
 
 int	ft_pipe(void *flag)

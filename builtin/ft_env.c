@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:55:25 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 06:35:19 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 10:53:13 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ void	ft_env(void)
 	env = ft_global(NULL)->env;
 	while (env)
 	{
-		printf("%s=%s\n", env->variable, env->value);
+		printf("%s=", env->variable);
+		if (!(env->value))
+			printf("\n");
+		else
+			printf("%s\n", env->value);
 		env = env->next;
 	}
 	ft_status(0);

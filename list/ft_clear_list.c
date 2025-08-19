@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:12 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/17 03:10:52 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 10:51:40 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	ft_clear_env(t_env **env)
 	while (tmp)
 	{
 		(*env) = (*env)->next;
+		tmp->next = NULL;
+		tmp->previous = NULL;
 		free(tmp->variable);
 		free(tmp->value);
 		free(tmp);

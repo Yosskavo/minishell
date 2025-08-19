@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:31:17 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 10:17:03 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 10:28:04 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ static int	ft_execute_start(t_exec *execute)
 {
 	int	flag;
 
-	// int	child;
 	while (execute)
 	{
 		if (ft_pipe(execute->next) == -1)
@@ -34,7 +33,6 @@ static int	ft_execute_start(t_exec *execute)
 			return (perror("minishell"), ft_restor_fd(), -1);
 		execute = execute->next;
 	}
-	// close(ft_global(NULL)->old_fd);
 	return (10);
 }
 

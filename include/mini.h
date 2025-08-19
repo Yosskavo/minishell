@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/19 08:56:33 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 11:25:18 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,7 @@ typedef struct s_env
 {
 	char			*variable;
 	char			*value;
+	struct s_env	*previous;
 	struct s_env	*next;
 }					t_env;
 
@@ -300,6 +301,7 @@ void				ft_pwd(void);
 void				ft_echo(t_exec *execute);
 void				ft_env(void);
 void				ft_exit(t_exec *execute);
+void				ft_unset(t_exec *execute);
 
 // ------------------- this some function from libft -----------------------
 

@@ -6,31 +6,50 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:58:17 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 09:28:49 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/19 11:26:35 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
+static void	ft_free_unset(t_env *env)
+{
+	free(env->variable);
+	free(env->value);
+	free(env);
+}
+
 static void	ft_env_unset(char *str)
 {
 	t_env	*env;
-	t_env	*tmp;
 
-	tmp = ft_global(NULL)->env;
-	env = tmp->next;
-	if (!ft_strcmp(str, env->variable))
-		return (ft_free_env(tmp), ft_global(NULL)->env = env);
+	env = ft_global(NULL)->env;
 	while (env)
 	{
-		tmp = env->next;
-		if (!ft_strcmp(tmp->variable, str))
-			return ();
-		env = tmp;
+		if (!ft_strcmp(env->variable, str))
+		{
+			if (env->next && env->previous)
+			{
+				env->previous->next = env->next;
+				env->next->previous = env->previous;
+			}
+			else if (!(env->next))
+				env->previous->next = NULL;
+			else
+			{
+				env->next->previous = NULL;
+				ft_global(NULL)->env = ft_global(NULL)->env->next;
+			}
+			break ;
+		}
+		env = env->next;
 	}
+	if (!env)
+		return ;
+	ft_free_unset(env);
 }
 
-int	ft_unset(t_exec *execute)
+void	ft_unset(t_exec *execute)
 {
 	int	i;
 
@@ -40,5 +59,5 @@ int	ft_unset(t_exec *execute)
 		ft_env_unset(execute->args[i]);
 		i++;
 	}
-	return (0);
+	ft_status(0);
 }
