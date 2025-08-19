@@ -6,22 +6,21 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:55:25 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 05:55:53 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/19 06:35:19 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
-extern char **environ;
 
-int ft_env(t_exec *execute)
+void	ft_env(void)
 {
-    int i = 0;
-    (void)execute;  // ma katst3mlch l'argument f had l function
+	t_env	*env;
 
-    while (environ[i])
-    {
-        printf("%s\n", environ[i]);
-        i++;
-    }
-    return 0;
+	env = ft_global(NULL)->env;
+	while (env)
+	{
+		printf("%s=%s\n", env->variable, env->value);
+		env = env->next;
+	}
+	ft_status(0);
 }
