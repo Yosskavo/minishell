@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft_built_in.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 17:21:33 by yel-mota          #+#    #+#             */
 /*   Updated: 2025/08/19 05:58:39 by yel-mota         ###   ########.fr       */

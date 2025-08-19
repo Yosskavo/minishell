@@ -3,23 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 09:56:36 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/19 04:21:25 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/18 22:19:20 by nel-khol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static int	ft_help(int *old_fd, int fd[2])
+static int	ft_handle_error(int old_fd, int fd[2])
 {
 	perror("minishell");
-	if (*old_fd > -1)
-	{
-		close(*old_fd);
-		*old_fd = -1;
-	}
+	if (old_fd > -1)
+		close(old_fd);
 	if (fd[0] > -1)
 		close(fd[0]);
 	if (fd[1] > -1)
@@ -27,27 +24,41 @@ static int	ft_help(int *old_fd, int fd[2])
 	return (-1);
 }
 
-static int	ft_stdout(void *flag, int fd[2], int *old_fd)
+int	ft_pipe(int *old_fd, void *flag)
 {
+	int	fd[2];
+
+	fd[0] = -1;
+	fd[1] = -1;
+
+	// إذا parent ما محتاجش pipe جديد
+	if (*old_fd == -1 && !flag)
+		return (0);
+
+	// إنشاء pipe جديد
+	if (pipe(fd) < 0)
+		return (ft_handle_error(*old_fd, fd));
+
+	// ===== stdout setup =====
 	if (flag)
 	{
 		if (dup2(fd[1], STDOUT_FILENO) < 0)
-			return (ft_help(old_fd, fd), -1);
+			return (ft_handle_error(*old_fd, fd));
 	}
-	else if (!flag)
-	{
-		if (dup2(ft_global(NULL)->fd[1], STDOUT_FILENO) < 0)
-			return (ft_help(old_fd, fd), -1);
-	}
-	return (0);
-}
 
-static int	ft_stdin(int *old_fd, int fd[2])
-{
-	if (*old_fd == -1)
-		return (0);
-	if (dup2(*old_fd, STDIN_FILENO) < 0)
-		return (ft_help(old_fd, fd), -1);
+	// ===== stdin setup =====
+	if (*old_fd != -1)
+	{
+		if (dup2(*old_fd, STDIN_FILENO) < 0)
+			return (ft_handle_error(*old_fd, fd));
+	}
+
+	// ===== close unused fd =====
+	if (*old_fd != -1)
+		close(*old_fd);  // يسد القديم
+	*old_fd = fd[0];     // fd[0] غادي يبقى للـ next command
+	close(fd[1]);        // write-end parent يسدو هنا
+
 	return (0);
 }
 

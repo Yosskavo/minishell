@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fork.c                                          :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 05:30:53 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 05:30:56 by nel-khol         ###   ########.fr       */
+/*   Created: 2025/08/19 05:55:25 by nel-khol          #+#    #+#             */
+/*   Updated: 2025/08/19 05:55:53 by nel-khol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
+extern char **environ;
 
-int	ft_fork(t_exec *execute)
+int ft_env(t_exec *execute)
 {
-	int	child;
+    int i = 0;
+    (void)execute;  // ma katst3mlch l'argument f had l function
 
-	child = fork();
-	if (child == 0)
-	{
-		signal(SIGINT, SIG_DFL);
-		signal(SIGQUIT, SIG_DFL);
-		// if (ft_global(NULL)->old_fd != -1)
-		// 	close(ft_global(NULL)->old_fd);
-		if (execute->tocken != COMMAND)
-			ft_built_in(execute);
-		else
-			ft_execve(execute);
-		ft_clear();
-		exit(ft_status(-1));
-	}
-	return (child);
+    while (environ[i])
+    {
+        printf("%s\n", environ[i]);
+        i++;
+    }
+    return 0;
 }

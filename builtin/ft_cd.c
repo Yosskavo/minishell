@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fork.c                                          :+:      :+:    :+:   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 05:30:53 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 05:30:56 by nel-khol         ###   ########.fr       */
+/*   Created: 2025/08/19 05:53:35 by nel-khol          #+#    #+#             */
+/*   Updated: 2025/08/19 05:53:51 by nel-khol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
-
-int	ft_fork(t_exec *execute)
+int ft_cd(t_exec *execute)
 {
-	int	child;
-
-	child = fork();
-	if (child == 0)
-	{
-		signal(SIGINT, SIG_DFL);
-		signal(SIGQUIT, SIG_DFL);
-		// if (ft_global(NULL)->old_fd != -1)
-		// 	close(ft_global(NULL)->old_fd);
-		if (execute->tocken != COMMAND)
-			ft_built_in(execute);
-		else
-			ft_execve(execute);
-		ft_clear();
-		exit(ft_status(-1));
-	}
-	return (child);
+    char *dir = execute->args[1];
+    if (!dir) {
+        dir = getenv("HOME");
+        if (!dir) {
+            fprintf(stderr, "cd: HOME not set\n");
+            return 1;
+        }
+    }
+    printf("Changing directory to: %s\n", dir);
+    if (chdir(dir) != 0) {
+        perror("cd");
+        return 1;
+    }
+    return 0;
 }
