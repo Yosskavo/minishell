@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 09:10:46 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 06:17:36 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/20 10:15:12 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_valid_expention(char c)
 {
 	if (c == '_' || ft_isalpha(c) || c == '?')
 		return (2);
-	if (c == '_' || ft_isalnum(c) || c == '?')
+	if (ft_isalnum(c))
 		return (1);
 	return (0);
 }

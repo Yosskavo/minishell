@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/20 02:20:51 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/20 11:53:57 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -400,6 +400,11 @@ t_parce				*ft_list_last(t_parce *lst);
 void				*ft_list_add_back(t_parce **lst, t_parce *n);
 void				ft_lstadd_back_env(t_env **head, t_env *env);
 void				*ft_add_exec_list_back(t_exec **head, t_exec *new);
+
+// duplacate the value and variable name
+
+char				*ft_env_var(char *env);
+char				*ft_env_val(char *env);
 
 // this all the function used in minishell
 #endif
