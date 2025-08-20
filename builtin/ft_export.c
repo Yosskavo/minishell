@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:57:22 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/20 12:40:40 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/20 14:59:18 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,23 @@ static int	ft_export_valid_expention(char c)
 	return (0);
 }
 
+static int	ft_var_check(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str[0] || ft_export_valid_expention(str[0]) != 1)
+		return (-1);
+	if (str[i] != '=')
+	{
+		if (!ft_export_valid_expention(str[i]))
+			return (-1);
+		if (!str[i])
+			return (-2);
+		i++;
+	}
+	return (0);
+}
 static int	ft_export_check_name(char *str, int *i)
 {
 	char	*var;
@@ -31,6 +48,9 @@ static int	ft_export_check_name(char *str, int *i)
 	flag = ft_var_check(str);
 	if (flag == -1)
 		return (ft_export_error(str), -1);
+	if (flag == -2)
+	{
+	}
 }
 
 void	ft_export(t_exec *execute)
