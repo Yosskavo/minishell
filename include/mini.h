@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/19 11:45:21 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/20 02:20:51 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@
 # ifndef PACK_ERROR
 #  define SIGQUIT_ERROR "Quit (core dumped)\n"
 #  define HEREDOC_ERROR "minishell : warning: non delemater : "
+#  define CDTMA_ERROR "minishell : cd : too many argument \n"
 #  define TOCKEN_ERROR "minishell : syntax error near unexpacted tocken "
 #  define OPPERATION_ERROR "minishell : syntax error unexpacted opperation "
 #  define CD_HOME_ERROR "minishell : cd : no HOME set\n"
@@ -263,6 +264,7 @@ void				ft_free_all_heredoc(void);
 
 void				ft_expend_split_it(t_parce *parce);
 void				ft_expention(t_mini *mini);
+t_env				*ft_search_env_addr(char *var);
 int					ft_any_dolar_sign(char *str);
 void				ft_expend_it(t_parce *parce);
 int					ft_valid_expention(char str);
@@ -364,6 +366,10 @@ void				ft_clear_env(t_env **env);
 void				ft_clear_exec(t_exec **execute);
 void				ft_clear(void);
 void				ft_clear_all(void);
+
+// to calculate the size of list
+
+int					ft_listsize_env(void);
 
 // global function
 

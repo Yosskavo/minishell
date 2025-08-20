@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:23:19 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/16 15:17:45 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/20 01:37:21 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,12 @@ t_env	*ft_lstnew_env(char *var, char *val)
 {
 	t_env	*new;
 
-	if (!var || !val)
-		return (free(var), free(val), NULL);
 	new = malloc(sizeof(t_env));
 	if (!new)
 		return (free(var), free(val), NULL);
 	new->value = val;
 	new->variable = var;
 	new->next = NULL;
+	new->previous = NULL;
 	return (new);
 }

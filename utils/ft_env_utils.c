@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_env.c                                           :+:      :+:    :+:   */
+/*   ft_env_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 21:48:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 04:45:23 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/20 02:10:03 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static int	ft_envsize(void)
+t_env	*ft_search_env_addr(char *var)
 {
 	t_env	*env;
-	int		i;
 
-	i = 0;
 	env = ft_global(NULL)->env;
-	while (env)
-	{
+	while (env && ft_strcmp(env->variable, var))
 		env = env->next;
-		i++;
-	}
-	return (i);
+	return (env);
 }
 
 char	**ft_linked_to_envtable(void)
@@ -34,7 +29,7 @@ char	**ft_linked_to_envtable(void)
 	int		i;
 
 	env = ft_global(NULL)->env;
-	dest = malloc(sizeof(char *) * (ft_envsize() + 1));
+	dest = malloc(sizeof(char *) * (ft_listsize_env() + 1));
 	if (!dest)
 		ft_expend_malloc_faild();
 	i = 0;
@@ -75,12 +70,19 @@ t_env	*ft_envcpy(char **o_env)
 	t_env	*env;
 	t_env	*tmp;
 	int		i;
+	char	*dst;
+	char	*dest;
 
 	i = 0;
 	env = NULL;
 	while (o_env[i])
 	{
-		tmp = ft_lstnew_env(ft_env_var(o_env[i]), ft_env_val(o_env[i]));
+		dest = ft_env_var(o_env[i]);
+		dst = ft_env_val(o_env[i]);
+		if (!dst || !dest)
+			return (ft_clear_env(&env), free(dst), free(dest),
+				ft_malloc_faild(), NULL);
+		tmp = ft_lstnew_env(dest, dst);
 		if (!tmp)
 			return (ft_clear_env(&env), ft_malloc_faild(), NULL);
 		ft_lstadd_back_env(&env, tmp);
