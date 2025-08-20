@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:31:17 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 10:28:04 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/20 21:20:25 by nel-khol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static int	ft_execute_start(t_exec *execute)
 	}
 	return (10);
 }
+
 
 static int	ft_before_forking(t_exec *execute)
 {
