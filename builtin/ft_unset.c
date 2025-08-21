@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:58:17 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 11:32:21 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 05:05:36 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,20 @@ static void	ft_env_unset(char *str)
 {
 	t_env	*env;
 
-	env = ft_global(NULL)->env;
-	while (env)
+	env = ft_search_env_addr(str);
+	if (env->next && env->previous)
 	{
-		if (!ft_strcmp(env->variable, str))
-		{
-			if (env->next && env->previous)
-			{
-				env->previous->next = env->next;
-				env->next->previous = env->previous;
-			}
-			else if (!(env->next))
-				env->previous->next = NULL;
-			else
-			{
-				env->next->previous = NULL;
-				ft_global(NULL)->env = ft_global(NULL)->env->next;
-			}
-			return (ft_free_unset(env));
-		}
-		env = env->next;
+		env->previous->next = env->next;
+		env->next->previous = env->previous;
 	}
+	else if (!(env->next))
+		env->previous->next = NULL;
+	else
+	{
+		env->next->previous = NULL;
+		ft_global(NULL)->env = ft_global(NULL)->env->next;
+	}
+	return (ft_free_unset(env));
 }
 
 void	ft_unset(t_exec *execute)
