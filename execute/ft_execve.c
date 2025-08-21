@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:31:45 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 10:12:09 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 02:34:11 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ static void	ft_fork_error(t_exec *execute)
 		dest = ft_strjoin(execute->args[0], ERROR_D);
 	if (execute->cmd->error == STATUS_X)
 		dest = ft_strjoin(execute->args[0], ERROR_X);
+	if (execute->cmd->error == STATUS_N)
+		dest = ft_strjoin(execute->args[0], ERROR_N);
 	if (!dest)
 		ft_expend_malloc_faild();
 	ft_putstr_fd(dest, 2);
 	free(dest);
 	status = execute->cmd->error;
-	if (execute->cmd->error == STATUS_D)
+	if (execute->cmd->error == STATUS_D || execute->cmd->error == STATUS_N)
 		status = execute->cmd->error - 2;
 	ft_clear();
 	exit(status);
