@@ -6,24 +6,11 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:57:22 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/21 02:43:39 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 22:48:38 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
-
-static void	ft_export_print_it(void)
-{
-	t_env	*env;
-
-	env = ft_global(NULL)->env;
-	while (env)
-	{
-		printf("%s %s=%s\n", DECLEAR, env->variable, env->value);
-		env = env->next;
-	}
-	ft_status(0);
-}
 
 static int	ft_export_check_name(char *str)
 {

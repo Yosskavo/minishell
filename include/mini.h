@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/21 04:59:24 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 23:42:25 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,6 @@ typedef struct s_exec
 	char			**args;
 	t_cmd			*cmd;
 	int				child;
-	int				flag;
 	t_tcmd			tocken;
 	struct s_parce	*redi;
 	struct s_exec	*next;
@@ -257,9 +256,6 @@ int					ft_tokenization(t_parce *parce);
 void				ft_free_exec_alloc(t_exec **head);
 void				ft_malloc_faild(void);
 void				ft_puterror(char c);
-void				ft_print_it(t_parce *parce);
-void				ft_print_it_2(t_mini *parce);
-void				print(t_exec *p);
 
 // this function to handle heredoc
 
@@ -295,7 +291,7 @@ t_parce				*ft_clean_before_exec(t_parce *parce);
 // this is the execution functions :
 
 int					ft_fork(t_exec *execute);
-int					ft_restor_fd(void);
+void				ft_restor_fd(void);
 int					ft_execute(t_mini *mini);
 int					ft_redi(t_exec *execute);
 int					ft_pipe(void *flag);
@@ -423,5 +419,7 @@ int					ft_var_check(char *str);
 void				ft_export_error(char *str);
 int					ft_export_valid_expention(char c);
 void				ft_creat_or_update_env(char *var, char *val);
+void				ft_export_print_it(void);
+
 // this all the function used in minishell
 #endif
