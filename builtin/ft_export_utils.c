@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 00:42:25 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/21 03:22:21 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 05:33:45 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_creat_or_update_env(char *var, char *val)
 			return (free(var), free(env), ft_expend_malloc_faild());
 		ft_lstadd_back_env(&(ft_global(NULL)->env), env);
 	}
-	else
+	else if (val)
 	{
 		free(env->value);
 		env->value = val;

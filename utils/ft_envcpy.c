@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 21:48:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/20 11:48:48 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 05:35:42 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ char	**ft_linked_to_envtable(void)
 	i = 0;
 	while (env)
 	{
+		if (!env->value)
+		{
+			env = env->next;
+			continue ;
+		}
 		dest[i] = ft_strcjoin(env->variable, env->value, '=');
 		if (!dest[i])
 			return (ft_freetable(dest), ft_expend_malloc_faild(), NULL);
