@@ -1,5 +1,5 @@
 NAME = minishell
-CC = @cc
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -Iinclude 
 
 SRC = builtin/ft_built_in.c          execute/ft_wait.c               heredoc/ft_expend_heredoc.c  libft/ft_putstr_fd.c  libft/ft_strnjoin.c          list/ft_memset.c         utils/ft_envcpy.c \
