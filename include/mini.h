@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/20 11:53:57 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 02:45:39 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 // error flags for execve
 
 # ifndef PACK_ACCESS
+#  define ERROR_N ": no such a file or diractory\n"
 #  define ERROR_F ": command not found\n"
 #  define ERROR_D ": is a diractory\n"
 #  define ERROR_X ": permission denied\n"
@@ -44,6 +45,7 @@
 #  define STATUS_X 126
 #  define STATUS_F 127
 #  define STATUS_D 128
+#  define STATUS_N 129
 # endif
 
 // the limits in string form
@@ -66,6 +68,7 @@
 #  define SQOT_ERROR "minishell : string isn't close by \'\n"
 #  define DQOT_ERROR "minishell : string isn't close by \"\n"
 #  define AMBIGUOUS_ERROR "minishell : ambiguous rediraction error \n"
+#  define EXPORT_ERROR ": not a valid identifier\n"
 # endif
 
 // for the maping expantion
@@ -74,6 +77,10 @@
 #  define OLD_CHAR "0"
 #  define EXP_CHAR "1"
 # endif
+
+// just some constant str
+
+# define DECLEAR "declare -x "
 
 // i want this as a checker for a tocken insted of do it manual
 // and maybee i will need it in somewhere else
@@ -301,6 +308,7 @@ void				ft_built_in(t_exec *execute);
 // built in functions :
 
 void				ft_pwd(void);
+void				ft_export(t_exec *execute);
 void				ft_cd(t_exec *execute);
 void				ft_echo(t_exec *execute);
 void				ft_env(void);
@@ -380,6 +388,7 @@ int					ft_global_var(int i);
 
 void				ft_expend_malloc_faild(void);
 void				ft_expend_free(t_parce *parce);
+void				ft_export(t_exec *execute);
 
 // creat new node
 
@@ -406,5 +415,11 @@ void				*ft_add_exec_list_back(t_exec **head, t_exec *new);
 char				*ft_env_var(char *env);
 char				*ft_env_val(char *env);
 
+// utils of export
+
+int					ft_var_check(char *str);
+void				ft_export_error(char *str);
+int					ft_export_valid_expention(char c);
+void				ft_creat_or_update_env(char *var, char *val);
 // this all the function used in minishell
 #endif

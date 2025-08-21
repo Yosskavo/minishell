@@ -6,59 +6,50 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:57:22 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/20 14:59:18 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 02:43:39 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static int	ft_export_valid_expention(char c)
+static void	ft_export_print_it(void)
 {
-	if (c == '_' || ft_isalpha(c))
-		return (1);
-	if (ft_isalnum(c))
-		return (2);
-	return (0);
-}
+	t_env	*env;
 
-static int	ft_var_check(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str[0] || ft_export_valid_expention(str[0]) != 1)
-		return (-1);
-	if (str[i] != '=')
+	env = ft_global(NULL)->env;
+	while (env)
 	{
-		if (!ft_export_valid_expention(str[i]))
-			return (-1);
-		if (!str[i])
-			return (-2);
-		i++;
+		printf("%s %s=%s\n", DECLEAR, env->variable, env->value);
+		env = env->next;
 	}
-	return (0);
+	ft_status(0);
 }
-static int	ft_export_check_name(char *str, int *i)
+
+static int	ft_export_check_name(char *str)
 {
 	char	*var;
 	char	*val;
-	t_env	*env;
-	int		flag;
 
-	flag = ft_var_check(str);
-	if (flag == -1)
+	val = NULL;
+	var = ft_env_var(str);
+	if (!var)
+		ft_expend_malloc_faild();
+	if (ft_var_check(var) < 0)
 		return (ft_export_error(str), -1);
-	if (flag == -2)
+	if (ft_strchr(str, '='))
 	{
+		val = ft_env_val(str);
+		if (!val)
+			return (free(var), ft_expend_malloc_faild(), -1);
 	}
+	ft_creat_or_update_env(var, val);
+	return (0);
 }
 
 void	ft_export(t_exec *execute)
 {
-	int		i;
-	int		j;
-	int		flag;
-	char	*pos;
+	int	i;
+	int	flag;
 
 	flag = 0;
 	if (!(execute->args[1]))
@@ -66,14 +57,8 @@ void	ft_export(t_exec *execute)
 	i = 1;
 	while (execute->args[i])
 	{
-		j = 0;
-		if (ft_export_check_name(execute->args[i], &j) == -1)
-		{
-			i++;
+		if (ft_export_check_name(execute->args[i]) == -1)
 			flag = 1;
-			continue ;
-		}
-		ft_export_add_to_env(execute->args[i], &j);
 		i++;
 	}
 	ft_status(flag);

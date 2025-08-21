@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:31:02 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 05:31:05 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/21 02:31:34 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_execute_check_path(t_exec *execute)
 	if (flag == 3)
 		execute->cmd->error = STATUS_D;
 	else if (flag == 1)
-		execute->cmd->error = STATUS_F;
+		execute->cmd->error = STATUS_N;
 }
 
 static void	ft_help(t_exec *execute, char *path)
