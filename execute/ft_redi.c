@@ -6,20 +6,36 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:32:18 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/20 23:14:07 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/21 04:53:20 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static int	ft_duptwo(t_tocken tocken, int fd)
+static void	ft_redi_error(t_parce *redi)
+{
+	char	*dest;
+	char	*dst;
+
+	dst = ft_strjoin("minishell: ", redi->next->str);
+	if (!dst)
+		ft_expend_malloc_faild();
+	dest = ft_strjoin(dst, ERROR_N);
+	if (!dest)
+		return (free(dst), ft_expend_malloc_faild());
+	ft_putstr_fd(dest, 2);
+	free(dest);
+	free(dst);
+}
+
+static int	ft_duptwo(t_tocken tocken, int fd, t_parce *redi)
 {
 	int	flag;
 
 	if (fd == -2)
 		return (ft_putstr_fd(AMBIGUOUS_ERROR, 2), -2);
 	if (fd == -1)
-		return (perror("minishell"), -1);
+		return (ft_redi_error(redi), -2);
 	flag = 0;
 	if (tocken == HEREDOC || tocken == REDIRACTION)
 		flag = dup2(fd, STDIN_FILENO);
@@ -58,7 +74,7 @@ int	ft_redi(t_exec *execute)
 	tmp = execute->redi;
 	while (tmp)
 	{
-		flag = ft_duptwo(tmp->tocken, ft_open(tmp));
+		flag = ft_duptwo(tmp->tocken, ft_open(tmp), tmp);
 		if (flag < 0)
 			return (flag);
 		tmp = tmp->next;

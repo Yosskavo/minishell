@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/21 02:45:39 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 04:59:24 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@
 // error flags for execve
 
 # ifndef PACK_ACCESS
-#  define ERROR_N ": no such a file or diractory\n"
+#  define ERROR_N ": No such file or directory\n"
 #  define ERROR_F ": command not found\n"
-#  define ERROR_D ": is a diractory\n"
-#  define ERROR_X ": permission denied\n"
+#  define ERROR_D ": Is a directory\n"
+#  define ERROR_X ": Permission denied\n"
 #  define EMPTY_STR_ERROR "\'\': command not found\n"
 # endif
 
@@ -58,12 +58,12 @@
 # ifndef PACK_ERROR
 #  define SIGQUIT_ERROR "Quit (core dumped)\n"
 #  define HEREDOC_ERROR "minishell : warning: non delemater : "
-#  define CDTMA_ERROR "minishell : cd : too many argument \n"
+#  define CDTMA_ERROR "minishell : cd : too many arguments\n"
 #  define TOCKEN_ERROR "minishell : syntax error near unexpacted tocken "
 #  define OPPERATION_ERROR "minishell : syntax error unexpacted opperation "
 #  define CD_HOME_ERROR "minishell : cd : no HOME set\n"
 #  define NAR_ERROR " : numeric argument required\n"
-#  define TMA_ERROR "minishell : exit : too many argument\n"
+#  define TMA_ERROR "minishell : exit : too many arguments\n"
 #  define MALLOC_FAILD "minishell : malloc faild\n"
 #  define SQOT_ERROR "minishell : string isn't close by \'\n"
 #  define DQOT_ERROR "minishell : string isn't close by \"\n"
@@ -125,7 +125,8 @@ typedef enum e_tcmd
 	UNSET,
 	ENV,
 	CD,
-	EXIT
+	EXIT,
+	ERROR
 }					t_tcmd;
 
 // this is the struct for the command
@@ -149,6 +150,7 @@ typedef struct s_exec
 	char			**args;
 	t_cmd			*cmd;
 	int				child;
+	int				flag;
 	t_tcmd			tocken;
 	struct s_parce	*redi;
 	struct s_exec	*next;

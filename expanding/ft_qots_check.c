@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 08:09:46 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 08:35:23 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 04:02:06 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	ft_is_qoted(t_parce *parce)
 	{
 		if (parce->tocken == FILENAME_EXPEND || parce->tocken == EXPEND)
 			ft_expend_check_qots(parce);
-		if (parce->tocken == WORD || parce->tocken == DELEMITER)
+		if (parce->tocken == WORD || parce->tocken == DELEMITER
+			|| parce->tocken == FILENAME)
 			ft_check_word_qots(parce);
 		parce = parce->next;
 	}

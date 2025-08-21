@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 00:42:25 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/21 02:43:57 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 03:22:21 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_var_check(char *str)
 	i = 0;
 	if (!str[0] || ft_export_valid_expention(str[0]) != 1)
 		return (-1);
-	if (str[i] != '=')
+	while (str[i] != '=')
 	{
 		if (!str[i])
 			return (0);

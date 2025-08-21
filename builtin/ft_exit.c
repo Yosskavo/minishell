@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 06:39:23 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/19 08:59:48 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 04:00:10 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	ft_perror(char *str)
 	free(s);
 }
 
-static int	ft_help(char **args, int i)
+static int	ft_help(char **args, int i, int sign)
 {
 	int	j;
 
@@ -41,7 +41,8 @@ static int	ft_help(char **args, int i)
 	}
 	if (args[2])
 		return (-2);
-	return ((unsigned char)ft_atoi(args[1] + j));
+	i = ft_atoi(args[1] + j) * sign;
+	return ((unsigned char)(i));
 }
 
 static int	ft_exit_check(char **args)
@@ -67,7 +68,7 @@ static int	ft_exit_check(char **args)
 		if (sign == -1 && ft_strcmp(args[1] + i, MIN_EXIT) < 0)
 			return (-1);
 	}
-	return (ft_help(args, i));
+	return (ft_help(args, i, sign));
 }
 
 void	ft_exit(t_exec *execute)
@@ -84,12 +85,12 @@ void	ft_exit(t_exec *execute)
 	if (flag == -1)
 	{
 		ft_perror(execute->args[1]);
-		flag = 1;
+		flag = 2;
 	}
 	else if (flag == -2)
 	{
 		ft_putstr_fd(TMA_ERROR, 2);
-		ft_status(2);
+		ft_status(1);
 		return ;
 	}
 	ft_clear();

@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:32:27 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 10:20:32 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 04:14:05 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_wait(t_exec *execute)
 {
 	int	status;
 
-	status = 0;
 	while (execute->next)
 		execute = execute->next;
 	waitpid(execute->child, &status, 0);

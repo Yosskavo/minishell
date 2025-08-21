@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 21:44:35 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 13:51:02 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 03:50:23 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_delete_qots(t_parce *parce)
 	while (parce)
 	{
 		if (parce->qoted == 1 && (parce->tocken == WORD
-				|| parce->tocken == DELEMITER))
+				|| parce->tocken == DELEMITER || parce->tocken == FILENAME))
 			ft_normal_delete_qots(parce);
 		else if (parce->qoted == 1 && (parce->tocken == FILENAME_EXPEND
 				|| parce->tocken == EXPEND))

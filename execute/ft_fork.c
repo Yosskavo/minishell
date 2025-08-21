@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:30:53 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/19 05:30:56 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/21 04:12:48 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ int	ft_fork(t_exec *execute)
 	{
 		signal(SIGINT, SIG_DFL);
 		signal(SIGQUIT, SIG_DFL);
-		// if (ft_global(NULL)->old_fd != -1)
-		// 	close(ft_global(NULL)->old_fd);
+		if (execute->tocken == ERROR)
+		{
+			ft_clear();
+			exit(1);
+		}
 		if (execute->tocken != COMMAND)
 			ft_built_in(execute);
 		else

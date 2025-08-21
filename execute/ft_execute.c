@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:31:17 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/20 22:50:32 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/21 04:44:17 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,9 @@ static int	ft_execute_start(t_exec *execute)
 			return (ft_restor_fd(), -1);
 		flag = ft_redi(execute);
 		if (flag == -2)
-		{
-			execute = execute->next;
-			continue ;
-		}
+			execute->tocken = ERROR;
 		else if (flag == -1)
-			return (ft_restor_fd(), -1);
+			return (ft_status(1), ft_restor_fd(), -1);
 		execute->child = ft_fork(execute);
 		if (execute->child < 0)
 			return (perror("minishell"), ft_restor_fd(), -1);
@@ -59,7 +56,7 @@ static int	ft_before_built_in(t_exec *execute)
 	{
 		ft_dup();
 		if (ft_redi(execute) < 0)
-			return (-1);
+			return (ft_status(1), ft_restor_fd(), -1);
 	}
 	ft_built_in(execute);
 	if (ft_global(NULL)->fd[0] > -1 && ft_global(NULL)->fd[1] > -1)

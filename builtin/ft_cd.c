@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:53:35 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/21 03:06:28 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 03:20:05 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_cd(t_exec *execute)
 	char	*cwd;
 
 	if (ft_lengh_of_table(execute->args) > 2)
-		return (ft_status(2), (void)ft_putstr_fd(CDTMA_ERROR, 2));
+		return (ft_status(1), (void)ft_putstr_fd(CDTMA_ERROR, 2));
 	cwd = getcwd(NULL, 0);
 	if (!(execute->args[1]))
 	{
@@ -49,7 +49,7 @@ void	ft_cd(t_exec *execute)
 			return (free(cwd), ft_status(1), perror("minishell"));
 	}
 	else if (chdir(execute->args[1]))
-		return (ft_status(2), free(cwd), perror("minishell"));
+		return (ft_status(1), free(cwd), perror("minishell"));
 	if (!cwd)
 		perror("minishell");
 	ft_update_env(cwd);
