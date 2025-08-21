@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:53:35 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/21 03:20:05 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 22:11:53 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@ static void	ft_update_env(char *cwd)
 	char	*pwd;
 	char	*var;
 
-	var = ft_strdup("OLDPWD");
-	if (!var)
-		return (free(cwd), ft_expend_malloc_faild());
-	ft_creat_or_update_env(var, cwd);
+	if (ft_search_env_addr("PWD"))
+	{
+		var = ft_strdup("OLDPWD");
+		if (!var)
+			return (free(cwd), ft_expend_malloc_faild());
+		ft_creat_or_update_env(var, cwd);
+	}
+	else
+		free(cwd);
 	pwd = getcwd(NULL, 0);
 	if (!pwd)
 		return (ft_status(1), perror("minishell"));

@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:58:17 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/21 05:05:36 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 22:07:17 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	ft_unset(t_exec *execute)
 {
 	int	i;
 
+	if (!(ft_global(NULL)->env))
+		return ((void)ft_status(1));
 	i = 1;
 	while (execute->args[i])
 	{
