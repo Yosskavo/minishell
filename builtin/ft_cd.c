@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:53:35 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/20 04:02:36 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/21 03:06:28 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,20 @@
 
 static void	ft_update_env(char *cwd)
 {
-	t_env	*pwd;
-	t_env	*oldpwd;
+	char	*pwd;
+	char	*var;
 
-	oldpwd = ft_search_env_addr("OLDPWD");
-	pwd = ft_search_env_addr("PWD");
-	if (oldpwd && pwd)
-	{
-		free(oldpwd->value);
-		oldpwd->value = cwd;
-	}
-	if (pwd)
-	{
-		free(pwd->value);
-		pwd->value = getcwd(NULL, 0);
-		if (!(pwd->value))
-			return (perror("minishell"), (void)ft_status(1));
-	}
+	var = ft_strdup("OLDPWD");
+	if (!var)
+		return (free(cwd), ft_expend_malloc_faild());
+	ft_creat_or_update_env(var, cwd);
+	pwd = getcwd(NULL, 0);
+	if (!pwd)
+		return (ft_status(1), perror("minishell"));
+	var = ft_strdup("PWD");
+	if (!var)
+		return (free(pwd), ft_expend_malloc_faild());
+	ft_creat_or_update_env(var, pwd);
 	ft_status(0);
 }
 
