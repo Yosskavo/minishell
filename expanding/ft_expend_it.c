@@ -37,7 +37,7 @@ static char	*ft_expend_search(char *str, int *i, int *flag)
 	char	*dest;
 
 	if (str[*i + 1] == '?')
-		return ((*i)++, *flag = 1, ft_expend_status());
+		return ((*i) = (*i) + 2, *flag = 1, ft_expend_status());
 	j = (*i);
 	(*i)++;
 	if (ft_check_is_valid(str, i) < 0)
