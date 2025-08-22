@@ -58,7 +58,9 @@ static int	ft_exit_check(char **args)
 	if (args[1][i] == '-' || args[1][i] == '+')
 		if (args[1][i++] == '-')
 			sign = -1;
-	res = ft_strlen(args[1] + i);
+	while(args[1][i] == '0')
+    i++;
+  res = ft_strlen(args[1] + i);
 	if (res > 19)
 		return (-1);
 	if (res == 19)
