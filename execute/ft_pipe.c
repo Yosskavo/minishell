@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 09:56:36 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/19 10:27:49 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 14:49:28 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_stdout(void *flag, int fd[2], int *old_fd)
 		if (dup2(fd[1], STDOUT_FILENO) < 0)
 			return (ft_help(old_fd, fd), -1);
 	}
-	else if (!flag)
+	else
 	{
 		if (dup2(ft_global(NULL)->fd[1], STDOUT_FILENO) < 0)
 			return (ft_help(old_fd, fd), -1);

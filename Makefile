@@ -1,6 +1,6 @@
 NAME = minishell
 CC = @cc
-CFLAGS = -Wall -Wextra -Werror -g -Iinclude 
+CFLAGS = -Wall -Wextra -Werror -Iinclude 
 
 SRC = builtin/ft_built_in.c          execute/ft_wait.c               heredoc/ft_expend_heredoc.c  libft/ft_putstr_fd.c  libft/ft_strnjoin.c          list/ft_memset.c         utils/ft_envcpy.c \
 	  builtin/ft_pwd.c               expanding/ft_any_dollar_sign.c  heredoc/ft_heredoc.c         libft/ft_split.c      libft/ft_strstr.c            list/ft_newlist.c        utils/ft_malloc_faild.c \

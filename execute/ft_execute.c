@@ -46,7 +46,7 @@ static int	ft_before_forking(t_exec *execute)
 		if (ft_dup() < 0)
 			return (perror("minishell"), ft_status(1), -1);
 	if (ft_execute_start(execute) < 0)
-		return (ft_wait_help(NULL), ft_status(1), -1);
+		return (ft_wait_help(), ft_status(1), -1);
 	if (ft_global(NULL)->fd[0] > -1 && ft_global(NULL)->fd[1] > -1)
 		ft_restor_fd();
 	ft_wait(execute);
