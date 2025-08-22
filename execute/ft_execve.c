@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:31:45 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/21 03:35:32 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 01:34:03 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,14 @@
 static void	ft_fork_error(t_exec *execute)
 {
 	char	*dest;
-	int		status;
 
-	if (execute->cmd->error == STATUS_F)
-		dest = ft_strjoin(execute->args[0], ERROR_F);
-	if (execute->cmd->error == STATUS_D)
-		dest = ft_strjoin(execute->args[0], ERROR_D);
-	if (execute->cmd->error == STATUS_X)
-		dest = ft_strjoin(execute->args[0], ERROR_X);
-	if (execute->cmd->error == STATUS_N)
-		dest = ft_strjoin(execute->args[0], ERROR_N);
+	dest = ft_strjoin(execute->args[0], ERROR_D);
 	if (!dest)
 		ft_expend_malloc_faild();
 	ft_putstr_fd(dest, 2);
 	free(dest);
-	status = execute->cmd->error;
-	if (execute->cmd->error == STATUS_D || execute->cmd->error == STATUS_N)
-		status = execute->cmd->error - 2;
 	ft_clear();
-	exit(status);
+	exit(execute->cmd->error);
 }
 
 static void	ft_help(void)
@@ -56,7 +45,7 @@ void	ft_execve(t_exec *execute)
 	}
 	if (!*(execute->args[0]))
 		ft_help();
-	if (execute->cmd->error)
+	if (execute->cmd->error == STATUS_D)
 		ft_fork_error(execute);
 	table = ft_linked_to_envtable();
 	if (!table)

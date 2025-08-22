@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/21 23:42:25 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 01:34:46 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@
 // some exit status for execve
 
 # ifndef STATUS_EX
-#  define STATUS_X 126
+#  define STATUS_D 126
 #  define STATUS_F 127
-#  define STATUS_D 128
+#  define STATUS_X 128
 #  define STATUS_N 129
 # endif
 

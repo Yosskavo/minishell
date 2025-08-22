@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 09:10:46 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/20 10:15:12 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 01:48:10 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	ft_fullmap_expand(t_expend *exp, char *flag, int size)
 	char	*dest;
 
 	i = 0;
+	if (!(exp->map))
+		exp->map = ft_strdup("");
 	while (i < size)
 	{
 		dest = ft_strjoin(exp->map, flag);

@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:02:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/12 22:33:24 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 01:47:01 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static void	ft_rest_of_str(t_expend *exp, char *str)
 {
 	char	*dest;
 
+	if (!(exp->exp))
+		exp->exp = ft_strdup("");
 	dest = ft_strjoin(exp->exp, str);
 	if (!dest)
 		ft_malloc_faild();
