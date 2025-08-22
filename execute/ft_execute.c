@@ -6,16 +6,16 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:31:17 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/21 23:45:30 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 14:59:49 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static void ft_wait_help(void)
+static void	ft_wait_help(void)
 {
-  while (wait(NULL) != -1)
-    ;
+	while (wait(NULL) != -1)
+		;
 }
 
 static int	ft_execute_start(t_exec *execute)

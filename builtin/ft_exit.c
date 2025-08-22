@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 06:39:23 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/21 04:00:10 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 15:00:40 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ static int	ft_exit_check(char **args)
 	if (args[1][i] == '-' || args[1][i] == '+')
 		if (args[1][i++] == '-')
 			sign = -1;
-	while(args[1][i] == '0')
-    i++;
-  res = ft_strlen(args[1] + i);
+	while (args[1][i] == '0')
+		i++;
+	res = ft_strlen(args[1] + i);
 	if (res > 19)
 		return (-1);
 	if (res == 19)

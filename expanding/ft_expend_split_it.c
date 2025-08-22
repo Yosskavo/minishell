@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 20:21:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/22 02:27:51 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 14:58:53 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	ft_till_space_expend(t_expend *exp, int i)
 		{
 			c = exp->exp[i + j];
 			j++;
-			while (exp->exp[i + j] && !(exp->exp[i + j] == c && exp->map[i + j] == '0'))
+			while (!(exp->exp[i + j] == c && exp->map[i + j] == '0'))
 			{
 				j++;
 			}
@@ -70,7 +70,6 @@ static void	ft_expend_word(t_expend *exp, t_parce **parce, int *i)
 	int		j;
 
 	size = ft_till_space_expend(exp, *i);
-
 	dest = malloc(size + 1);
 	map = malloc(size + 1);
 	if (!dest || !map)
