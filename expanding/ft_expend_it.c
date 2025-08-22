@@ -73,7 +73,6 @@ static void	ft_help(char *dest, t_parce *parce, int flag)
 		dst = ft_strjoin(parce->exp->exp, dest);
 		free(parce->exp->exp);
 		parce->exp->exp = dst;
-
 	}
 	if (flag == 0)
 		ft_fullmap_expand(parce->exp, OLD_CHAR, ft_strlen(dest));
