@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:31:45 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/22 16:18:04 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 16:41:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	ft_help(void)
 void	ft_execve(t_exec *execute)
 {
 	char	**table;
-	int		status;
+
 	if (ft_global(NULL)->old_fd > -1)
 		close(ft_global(NULL)->old_fd);
 	if (!(execute->args) || !(execute->args[0]))
