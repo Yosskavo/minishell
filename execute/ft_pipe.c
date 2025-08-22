@@ -65,10 +65,8 @@ static void	ft_update_fd(void *flag, int *old_fd, int fd[2])
 		close(*old_fd);
 		*old_fd = fd[0];
 	}
-	fd[0] = -1;
 	if (flag)
 		close(fd[1]);
-	fd[1] = -1;
 }
 
 int	ft_pipe(void *flag)

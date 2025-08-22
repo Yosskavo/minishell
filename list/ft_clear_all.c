@@ -23,7 +23,7 @@ void	ft_clear_all(void)
 		close(mini->old_fd);
 	if (mini->fd[0] > -1)
 		close(mini->fd[0]);
-	if (mini->fd[1] > 1)
+	if (mini->fd[1] > -1)
 		close(mini->fd[1]);
 }
 

@@ -12,6 +12,12 @@
 
 #include "mini.h"
 
+static void ft_wait_help(void)
+{
+  while (wait(NULL) != -1)
+    ;
+}
+
 static int	ft_execute_start(t_exec *execute)
 {
 	int	flag;
@@ -19,7 +25,7 @@ static int	ft_execute_start(t_exec *execute)
 	while (execute)
 	{
 		if (ft_pipe(execute->next) == -1)
-			return (ft_restor_fd(), -1);
+			return (ft_status(1), ft_restor_fd(), -1);
 		flag = ft_redi(execute);
 		if (flag == -2)
 			execute->tocken = ERROR;
@@ -27,7 +33,7 @@ static int	ft_execute_start(t_exec *execute)
 			return (ft_status(1), ft_restor_fd(), -1);
 		execute->child = ft_fork(execute);
 		if (execute->child < 0)
-			return (perror("minishell"), ft_restor_fd(), -1);
+			return (ft_status(1), perror("minishell"), ft_restor_fd(), -1);
 		execute = execute->next;
 	}
 	return (0);
@@ -40,7 +46,7 @@ static int	ft_before_forking(t_exec *execute)
 		if (ft_dup() < 0)
 			return (perror("minishell"), ft_status(1), -1);
 	if (ft_execute_start(execute) < 0)
-		return (wait(NULL), ft_status(1), -1);
+		return (ft_wait_help(NULL), ft_status(1), -1);
 	if (ft_global(NULL)->fd[0] > -1 && ft_global(NULL)->fd[1] > -1)
 		ft_restor_fd();
 	ft_wait(execute);
