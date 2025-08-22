@@ -6,115 +6,102 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 10:02:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/22 01:47:01 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 03:54:49 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mini.h"
 
-static void	ft_rest_of_str(t_expend *exp, char *str)
+static char	*ft_expend_status(void)
 {
 	char	*dest;
 
-	if (!(exp->exp))
-		exp->exp = ft_strdup("");
-	dest = ft_strjoin(exp->exp, str);
-	if (!dest)
-		ft_malloc_faild();
-	free(exp->exp);
-	exp->exp = dest;
-	ft_fullmap_expand(exp, OLD_CHAR, ft_strlen(str));
-}
-
-static void	ft_expend_var(t_expend *exp, char *str, int old, int i)
-{
-	char	*dest;
-
-	if (!exp->exp)
-	{
-		exp->exp = ft_strndup(str, i - old);
-		exp->map = ft_strdup("");
-		ft_fullmap_expand(exp, OLD_CHAR, i - old);
-	}
-	else if (i - old != 0)
-	{
-		dest = ft_strnjoin(exp->exp, str + old, i - old);
-		if (!dest)
-			ft_malloc_faild();
-		free(exp->exp);
-		ft_fullmap_expand(exp, OLD_CHAR, i - old);
-		exp->exp = dest;
-	}
-}
-
-static void	ft_expend_status(t_expend *exp, char *str, int *old, int *i)
-{
-	char	*dest;
-	char	*dst;
-
-	ft_expend_var(exp, str, *old, *i);
 	dest = ft_itoa(ft_status(-1));
 	if (!dest)
 		ft_malloc_faild();
-	dst = ft_strjoin(exp->exp, dest);
-	if (!dst)
-		return (free(dest), ft_malloc_faild());
-	ft_fullmap_expand(exp, EXP_CHAR, ft_strlen(dest));
-	free(dest);
-	free(exp->exp);
-	exp->exp = dst;
-	(*old) += 2;
-	(*i) += 2;
+	return (dest);
 }
 
-static void	ft_expend_continue(t_expend *exp, char *str, int *old, int *i)
+static int	ft_check_is_valid(char *str, int *i)
 {
-	char	*dest;
-	int		tmp;
-	int		j;
+	if (ft_valid_expention(str[*i]) != 2)
+		return (-1);
+	while (str[*i] && ft_valid_expention(str[*i]))
+		(*i)++;
+	return (1);
+}
 
-	tmp = *old;
-	j = *i;
-	(*old) = ++(*i);
-	(*i) += ft_env_var_size(str + *old);
-	dest = ft_search_expend(str + *old, *i - *old);
-	*old = (*i);
-	if (!dest && !j)
-		return ;
-	ft_expend_var(exp, str, tmp, j);
+static char	*ft_expend_search(char *str, int *i, int *flag)
+{
+	int		j;
+	char	*dest;
+
+	if (str[*i + 1] == '?')
+		return ((*i)++, *flag = 1, ft_expend_status());
+	j = (*i);
+	(*i)++;
+	if (ft_check_is_valid(str, i) < 0)
+	{
+		dest = ft_strndup(str + j, (*i) - j);
+		if (!dest)
+			ft_malloc_faild();
+		*flag = 0;
+		return (dest);
+	}
+	dest = ft_search_expend(str + j + 1, (*i) - j - 1);
+	*flag = 1;
 	if (!dest)
-		return ;
-	ft_fullmap_expand(exp, EXP_CHAR, ft_strlen(dest));
-	dest = ft_strjoin(exp->exp, dest);
+		return (NULL);
+	dest = ft_strdup(dest);
 	if (!dest)
 		ft_malloc_faild();
-	free(exp->exp);
-	exp->exp = dest;
+	return (dest);
+}
+
+static void	ft_help(char *dest, t_parce *parce, int flag)
+{
+	char	*dst;
+
+	if (!(parce->exp->exp))
+	{
+		parce->exp->exp = ft_strdup(dest);
+		if (!(parce->exp->exp))
+			ft_malloc_faild();
+	}
+	else
+	{
+		dst = ft_strjoin(parce->exp->exp, dest);
+		free(parce->exp->exp);
+		parce->exp->exp = dst;
+
+	}
+	if (flag == 0)
+		ft_fullmap_expand(parce->exp, OLD_CHAR, ft_strlen(dest));
+	else
+		ft_fullmap_expand(parce->exp, EXP_CHAR, ft_strlen(dest));
+	free(dest);
 }
 
 void	ft_expend_it(t_parce *parce)
 {
-	int	i;
-	int	j;
-	int	old;
+	int		i;
+	int		flag;
+	char	*dest;
 
-	old = 0;
 	i = 0;
-	j = 0;
 	while (parce->str[i])
 	{
-		j = ft_any_dolar_sign(parce->str + i) - 1;
-		if (j == -1)
-			break ;
-		i += j;
-		if (parce->str[i + 1] == '?')
-			ft_expend_status(parce->exp, parce->str, &old, &i);
+		if (parce->str[i] == '$')
+			dest = ft_expend_search(parce->str, &i, &flag);
 		else
-			ft_expend_continue(parce->exp, parce->str, &old, &i);
-		old = i;
+		{
+			dest = ft_chardup(parce->str[i++]);
+			flag = 0;
+		}
+		if (!dest)
+			continue ;
+		ft_help(dest, parce, flag);
 	}
-	if (ft_strlen(parce->str + old))
-		ft_rest_of_str(parce->exp, parce->str + old);
 	if (parce->tocken == FILENAME)
 		parce->tocken = FILENAME_EXPEND;
 	else
