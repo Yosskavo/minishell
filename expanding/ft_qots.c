@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_qots.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/02 21:44:35 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/21 03:50:23 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 03:11:09 by nel-khol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	ft_expend_delete_qots(t_parce *parce)
 				|| parce->str[j] == '\''))
 		{
 			c = parce->str[j++];
-			while (!(parce->str[j] == c && parce->map[j] == '0'))
+			while (parce->str[j] && !(parce->str[j] == c && parce->map[j] == '0'))
 				dest[i++] = parce->str[j++];
 			j++;
 		}
@@ -66,7 +66,7 @@ static void	ft_expend_delete_qots(t_parce *parce)
 			dest[i++] = parce->str[j++];
 	}
 	dest[i] = '\0';
-	free(parce->str);
+	free(parce->str);+-
 	parce->str = dest;
 }
 

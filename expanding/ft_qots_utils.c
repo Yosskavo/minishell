@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_qots_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/03 08:10:33 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/03 13:50:53 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 02:59:20 by nel-khol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ static int	ft_expend_size_without_qots(t_parce *parce)
 		if (ft_condi(parce->map[i], parce->str[i]))
 		{
 			c = parce->str[i++];
-			while (!(parce->str[i] == c && parce->map[i] == '0'))
+			while (parce->str[i] && !(parce->str[i] == c && parce->map[i] =='0'))
 			{
 				size++;
 				i++;
 			}
+			if (parce->str[i] == '\0') break ;
 			i++;
 		}
 		else

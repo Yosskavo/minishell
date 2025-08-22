@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expend_split_it.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 20:21:31 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/11 23:32:23 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 02:52:39 by nel-khol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ static int	ft_till_space_expend(t_expend *exp, int i)
 		{
 			c = exp->exp[i + j];
 			j++;
-			while (!(exp->exp[i + j] == c && exp->map[i + j] == '0'))
+			while (exp->exp[i + j] && !(exp->exp[i + j] == c && exp->map[i + j] == '0'))
 				j++;
+			if (exp->exp[i + j] == '\0') break ;
 			j++;
 		}
 		else
