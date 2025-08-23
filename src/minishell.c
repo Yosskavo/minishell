@@ -1,0 +1,62 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/29 09:12:11 by yel-mota          #+#    #+#             */
+/*   Updated: 2025/08/21 05:04:08 by yel-mota         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "mini.h"
+
+static int	ft_readline(t_mini *mini)
+{
+	ft_signal();
+	while (1)
+	{
+		mini->str = readline("¿ ");
+		if (!mini->str)
+			return (-1);
+		if (*(mini->str) && ft_valid_input(mini->str))
+		{
+			add_history(mini->str);
+			ft_start();
+		}
+		else
+		{
+			free(mini->str);
+			mini->str = NULL;
+		}
+	}
+	return (0);
+}
+
+static void	ft_setup(int ac, char **av, char **env)
+{
+	t_mini	*mini;
+
+	mini = malloc(sizeof(t_mini));
+	if (!mini)
+		return (ft_putstr_fd(MALLOC_FAILD, 2), exit(1));
+	ft_memset(mini, 0, sizeof(t_mini));
+	ft_global(mini)->old_fd = -1;
+	mini->fd[0] = -1;
+	mini->fd[1] = -1;
+	mini->env = ft_envcpy(env);
+	ft_readline(mini);
+	ft_clear_env(&(mini->env));
+	free(mini);
+	(void)ac;
+	(void)av;
+}
+
+int	main(int ac, char **av, char **env)
+{
+	ft_setup(ac, av, env);
+	rl_clear_history();
+	ft_putstr_fd("exit\n", 2);
+	return (ft_status(-1));
+}
