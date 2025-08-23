@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 16:28:13 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/18 05:22:43 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/23 22:19:17 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_clear_all(void)
 
 void	ft_clear(void)
 {
+	rl_clear_history();
 	ft_clear_all();
 	free(ft_global(NULL));
 }
