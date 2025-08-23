@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:58:17 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/23 01:38:56 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/23 03:01:44 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	ft_env_unset(char *str)
 	t_env	*env;
 
 	env = ft_search_env_addr(str);
+	if (!env)
+		return ;
 	if (env->next && env->previous)
 	{
 		env->previous->next = env->next;
