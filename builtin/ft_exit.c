@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 01:37:59 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/23 01:38:01 by nel-khol         ###   ########.fr       */
+/*   Updated: 2025/08/23 10:00:46 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_exit(t_exec *execute)
 	int	flag;
 
 	flag = 0;
-	if (isatty(1) && isatty(0))
+	if (!(ft_global(NULL)->is_pipe))
 		ft_putendl_fd("exit", 2);
 	if (!(execute->args[1]))
 		flag = ft_status(-1);

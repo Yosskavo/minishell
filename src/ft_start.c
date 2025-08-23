@@ -6,7 +6,7 @@
 /*   By: yel-mota <yel-mota@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 10:05:51 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/22 14:50:21 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/23 10:02:27 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ int	ft_start(void)
 	ft_execute(mini);
 	ft_clear_exec(&(mini->execute));
 	mini->execute = NULL;
+	mini->is_pipe = 0;
 	return (0);
 }

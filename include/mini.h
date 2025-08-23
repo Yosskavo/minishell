@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/22 23:13:08 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/23 10:01:30 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,7 @@ typedef struct s_mini
 	char			*str;
 	int				old_fd;
 	int				fd[2];
+	int				is_pipe;
 	t_parce			*start;
 	t_env			*env;
 	t_exec			*execute;

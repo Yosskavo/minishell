@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:31:17 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/22 14:59:49 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/23 10:02:04 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ static int	ft_execute_start(t_exec *execute)
 {
 	int	flag;
 
+	if (execute->next)
+		ft_global(NULL)->is_pipe = 1;
 	while (execute)
 	{
 		if (ft_pipe(execute->next) == -1)
