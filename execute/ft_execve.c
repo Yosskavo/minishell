@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 05:31:45 by nel-khol          #+#    #+#             */
-/*   Updated: 2025/08/22 16:41:44 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/23 00:18:34 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,8 @@ void	ft_execve(t_exec *execute)
 	execve(execute->cmd->path, execute->args, table);
 	perror("minishell");
 	ft_freetable(table);
-	exit(126);
+	if (errno == ENOENT)
+		exit(127);
+	else
+		exit(126);
 }

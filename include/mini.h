@@ -6,7 +6,7 @@
 /*   By: nel-khol <nel-khol@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 01:11:54 by yel-mota          #+#    #+#             */
-/*   Updated: 2025/08/22 16:08:30 by yel-mota         ###   ########.fr       */
+/*   Updated: 2025/08/22 23:13:08 by yel-mota         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // headers needed in project
 
 # include <fcntl.h>
+# include <errno.h>
 # include <limits.h>
 # include <signal.h>
 # include <stdio.h>
