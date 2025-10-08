@@ -50,8 +50,8 @@ static void	*ft_start_heredoc(t_parce *tmp)
 	if (tmp->fd_out < 0)
 		return (free(filename), NULL);
 	tmp->fd_in = open(filename, O_WRONLY);
-	if (tmp->fd_out < 0)
-		return (free(filename), NULL);
+	if (tmp->fd_in < 0)
+		return (free(filename), close(tmp->fd_out), tmp->fd_out = -1, NULL);
 	unlink(filename);
 	free(filename);
 	return ((void *)tmp);
