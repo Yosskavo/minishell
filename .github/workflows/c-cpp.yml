@@ -13,11 +13,9 @@ jobs:
 
   steps:
    - uses: actions/checkout@v4
-   - name: make
-     run: make
    - name: Install Readline
      run: |
        sudo apt-get update
        sudo apt-get install -y lib32readline-dev lib32readline8 libreadline-dev
-   - name: Compile
+   - name: make
      run: make
