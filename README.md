@@ -1,14 +1,14 @@
-#  42 Minishell 101
+# 42 Minishell 101
 
 Welcome to **Minishell 101**! This is a beginner-friendly guide and README template for the 42 School `minishell` project. The goal of this project is to create a simple UNIX shell—a program that takes commands from the user and executes them, much like `bash`.
 
 ---
 
-##  Overview
+## Overview
 
 Minishell is a journey into process creation, file descriptors, signals, and parsing. By the end of this project, you'll have a deep understanding of how your terminal interprets what you type and how it asks the operating system to do the work.
 
-### 󰓎 Core Features
+### Core Features
 
 *   **Prompt:** Displays a prompt when waiting for a new command.
 *   **History:** Keeps a working history of commands (using `readline`).
@@ -25,7 +25,7 @@ Minishell is a journey into process creation, file descriptors, signals, and par
 
 ---
 
-##  The 7 Built-in Commands
+## The 7 Built-in Commands
 
 Your shell must natively implement the following commands without calling external binaries:
 
@@ -39,7 +39,7 @@ Your shell must natively implement the following commands without calling extern
 
 ---
 
-## 󰘧 Architecture 101 (How it works)
+## Architecture 101 (How it works)
 
 A well-structured minishell usually follows these four steps:
 
@@ -50,7 +50,7 @@ A well-structured minishell usually follows these four steps:
 
 ---
 
-## 󰢹 Installation & Usage
+## Installation & Usage
 
 ### Compilation
 
@@ -76,7 +76,7 @@ Start the shell by running the executable:
 
 ---
 
-##  Resources & Tips
+## Resources & Tips
 
 *   **Waitpid & Fork:** Understand how parent processes wait for child processes.
 *   **File Descriptors:** Grasp how `dup2()` is used to wire `stdout` of one process into the `stdin` of another.
